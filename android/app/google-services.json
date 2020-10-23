@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "817009533331",
+    "firebase_url": "https://ecounter-21185.firebaseio.com",
+    "project_id": "ecounter-21185",
+    "storage_bucket": "ecounter-21185.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:817009533331:android:ba82a1f8097f8c0e11c866",
+        "android_client_info": {
+          "package_name": "com.example.e_counter"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "817009533331-oidoqvo4gak08it5nc1jlvfvctt5moks.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB_ofa89bYDt8DpEEsginFJeJ6IDy7Q3fY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "817009533331-oidoqvo4gak08it5nc1jlvfvctt5moks.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
