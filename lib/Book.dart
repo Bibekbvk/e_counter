@@ -3,7 +3,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'e_counter.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
 
 class Book extends StatefulWidget {
   @override
@@ -167,15 +166,7 @@ class _BookState extends State<Book> {
                 Column(children: [
                   RaisedButton(
                     color: Colors.yellow,
-                    onPressed: () {
-                      DatePicker.showDatePicker(context,
-                          showTitleActions: true,
-                          minTime: DateTime(2020, 5, 1),
-                          maxTime: DateTime(2021, 12, 30),
-                          onChanged: (time) {}, onConfirm: (time) {
-                        print(time);
-                      }, currentTime: DateTime.now(), locale: LocaleType.en);
-                    },
+                    onPressed: () {},
                     child: Text(
                       'Choose Date',
                       style: TextStyle(color: Colors.blue),

@@ -14,7 +14,6 @@ class _ReserveState extends State<Reserve> {
   TextEditingController _ContactNoBus = TextEditingController();
   TextEditingController _ContactNoHiace = TextEditingController();
   TextEditingController _ContactNotransport = TextEditingController();
-  
 
   var firestoreDb = Firestore.instance.collection("Reserve").snapshots();
   @override
@@ -81,7 +80,8 @@ class _ReserveState extends State<Reserve> {
                                       Navigator.push(
                                           context,
                                           MaterialPageRoute(
-                                              builder: (context) => e_counter()));
+                                              builder: (context) =>
+                                                  e_counter()));
                                       _ContactNoHiace.clear();
                                     },
                                     child: Text("OK")),
@@ -151,7 +151,6 @@ class _ReserveState extends State<Reserve> {
                           showDialog<String>(
                             context: context,
                             builder: (BuildContext context) => AlertDialog(
-                              
                               title: Text("Reserve Bus"),
                               content: Text(
                                   " Success!You will receive call, for more details"),
@@ -161,7 +160,8 @@ class _ReserveState extends State<Reserve> {
                                       Navigator.push(
                                           context,
                                           MaterialPageRoute(
-                                              builder: (context) => e_counter()));
+                                              builder: (context) =>
+                                                  e_counter()));
                                       _ContactNoBus.clear();
                                     },
                                     child: Text("OK")),
@@ -240,7 +240,8 @@ class _ReserveState extends State<Reserve> {
                                       Navigator.push(
                                           context,
                                           MaterialPageRoute(
-                                              builder: (context) => e_counter()));
+                                              builder: (context) =>
+                                                  e_counter()));
                                       _ContactNoCar.clear();
                                     },
                                     child: Text("OK")),
@@ -280,7 +281,7 @@ class _ReserveState extends State<Reserve> {
                     height: 150,
                     width: 320,
                   ),
-                ]),                                  // this is comment
+                ]), // this is comment
             TextFormField(
               controller: _ContactNoSumo,
               keyboardType: TextInputType.text,
@@ -293,8 +294,6 @@ class _ReserveState extends State<Reserve> {
                     borderRadius: BorderRadius.circular(16),
                   )),
             ),
-
-                
 
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -322,7 +321,8 @@ class _ReserveState extends State<Reserve> {
                                       Navigator.push(
                                           context,
                                           MaterialPageRoute(
-                                              builder: (context) => e_counter()));
+                                              builder: (context) =>
+                                                  e_counter()));
                                       _ContactNoSumo.clear();
                                     },
                                     child: Text("OK")),
@@ -355,7 +355,7 @@ class _ReserveState extends State<Reserve> {
               ],
             ),
 
-             Row(
+            Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
@@ -366,8 +366,7 @@ class _ReserveState extends State<Reserve> {
                   ),
                 ]),
 
-
- TextFormField(
+            TextFormField(
               controller: _ContactNotransport,
               keyboardType: TextInputType.text,
               validator: (val) =>
@@ -380,11 +379,11 @@ class _ReserveState extends State<Reserve> {
                   )),
             ),
 
-Text("-Vehicle for transporting goods\n-Flat and Office Shifting\n-"),
-Row(
+            Text(
+                "-Vehicle for transporting goods\n-Flat and Office Shifting\n-"),
+            Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                
                 RaisedButton(
                     child: Text("Reserve"),
                     color: Colors.yellowAccent,
@@ -408,7 +407,8 @@ Row(
                                       Navigator.push(
                                           context,
                                           MaterialPageRoute(
-                                              builder: (context) => e_counter()));
+                                              builder: (context) =>
+                                                  e_counter()));
                                       _ContactNoSumo.clear();
                                     },
                                     child: Text("OK")),
@@ -441,38 +441,32 @@ Row(
               ],
             ),
 
-
-               Column(
-                    children: <Widget>[
-                      Text(
-                          "-Call us directtly to Reserve\n-You can Reserve any Vehicle\n-You can give miscall\n-Emai: Ecounter@gmail.com\n-WebSite: www.ecounter.com.np"),
-                      RaisedButton(
-                        onPressed: () => launch('tel:9817931246'),
-                        child: Text("Tap to Call us (NTC number)"),
-                        color: Colors.yellowAccent,
-                      ),
-                      RaisedButton(
-                        onPressed: () => launch('tel:9817931246'),
-                        child: Text("Tap to Call us (NCELL number)"),
-                        color: Colors.yellowAccent,
-                      ),
-                      RaisedButton(
-                        onPressed: () => launch('tel:9817931246'),
-                        child: Text(" Tap to Call us (Smart Cell number)"),
-                        color: Colors.yellowAccent,
-                  
-                    ),
-                  RaisedButton(
-                        onPressed: () => launch('https:www.facebook.com'),
-                        child: Text("Facebook Page"),
-                        color: Colors.yellowAccent,
-                      ),
-                  
-                  
-                    ],
-                  ),
-
-
+            Column(
+              children: <Widget>[
+                Text(
+                    "-Call us directtly to Reserve\n-You can Reserve any Vehicle\n-You can give miscall\n-Emai: Ecounter@gmail.com\n-WebSite: www.ecounter.com.np"),
+                RaisedButton(
+                  onPressed: () => launch('tel:9817931246'),
+                  child: Text("Tap to Call us (NTC number)"),
+                  color: Colors.yellowAccent,
+                ),
+                RaisedButton(
+                  onPressed: () => launch('tel:9817931246'),
+                  child: Text("Tap to Call us (NCELL number)"),
+                  color: Colors.yellowAccent,
+                ),
+                RaisedButton(
+                  onPressed: () => launch('tel:9817931246'),
+                  child: Text(" Tap to Call us (Smart Cell number)"),
+                  color: Colors.yellowAccent,
+                ),
+                RaisedButton(
+                  onPressed: () => launch('https:www.facebook.com'),
+                  child: Text("Facebook Page"),
+                  color: Colors.yellowAccent,
+                ),
+              ],
+            ),
           ],
         ),
       ),
