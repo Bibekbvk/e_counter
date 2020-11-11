@@ -1,4 +1,5 @@
 import 'package:dropdown_search/dropdown_search.dart';
+import 'package:e_counter/showvehicles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
 
@@ -10,10 +11,10 @@ class ChooseBooking extends StatefulWidget {
 class _ChooseBookingState extends State<ChooseBooking> {
 
   @override
-  final TextEditingController _initialpriceController = TextEditingController();
-  final TextEditingController _finalpriceController = TextEditingController();
+  final TextEditingController _dateController = TextEditingController();
   List<String> district = ["Kathmandu", "Pokhara","Taplejung"];
   String selected;
+  String dates;
   String selecteddistrict;
   String selectedtime;
 
@@ -101,42 +102,47 @@ class _ChooseBookingState extends State<ChooseBooking> {
               },
               selectedItem: selecteddistrict),
           RaisedButton(onPressed: (){
-      DatePicker.showPicker(context,
-          showTitleActions: true,
-          onChanged: (date) {}, onConfirm: (date) {
-            setState(() {
-              String zone;
-              if(date.hour>12){
-                zone="PM";
+            DatePicker.showPicker(context,
+                showTitleActions: true,
+                onChanged: (date) {}, onConfirm: (date) {
+                  setState(() {
+                    String zone;
+                    if(date.hour>12){
+                      zone="PM";
 
-              }else{
-                zone="AM";
-              }
+                    }else{
+                      zone="AM";
+                    }
 
-              String dates =  "${date.year}/${date.month}/${date.day} || (Time: ${date.hour}:${date.minute} $zone)";
+                    dates =  "${date.year}/${date.month}/${date.day} || (Time: ${date.hour}:${date.minute} $zone)";
+                    _dateController.text=dates;
+                  });
+                },
 
-            });
-          },
+                locale: LocaleType.en);
+          },child: Text("Select Date"),
 
-          locale: LocaleType.en);
-    },child: Text("Select Date"),
+
+          ),
+          TextField(
+            controller: _dateController,
 
 
           ),
 
-          
+
+
 
 
 
           RaisedButton(
             onPressed: (){
 
-              var from = int.parse(_initialpriceController.text);
-              var to =int.parse(_finalpriceController.text);
-              /*Navigator.push(
+
+              Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => DisplayByPrice(from:from,to:to,destination: selecteddistrict,)),
-              );*/
+                MaterialPageRoute(builder: (context) => ShowVehicles(date:dates)),
+              );
 
             },
             child: Text("Search"),

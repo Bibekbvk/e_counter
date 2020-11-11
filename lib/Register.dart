@@ -1,6 +1,6 @@
+import 'package:e_counter/Homepage.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'e_counter.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:firebase_image/firebase_image.dart';
 class Register extends StatefulWidget {
@@ -19,8 +19,8 @@ class _RegisterState extends State<Register> {
   var firestoreDb = Firestore.instance.collection("app").snapshots();
   final _formKey = GlobalKey<FormState>();
   Widget build(BuildContext context) {
-    
-     return Scaffold(
+
+    return Scaffold(
         appBar: AppBar(title: Text("Register My Vehicle")),
         body: Container(
           margin: EdgeInsets.all(12),
@@ -36,7 +36,7 @@ class _RegisterState extends State<Register> {
                   controller: _FullName,
                   keyboardType: TextInputType.text,
                   validator: (val) =>
-                      val.isEmpty ? "Please enter Number" : null,
+                  val.isEmpty ? "Please enter Number" : null,
                   decoration: InputDecoration(
                       labelText: "Enter your full Name",
                       helperText: "Enter your full Name ",
@@ -48,7 +48,7 @@ class _RegisterState extends State<Register> {
                   controller: _ContactNo,
                   keyboardType: TextInputType.phone,
                   validator: (val) =>
-                      val.isEmpty ? "Please enter Correct Number" : null,
+                  val.isEmpty ? "Please enter Correct Number" : null,
                   decoration: InputDecoration(
                       labelText: "Enter Contact Number",
                       helperText: "Please enter correct Contact number ",
@@ -131,7 +131,7 @@ class _RegisterState extends State<Register> {
                     },
                   ),
                 ),
-                    Column(
+                Column(
                   children: <Widget>[
                     Text(
                         "Call us directtly to Register \nYou can give miscall\nEmai: Ecounter@gmail.com\nWebSite: WWW.Ecounter.com.np"),
@@ -150,24 +150,24 @@ class _RegisterState extends State<Register> {
                       child: Text(" Tap to Call us (Smart Cell number)"),
                       color: Colors.yellowAccent,
                     ),
-                 
-                 
-                     RaisedButton(
+
+
+                    RaisedButton(
                       onPressed: () => launch('https:www.facebook.com'),
                       child: Text("Facebook Page"),
                       color: Colors.yellowAccent,
                     ),
 
-                    
-                 
+
+
                   ],
 
-                  
+
 
 
                 ),
-              
-          
+
+
 
               ]),
             ),

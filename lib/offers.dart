@@ -9,7 +9,7 @@ class offers extends StatefulWidget {
 
 
 class _offersState extends State<offers> {
-  var firestoreDb = Firestore.instance.collection("offers").snapshots();
+  var firestoreDb = FirebaseFirestore.instance.collection("offers").snapshots();
   
   @override
   Widget build(BuildContext context) {

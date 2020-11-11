@@ -1,7 +1,7 @@
-import 'package:url_launcher/url_launcher.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:e_counter/Homepage.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'package:flutter/material.dart';
-import 'e_counter.dart';
 
 class Reserve extends StatefulWidget {
   @override
@@ -15,7 +15,7 @@ class _ReserveState extends State<Reserve> {
   TextEditingController _ContactNoHiace = TextEditingController();
   TextEditingController _ContactNotransport = TextEditingController();
 
-  var firestoreDb = Firestore.instance.collection("Reserve").snapshots();
+  var FirebaseFirestoreDb = FirebaseFirestore.instance.collection("Reserve").snapshots();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -46,7 +46,7 @@ class _ReserveState extends State<Reserve> {
               controller: _ContactNoHiace,
               keyboardType: TextInputType.phone,
               validator: (val) =>
-                  val.isEmpty ? "Please enter Correct Number" : null,
+              val.isEmpty ? "Please enter Correct Number" : null,
               decoration: InputDecoration(
                   labelText: "Enter your Contact Number",
                   helperText: "Please enter correct Contact number ",
@@ -62,12 +62,12 @@ class _ReserveState extends State<Reserve> {
                     color: Colors.yellowAccent,
                     onPressed: () {
                       if (_ContactNoHiace.text.isNotEmpty) {
-                        Firestore.instance.collection("Reserve").add({
+                        FirebaseFirestore.instance.collection("Reserve").add({
                           "Phone": _ContactNoHiace.text,
                           "Reserve": "Hiace",
                           "timestamp": new DateTime.now()
                         }).then((response) {
-                          print(response.documentID);
+                          print(response.id);
                           showDialog<String>(
                             context: context,
                             builder: (BuildContext context) => AlertDialog(
@@ -126,7 +126,7 @@ class _ReserveState extends State<Reserve> {
               controller: _ContactNoBus,
               keyboardType: TextInputType.phone,
               validator: (val) =>
-                  val.isEmpty ? "Please enter Correct Number" : null,
+              val.isEmpty ? "Please enter Correct Number" : null,
               decoration: InputDecoration(
                   labelText: "Enter your Contact Number",
                   helperText: "Please enter correct Contact number ",
@@ -142,12 +142,12 @@ class _ReserveState extends State<Reserve> {
                     color: Colors.yellowAccent,
                     onPressed: () {
                       if (_ContactNoBus.text.isNotEmpty) {
-                        Firestore.instance.collection("Reserve").add({
+                        FirebaseFirestore.instance.collection("Reserve").add({
                           "Phone": _ContactNoBus.text,
                           "Reserve": "Bus",
                           "timestamp": new DateTime.now()
                         }).then((response) {
-                          print(response.documentID);
+                          print(response.id);
                           showDialog<String>(
                             context: context,
                             builder: (BuildContext context) => AlertDialog(
@@ -206,7 +206,7 @@ class _ReserveState extends State<Reserve> {
               controller: _ContactNoCar,
               keyboardType: TextInputType.text,
               validator: (val) =>
-                  val.isEmpty ? "Please enter Correct Number" : null,
+              val.isEmpty ? "Please enter Correct Number" : null,
               decoration: InputDecoration(
                   labelText: "Enter your Contact Number",
                   helperText: "Please enter correct Contact number ",
@@ -222,12 +222,12 @@ class _ReserveState extends State<Reserve> {
                     color: Colors.yellowAccent,
                     onPressed: () {
                       if (_ContactNoCar.text.isNotEmpty) {
-                        Firestore.instance.collection("Reserve").add({
+                        FirebaseFirestore.instance.collection("Reserve").add({
                           "Phone": _ContactNoCar.text,
                           "Reserve": "Car",
                           "timestamp": new DateTime.now()
                         }).then((response) {
-                          print(response.documentID);
+                          print(response.id);
                           showDialog<String>(
                             context: context,
                             builder: (BuildContext context) => AlertDialog(
@@ -286,7 +286,7 @@ class _ReserveState extends State<Reserve> {
               controller: _ContactNoSumo,
               keyboardType: TextInputType.text,
               validator: (val) =>
-                  val.isEmpty ? "Please enter Correct Number" : null,
+              val.isEmpty ? "Please enter Correct Number" : null,
               decoration: InputDecoration(
                   labelText: "Enter your Contact Number",
                   helperText: "Please enter correct Contact number ",
@@ -303,12 +303,12 @@ class _ReserveState extends State<Reserve> {
                     color: Colors.yellowAccent,
                     onPressed: () {
                       if (_ContactNoSumo.text.isNotEmpty) {
-                        Firestore.instance.collection("Reserve").add({
+                        FirebaseFirestore.instance.collection("Reserve").add({
                           "Phone": _ContactNoSumo.text,
                           "Reserve": "sumo",
                           "timestamp": new DateTime.now()
                         }).then((response) {
-                          print(response.documentID);
+                          print(response.id);
                           showDialog<String>(
                             context: context,
                             builder: (BuildContext context) => AlertDialog(
@@ -370,7 +370,7 @@ class _ReserveState extends State<Reserve> {
               controller: _ContactNotransport,
               keyboardType: TextInputType.text,
               validator: (val) =>
-                  val.isEmpty ? "Please enter Correct Number" : null,
+              val.isEmpty ? "Please enter Correct Number" : null,
               decoration: InputDecoration(
                   labelText: "Enter your Contact Number",
                   helperText: "Please enter correct Contact number ",
@@ -389,12 +389,12 @@ class _ReserveState extends State<Reserve> {
                     color: Colors.yellowAccent,
                     onPressed: () {
                       if (_ContactNoSumo.text.isNotEmpty) {
-                        Firestore.instance.collection("Reserve").add({
+                        FirebaseFirestore.instance.collection("Reserve").add({
                           "Phone": _ContactNotransport.text,
                           "Reserve": "Transport",
                           "timestamp": new DateTime.now()
                         }).then((response) {
-                          print(response.documentID);
+                          print(response.id);
                           showDialog<String>(
                             context: context,
                             builder: (BuildContext context) => AlertDialog(
