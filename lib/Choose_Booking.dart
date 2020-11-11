@@ -114,7 +114,7 @@ class _ChooseBookingState extends State<ChooseBooking> {
                       zone="AM";
                     }
 
-                    dates =  "${date.year}/${date.month}/${date.day} || (Time: ${date.hour}:${date.minute} $zone)";
+                    dates =  "${date.year}/${date.month}/${date.day}";
                     _dateController.text=dates;
                   });
                 },
