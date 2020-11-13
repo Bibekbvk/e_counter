@@ -3,9 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:url_launcher/url_launcher.dart';
-
+import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
 class Book extends StatefulWidget {
   @override
+  final String from;
+  final String to;
+  final String shift;
+
+  const Book({Key key, this.from, this.to, this.shift}) : super(key: key);
   _BookState createState() => _BookState();
 }
 
@@ -18,9 +23,11 @@ class _BookState extends State<Book> {
   TextEditingController _FullName = TextEditingController();
   TextEditingController _ContactNo = TextEditingController();
   TextEditingController _From = TextEditingController();
+  TextEditingController _dateController = TextEditingController();
+  String dates;
   TextEditingController _To = TextEditingController();
   TextEditingController _Seat = TextEditingController();
-  var firestoreDb = Firestore.instance.collection("app").snapshots();
+  var firestoreDb = FirebaseFirestore.instance.collection("app").snapshots();
   final _formKey = GlobalKey<FormState>();
 
   Widget build(BuildContext context) {
@@ -32,6 +39,14 @@ class _BookState extends State<Book> {
             child: Form(
               key: _formKey,
               child: Column(children: <Widget>[
+                Row(
+                  children: [
+                    Text("${widget.from}"),
+                    Text("-->"),
+                    Text("${widget.to}"),
+
+                  ],
+                ),
                 SizedBox(
                   height: 30,
                   width: 20,
@@ -43,7 +58,6 @@ class _BookState extends State<Book> {
                   val.isEmpty ? "Please enter Number" : null,
                   decoration: InputDecoration(
                       labelText: "Enter your full Name",
-                      helperText: "Enter your full Name ",
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(16),
                       )),
@@ -55,124 +69,42 @@ class _BookState extends State<Book> {
                   val.isEmpty ? "Please enter Correct Number" : null,
                   decoration: InputDecoration(
                       labelText: "Enter Contact Number",
-                      helperText: "Please enter correct Contact number ",
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(16),
                       )),
                 ),
-                TextFormField(
-                  controller: _From,
-                  keyboardType: TextInputType.text,
-                  validator: (val) => val.isEmpty ? "Please enter Place" : null,
+
+
+
+                TextField(
+                  readOnly: true,
+                  controller: _dateController,
                   decoration: InputDecoration(
-                      labelText: "From",
-                      helperText: "Name of place you wan to travel from",
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(16),
-                      )),
+                    labelText: "Date"
+                  ),
+                  onTap: (){
+                    DatePicker.showPicker(context,
+                        showTitleActions: true,
+                        onChanged: (date) {}, onConfirm: (date) {
+                          setState(() {
+                            String zone;
+                            if(date.hour>12){
+                              zone="PM";
+
+                            }else{
+                              zone="AM";
+                            }
+
+                            dates =  "${date.year}/${date.month}/${date.day}";
+                            _dateController.text=dates;
+                          });
+                        },
+
+                      );
+                  },
                 ),
-                TextFormField(
-                  controller: _To,
-                  validator: (val) => val.isEmpty ? "Please enter Place" : null,
-                  keyboardType: TextInputType.text,
-                  decoration: InputDecoration(
-                      labelText: "To",
-                      helperText: "Enter Destination",
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(16),
-                      )),
-                ),
-                TextFormField(
-                  controller: _Seat,
-                  validator: (val) => val.isEmpty ? "Please enter Seat" : null,
-                  keyboardType: TextInputType.phone,
-                  decoration: InputDecoration(
-                      labelText: "Enter Seat Number",
-                      helperText: "Refer....from the picture",
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(16),
-                      )),
-                ),
-                Column(
-                  children: <Widget>[
-                    Text(
-                      "Select Vehicle:",
-                      style:
-                      TextStyle(fontSize: 20, fontWeight: FontWeight.w800),
-                    ),
-                    DropdownButton<String>(
-                      value: dropdownValue,
-                      icon: Icon(FontAwesomeIcons.arrowDown),
-                      iconSize: 30,
-                      elevation: 20,
-                      style: TextStyle(
-                          color: Colors.deepPurple,
-                          fontWeight: FontWeight.w900),
-                      underline: Container(
-                        height: 4,
-                        color: Colors.deepPurpleAccent,
-                      ),
-                      onChanged: (String newValue) {
-                        setState(() {
-                          dropdownValue = newValue;
-                        });
-                      },
-                      items: <String>['Hiace', 'Bus', 'Sumo', 'MiniBus']
-                          .map<DropdownMenuItem<String>>((String value) {
-                        return DropdownMenuItem<String>(
-                          value: value,
-                          child: Text(value),
-                        );
-                      }).toList(),
-                    )
-                  ],
-                ),
-                Column(
-                  children: <Widget>[
-                    Text(
-                      "Select Day/Night:",
-                      style:
-                      TextStyle(fontSize: 20, fontWeight: FontWeight.w800),
-                    ),
-                    DropdownButton<String>(
-                      value: dayNight,
-                      icon: Icon(FontAwesomeIcons.arrowDown),
-                      iconSize: 30,
-                      elevation: 20,
-                      style: TextStyle(
-                          color: Colors.deepPurple,
-                          fontWeight: FontWeight.w900),
-                      underline: Container(
-                        height: 4,
-                        color: Colors.deepPurpleAccent,
-                      ),
-                      onChanged: (String newValue) {
-                        setState(() {
-                          dayNight = newValue;
-                        });
-                      },
-                      items: <String>[
-                        'Day',
-                        'Night',
-                      ].map<DropdownMenuItem<String>>((String value) {
-                        return DropdownMenuItem<String>(
-                          value: value,
-                          child: Text(value),
-                        );
-                      }).toList(),
-                    )
-                  ],
-                ),
-                Column(children: [
-                  RaisedButton(
-                    color: Colors.yellow,
-                    onPressed: () {},
-                    child: Text(
-                      'Choose Date',
-                      style: TextStyle(color: Colors.blue),
-                    ),
-                  )
-                ]),
+
+
                 SizedBox(
                   width: 150,
                   height: 40,
@@ -181,17 +113,17 @@ class _BookState extends State<Book> {
                     child: Text("Book Ticket"),
                     onPressed: () {
                       if (_formKey.currentState.validate()) {
-                        Firestore.instance.collection("app").add({
+                        FirebaseFirestore.instance.collection("app").add({
                           "Contact": _ContactNo.text,
                           "Name": _FullName.text,
                           "timestamp": new DateTime.now(),
-                          "from": _From.text,
-                          "to": _To.text,
+                          "from": widget.from,
+                          "to": widget.to,
                           "by": dropdownValue,
-                          "Shift": dayNight,
-                          "ticket for": time
+                          "Shift": widget.shift,
+                          "ticket for": dates
                         }).then((response) {
-                          print(response.documentID);
+                          print(response.id);
 
                           showDialog<String>(
                             context: context,
