@@ -4,6 +4,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
+
 class Book extends StatefulWidget {
   @override
   final String from;
@@ -44,7 +45,6 @@ class _BookState extends State<Book> {
                     Text("${widget.from}"),
                     Text("-->"),
                     Text("${widget.to}"),
-
                   ],
                 ),
                 SizedBox(
@@ -55,7 +55,7 @@ class _BookState extends State<Book> {
                   controller: _FullName,
                   keyboardType: TextInputType.text,
                   validator: (val) =>
-                  val.isEmpty ? "Please enter Number" : null,
+                      val.isEmpty ? "Please enter Number" : null,
                   decoration: InputDecoration(
                       labelText: "Enter your full Name",
                       border: OutlineInputBorder(
@@ -66,45 +66,38 @@ class _BookState extends State<Book> {
                   controller: _ContactNo,
                   keyboardType: TextInputType.phone,
                   validator: (val) =>
-                  val.isEmpty ? "Please enter Correct Number" : null,
+                      val.isEmpty ? "Please enter Correct Number" : null,
                   decoration: InputDecoration(
                       labelText: "Enter Contact Number",
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(16),
                       )),
                 ),
-
-
-
                 TextField(
                   readOnly: true,
                   controller: _dateController,
-                  decoration: InputDecoration(
-                    labelText: "Date"
-                  ),
-                  onTap: (){
-                    DatePicker.showPicker(context,
-                        showTitleActions: true,
-                        onChanged: (date) {}, onConfirm: (date) {
-                          setState(() {
-                            String zone;
-                            if(date.hour>12){
-                              zone="PM";
+                  decoration: InputDecoration(labelText: "Date"),
+                  onTap: () {
+                    DatePicker.showPicker(
+                      context,
+                      showTitleActions: true,
+                      onChanged: (date) {},
+                      onConfirm: (date) {
+                        setState(() {
+                          String zone;
+                          if (date.hour > 12) {
+                            zone = "PM";
+                          } else {
+                            zone = "AM";
+                          }
 
-                            }else{
-                              zone="AM";
-                            }
-
-                            dates =  "${date.year}/${date.month}/${date.day}";
-                            _dateController.text=dates;
-                          });
-                        },
-
-                      );
+                          dates = "${date.year}/${date.month}/${date.day}";
+                          _dateController.text = dates;
+                        });
+                      },
+                    );
                   },
                 ),
-
-
                 SizedBox(
                   width: 150,
                   height: 40,

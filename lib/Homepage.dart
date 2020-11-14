@@ -21,31 +21,23 @@ class e_counter extends StatefulWidget {
 }
 
 class _e_counterState extends State<e_counter> {
-
   final FirebaseMessaging _messaging = FirebaseMessaging();
   @override
-
-
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
           title: Text(
-            "E-counter Nepal",
-          )),
+        "E-counter Nepal",
+      )),
       drawer: Drawer(
-
-
         child: ListView(children: <Widget>[
           DrawerHeader(
               padding: EdgeInsets.all(1),
-              child:
-              ListView(
+              child: ListView(
                 children: [
-
                   Image.asset('assets/logo.png'),
-
                 ],
-              ) ),
+              )),
           // UserAccountsDrawerHeader(
           //     otherAccountsPictures: [
           //       Image.asset('assets/logo.png',
@@ -62,27 +54,13 @@ class _e_counterState extends State<e_counter> {
             elevation: 22,
             shadowColor: Colors.yellowAccent,
             child: ListTile(
-              leading:Icon (Icons.info),
-              title:Text("About"),
-              onTap:(){
+              leading: Icon(Icons.info),
+              title: Text("About"),
+              onTap: () {
                 Navigator.of(context).pop();
-                Navigator.push(context, MaterialPageRoute(builder: (context)=>Aboutpage()));
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => Aboutpage()));
               },
-
-            ),
-          ),
-
-          Card(
-            elevation: 22,
-
-            shadowColor: Colors.yellowAccent,
-            child: ListTile(
-              leading:Icon (FontAwesomeIcons.star),
-              title:Text("Rate us"),
-              onTap:(){
-                launch('https://play.google.com/store/apps/details?id=com.f1soft.esewa&hl=en');
-              },
-
             ),
           ),
 
@@ -90,170 +68,394 @@ class _e_counterState extends State<e_counter> {
             elevation: 22,
             shadowColor: Colors.yellowAccent,
             child: ListTile(
-              leading:Icon (Icons.share),
-              title:Text("Share"),
-              onTap:(){
-                Share.share("Please Download our app, https://play.google.com/store/apps/details?id=com.f1soft.esewa&hl=en ");
+              leading: Icon(FontAwesomeIcons.star),
+              title: Text("Rate us"),
+              onTap: () {
+                launch(
+                    'https://play.google.com/store/apps/details?id=com.f1soft.esewa&hl=en');
+              },
+            ),
+          ),
+
+          Card(
+            elevation: 22,
+            shadowColor: Colors.yellowAccent,
+            child: ListTile(
+              leading: Icon(Icons.share),
+              title: Text("Share"),
+              onTap: () {
+                Share.share(
+                    "Please Download our app, https://play.google.com/store/apps/details?id=com.f1soft.esewa&hl=en ");
                 // Navigator.of(context).pop();
 
                 // Navigator.push(context, MaterialPageRoute(builder: (context)=>Aboutpage()));
               },
-
             ),
           ),
-
         ]),
-
       ),
-      body: ListView(children: <Widget>[
-
-        Center(
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: <Widget>[
-              IconButton(
-                icon: Icon(
-                  FontAwesomeIcons.ticketAlt,
+      body: SafeArea(
+        child: Column(
+          children: [
+            Expanded(
+              flex: 1,
+              child: Padding(
+                padding: EdgeInsets.all(10),
+                child: Text(
+                  'Select Services',
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                 ),
-                iconSize: 140,
-
-                onPressed: (){
-                  Navigator.push(context, MaterialPageRoute(builder: (context)=> ChooseBooking()),
-                  );
-
-                },),
-
-
-
-
-
-              SizedBox(width: 12),
-              IconButton(
-                icon: Icon(
-                    FontAwesomeIcons.bus
-                ),
-                iconSize: 140,
-                onPressed: (){
-                  Navigator.push(context, MaterialPageRoute(builder: (context)=> Reserve()),
-                  );
-
-                },),
-            ],
-          ),
-        ),
-
-
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: <Widget>[
-            Text("Book Ticket" ,style:TextStyle(
-                fontSize:18,
-                fontWeight:FontWeight.w800
-            ),),
-            Text("Reserve Vehicle",
-              style:TextStyle(
-                  fontSize:18,
-                  fontWeight:FontWeight.w800
-              ),)
-
-
-          ],
-        ),
-        Container(
-          width: MediaQuery.of(context).size.width,
-          child: Center(
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: <Widget>[
-                IconButton(
-                  icon: Icon(
-                    Icons.call,
-                  ),
-                  iconSize: 140,
-                  onPressed: (){
-                    Navigator.push(context, MaterialPageRoute(builder: (context)=> Contact()),
-                    );
-
-                  },),
-                SizedBox(width: 12),
-                IconButton(
-                  icon: Icon(
-                    FontAwesomeIcons.registered,
-                  ),
-                  iconSize: 140,
-                  onPressed: (){
-                    Navigator.push(context, MaterialPageRoute(builder: (context)=> Register()),
-                    );
-
-                  },),
-              ],
+              ),
             ),
-          ),
-        ),
-
-
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: <Widget>[
-            Text("Contact Directy",style:TextStyle(
-                fontSize:20,
-                fontWeight:FontWeight.w800
-            ),),
-            Text("Register",
-              style:TextStyle(
-                  fontSize:20,
-                  fontWeight:FontWeight.w800
-              ),)
-
-
-          ],
-        ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: <Widget>[
-            IconButton(
-              icon: Icon(
-                  FontAwesomeIcons.moneyBillWave
+            Expanded(
+              flex: 5,
+              child: Padding(
+                padding: EdgeInsets.fromLTRB(
+                    MediaQuery.of(context).size.width * 0.115,
+                    0,
+                    MediaQuery.of(context).size.width * 0.115,
+                    MediaQuery.of(context).size.width * 0.04),
+                child: Column(
+                  children: [
+                    Expanded(
+                      child: Padding(
+                        padding: EdgeInsets.fromLTRB(
+                            0,
+                            MediaQuery.of(context).size.height * 0.02,
+                            0,
+                            MediaQuery.of(context).size.height * 0.02),
+                        child: Row(
+                          children: [
+                            Expanded(
+                              child: InkWell(
+                                  child: Container(
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(5),
+                                      border:
+                                          Border.all(color: Colors.lightBlue),
+                                    ),
+                                    child: Column(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                        Icon(FontAwesomeIcons.bus,
+                                            color: Colors.blue[900], size: 44),
+                                        Text(
+                                          'Book Ticket',
+                                          style: TextStyle(
+                                              color: Colors.blue[900],
+                                              fontWeight: FontWeight.bold),
+                                        )
+                                      ],
+                                    ),
+                                  ),
+                                  onTap: () {
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) => Book()));
+                                  }),
+                            ),
+                            SizedBox(
+                              width: MediaQuery.of(context).size.width * 0.02,
+                            ),
+                            Expanded(
+                              child: InkWell(
+                                  child: Container(
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(5),
+                                      border:
+                                          Border.all(color: Colors.lightBlue),
+                                    ),
+                                    child: Column(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                        Icon(FontAwesomeIcons.car,
+                                            color: Colors.blue[900], size: 44),
+                                        Text(
+                                          'Reserve',
+                                          style: TextStyle(
+                                              color: Colors.blue[900],
+                                              fontWeight: FontWeight.bold),
+                                        )
+                                      ],
+                                    ),
+                                  ),
+                                  onTap: () {
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) => Reserve()));
+                                  }),
+                            ),
+                            SizedBox(
+                              width: MediaQuery.of(context).size.width * 0.02,
+                            ),
+                            Expanded(
+                              child: Container(
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(5),
+                                  border: Border.all(color: Colors.lightBlue),
+                                ),
+                                child: InkWell(
+                                    child: Column(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                        Icon(Icons.contact_phone_outlined,
+                                            color: Colors.blue[900], size: 44),
+                                        Text(
+                                          'Contact us',
+                                          style: TextStyle(
+                                              color: Colors.blue[900],
+                                              fontWeight: FontWeight.bold),
+                                        )
+                                      ],
+                                    ),
+                                    onTap: () {
+                                      Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) => Contact()));
+                                    }),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                    Expanded(
+                      child: Padding(
+                        padding: EdgeInsets.fromLTRB(
+                            0,
+                            MediaQuery.of(context).size.height * 0.02,
+                            0,
+                            MediaQuery.of(context).size.height * 0.02),
+                        child: Row(
+                          children: [
+                            Expanded(
+                              child: InkWell(
+                                  child: Container(
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(5),
+                                      border:
+                                          Border.all(color: Colors.lightBlue),
+                                    ),
+                                    child: Column(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                        Icon(Icons.app_registration,
+                                            color: Colors.blue[900], size: 44),
+                                        Text(
+                                          'Register',
+                                          style: TextStyle(
+                                              color: Colors.blue[900],
+                                              fontWeight: FontWeight.bold),
+                                        )
+                                      ],
+                                    ),
+                                  ),
+                                  onTap: () {
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) => Register()));
+                                  }),
+                            ),
+                            SizedBox(
+                              width: MediaQuery.of(context).size.width * 0.02,
+                            ),
+                            Expanded(
+                              child: InkWell(
+                                  child: Container(
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(5),
+                                      border:
+                                          Border.all(color: Colors.lightBlue),
+                                    ),
+                                    child: Column(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                        Icon(Icons.money_off_outlined,
+                                            color: Colors.blue[900], size: 44),
+                                        Text(
+                                          'Faire',
+                                          style: TextStyle(
+                                              color: Colors.blue[900],
+                                              fontWeight: FontWeight.bold),
+                                        )
+                                      ],
+                                    ),
+                                  ),
+                                  onTap: () {
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) => Calculate()));
+                                  }),
+                            ),
+                            SizedBox(
+                              width: MediaQuery.of(context).size.width * 0.02,
+                            ),
+                            Expanded(
+                              child: InkWell(
+                                  child: Container(
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(5),
+                                      border:
+                                          Border.all(color: Colors.lightBlue),
+                                    ),
+                                    child: Column(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                        Icon(Icons.celebration,
+                                            color: Colors.blue[900], size: 44),
+                                        Text(
+                                          'Offer',
+                                          style: TextStyle(
+                                              color: Colors.blue[900],
+                                              fontWeight: FontWeight.bold),
+                                        )
+                                      ],
+                                    ),
+                                  ),
+                                  onTap: () {
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) => offers()));
+                                  }),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                    Expanded(
+                      child: Padding(
+                        padding: EdgeInsets.fromLTRB(
+                            0,
+                            MediaQuery.of(context).size.height * 0.02,
+                            0,
+                            MediaQuery.of(context).size.height * 0.02),
+                        child: Row(
+                          children: [
+                            Expanded(
+                              child: Container(
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(5),
+                                  border: Border.all(color: Colors.lightBlue),
+                                ),
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Icon(FontAwesomeIcons.truckLoading,
+                                        color: Colors.blue[900], size: 44),
+                                    Text(
+                                      'Mover',
+                                      style: TextStyle(
+                                          color: Colors.blue[900],
+                                          fontWeight: FontWeight.bold),
+                                    )
+                                  ],
+                                ),
+                              ),
+                            ),
+                            SizedBox(
+                              width: MediaQuery.of(context).size.width * 0.02,
+                            ),
+                            Expanded(
+                              child: InkWell(
+                                  child: Container(
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(5),
+                                      border:
+                                          Border.all(color: Colors.lightBlue),
+                                    ),
+                                    child: Column(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                        Icon(FontAwesomeIcons.info,
+                                            color: Colors.blue[900], size: 44),
+                                        SizedBox(height: 20),
+                                        Text(
+                                          'About Us',
+                                          style: TextStyle(
+                                              color: Colors.blue[900],
+                                              fontWeight: FontWeight.bold),
+                                        )
+                                      ],
+                                    ),
+                                  ),
+                                  onTap: () {
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) => Aboutpage()));
+                                  }),
+                            ),
+                            SizedBox(
+                              width: MediaQuery.of(context).size.width * 0.02,
+                            ),
+                            Expanded(
+                              child: Container(
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(5),
+                                  border: Border.all(color: Colors.lightBlue),
+                                ),
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Icon(Icons.feedback,
+                                        color: Colors.blue[900], size: 44),
+                                    Text(
+                                      'Feedback',
+                                      style: TextStyle(
+                                          color: Colors.blue[900],
+                                          fontWeight: FontWeight.bold),
+                                    )
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
               ),
-              iconSize: 140,
-              onPressed: (){
-                Navigator.push(context, MaterialPageRoute(builder: (context)=> Calculate()),
-                );
-
-              },),
-            SizedBox(width: 12),
-            IconButton(
-              icon: Icon(
-                Icons.local_offer,
+            ),
+            Expanded(
+              flex: 1,
+              child: Padding(
+                padding: EdgeInsets.fromLTRB(10, 0, 0, 10),
+                child: Container(
+                  height: MediaQuery.of(context).size.height * 0.01,
+                  width: MediaQuery.of(context).size.width * 0.7,
+                  decoration: BoxDecoration(
+                    color: Colors.blue[900],
+                    border: Border.all(color: Colors.lightBlue),
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  child: Center(
+                      child: Text(
+                    'Next',
+                    style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 15,
+                        color: Colors.white),
+                  )),
+                ),
               ),
-              iconSize: 140,
-              onPressed: (){
-                Navigator.push(context, MaterialPageRoute(builder: (context)=> offers()),
-                );
-
-              },),
+            ),
           ],
         ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: <Widget>[
-            Text("View Fair",
-              style:TextStyle(
-                  fontSize:20,
-                  fontWeight:FontWeight.w800
-              ),),
-            Text("Offers",
-              style:TextStyle(
-                  fontSize:20,
-                  fontWeight:FontWeight.w800
-              ),)
-
-
-          ],
-        ),
-
-      ]),
-      backgroundColor: Colors.amberAccent,
+      ),
     );
   }
 }

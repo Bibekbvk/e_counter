@@ -15,7 +15,8 @@ class _ReserveState extends State<Reserve> {
   TextEditingController _ContactNoHiace = TextEditingController();
   TextEditingController _ContactNotransport = TextEditingController();
 
-  var FirebaseFirestoreDb = FirebaseFirestore.instance.collection("Reserve").snapshots();
+  var FirebaseFirestoreDb =
+      FirebaseFirestore.instance.collection("Reserve").snapshots();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -46,7 +47,7 @@ class _ReserveState extends State<Reserve> {
               controller: _ContactNoHiace,
               keyboardType: TextInputType.phone,
               validator: (val) =>
-              val.isEmpty ? "Please enter Correct Number" : null,
+                  val.isEmpty ? "Please enter Correct Number" : null,
               decoration: InputDecoration(
                   labelText: "Enter your Contact Number",
                   helperText: "Please enter correct Contact number ",
@@ -126,7 +127,7 @@ class _ReserveState extends State<Reserve> {
               controller: _ContactNoBus,
               keyboardType: TextInputType.phone,
               validator: (val) =>
-              val.isEmpty ? "Please enter Correct Number" : null,
+                  val.isEmpty ? "Please enter Correct Number" : null,
               decoration: InputDecoration(
                   labelText: "Enter your Contact Number",
                   helperText: "Please enter correct Contact number ",
@@ -206,7 +207,7 @@ class _ReserveState extends State<Reserve> {
               controller: _ContactNoCar,
               keyboardType: TextInputType.text,
               validator: (val) =>
-              val.isEmpty ? "Please enter Correct Number" : null,
+                  val.isEmpty ? "Please enter Correct Number" : null,
               decoration: InputDecoration(
                   labelText: "Enter your Contact Number",
                   helperText: "Please enter correct Contact number ",
@@ -286,7 +287,7 @@ class _ReserveState extends State<Reserve> {
               controller: _ContactNoSumo,
               keyboardType: TextInputType.text,
               validator: (val) =>
-              val.isEmpty ? "Please enter Correct Number" : null,
+                  val.isEmpty ? "Please enter Correct Number" : null,
               decoration: InputDecoration(
                   labelText: "Enter your Contact Number",
                   helperText: "Please enter correct Contact number ",
@@ -370,7 +371,7 @@ class _ReserveState extends State<Reserve> {
               controller: _ContactNotransport,
               keyboardType: TextInputType.text,
               validator: (val) =>
-              val.isEmpty ? "Please enter Correct Number" : null,
+                  val.isEmpty ? "Please enter Correct Number" : null,
               decoration: InputDecoration(
                   labelText: "Enter your Contact Number",
                   helperText: "Please enter correct Contact number ",
