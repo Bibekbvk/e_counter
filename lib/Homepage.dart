@@ -153,7 +153,7 @@ class _e_counterState extends State<e_counter> {
                                     Navigator.push(
                                         context,
                                         MaterialPageRoute(
-                                            builder: (context) => Book()));
+                                            builder: (context) => ChooseBooking()));
                                   }),
                             ),
                             SizedBox(
