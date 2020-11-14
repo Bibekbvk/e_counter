@@ -180,21 +180,74 @@ class _BookState extends State<Book> {
                 Column(
                   children: <Widget>[
 
-                    RaisedButton(
-                      onPressed: () => launch('tel:9817931246'),
-                      child: Text("Tap to Call us (NTC number)"),
-                      color: Colors.yellowAccent,
+
+                    Container(
+                      width: MediaQuery.of(context).size.width*0.5,
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.grey.withOpacity(0.5),
+                            spreadRadius: 5,
+                            blurRadius: 7,
+                            offset: Offset(0, 3), // changes position of shadow
+                          ),
+                        ],
+                      ),
+                      child: Column(
+                        children: [
+                          Text("Tap to Call us and book directly \n You can give missed call too."),
+
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              Expanded(
+                                child: InkWell(
+                                onTap: (){
+                                  launch('tel:9817931246');
+                                },
+                                  child: CircleAvatar(
+                                    radius: 30.0,
+                                    backgroundImage:
+                                    AssetImage("ntc.png"),
+                                    backgroundColor: Colors.transparent,
+                                  ),
+                                ),
+                              ),
+                              Expanded(
+                                child: InkWell(
+                                  onTap: (){
+                                    launch('tel:9817931246');
+                                  },
+                                  child: CircleAvatar(
+                                    radius: 30.0,
+                                    backgroundImage:
+                                    AssetImage("ncell.jpg"),
+                                    backgroundColor: Colors.transparent,
+                                  ),
+                                ),
+                              ),
+                              Expanded(
+                                child: InkWell(
+                                  onTap: (){
+                                    launch('tel:9817931246');
+                                  },
+                                  child: CircleAvatar(
+                                    radius: 30.0,
+                                    backgroundImage:
+                                    AssetImage("smartcell.png"),
+                                    backgroundColor: Colors.transparent,
+                                  ),
+                                ),
+                              ),
+
+                            ],
+                          ),
+                        ],
+                      ),
                     ),
-                    RaisedButton(
-                      onPressed: () => launch('tel:9817931246'),
-                      child: Text("Tap to Call us (NCELL number)"),
-                      color: Colors.yellowAccent,
-                    ),
-                    RaisedButton(
-                      onPressed: () => launch('tel:9817931246'),
-                      child: Text(" Tap to Call us (Smart Cell number)"),
-                      color: Colors.yellowAccent,
-                    ),
+
                     FacebookButton(onPressed: (){launch('https:www.facebook.com');}),
                     Text(
                         "Email: Ecounter@gmail.com\nWebSite: WWW.Ecounter.com.np"),
