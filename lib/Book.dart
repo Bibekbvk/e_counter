@@ -4,6 +4,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
+import 'package:flutter_awesome_buttons/flutter_awesome_buttons.dart';
 class Book extends StatefulWidget {
   @override
   final String from;
@@ -39,18 +40,8 @@ class _BookState extends State<Book> {
             child: Form(
               key: _formKey,
               child: Column(children: <Widget>[
-                Row(
-                  children: [
-                    Text("${widget.from}"),
-                    Text("-->"),
-                    Text("${widget.to}"),
 
-                  ],
-                ),
-                SizedBox(
-                  height: 30,
-                  width: 20,
-                ),
+                SizedBox(height: 30, width: 20,),
                 TextFormField(
                   controller: _FullName,
                   keyboardType: TextInputType.text,
@@ -62,6 +53,7 @@ class _BookState extends State<Book> {
                         borderRadius: BorderRadius.circular(16),
                       )),
                 ),
+                SizedBox(height: MediaQuery.of(context).size.height*0.02,),
                 TextFormField(
                   controller: _ContactNo,
                   keyboardType: TextInputType.phone,
@@ -73,13 +65,15 @@ class _BookState extends State<Book> {
                         borderRadius: BorderRadius.circular(16),
                       )),
                 ),
-
-
+                SizedBox(height: MediaQuery.of(context).size.height*0.02,),
 
                 TextField(
                   readOnly: true,
                   controller: _dateController,
                   decoration: InputDecoration(
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(16),
+                      ),
                     labelText: "Date"
                   ),
                   onTap: (){
@@ -103,57 +97,89 @@ class _BookState extends State<Book> {
                       );
                   },
                 ),
+                SizedBox(height: MediaQuery.of(context).size.height*0.02,),
 
+                RaisedButton(
+                  color: Colors.blue.shade700,
+                  child: Text("Book Ticket"),
+                  onPressed: () {
+                    if (_formKey.currentState.validate()) {
+                      FirebaseFirestore.instance.collection("app").add({
+                        "Contact": _ContactNo.text,
+                        "Name": _FullName.text,
+                        "timestamp": new DateTime.now(),
+                        "from": widget.from,
+                        "to": widget.to,
+                        "by": dropdownValue,
+                        "Shift": widget.shift,
+                        "ticket for": dates
+                      }).then((response) {
+                        print(response.id);
 
-                SizedBox(
-                  width: 150,
-                  height: 40,
-                  child: RaisedButton(
-                    color: Colors.blue.shade700,
-                    child: Text("Book Ticket"),
-                    onPressed: () {
-                      if (_formKey.currentState.validate()) {
-                        FirebaseFirestore.instance.collection("app").add({
-                          "Contact": _ContactNo.text,
-                          "Name": _FullName.text,
-                          "timestamp": new DateTime.now(),
-                          "from": widget.from,
-                          "to": widget.to,
-                          "by": dropdownValue,
-                          "Shift": widget.shift,
-                          "ticket for": dates
-                        }).then((response) {
-                          print(response.id);
-
-                          showDialog<String>(
-                            context: context,
-                            builder: (BuildContext context) => AlertDialog(
-                              title: Text("Book Ticket"),
-                              content: Text(
-                                  " Success!You will receive call, for more details"),
-                              actions: <Widget>[
-                                FlatButton(
-                                    onPressed: () {
-                                      Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                              builder: (context) =>
-                                                  e_counter()));
-                                      _FullName.clear();
-                                    },
-                                    child: Text("OK")),
-                              ],
-                            ),
-                          );
-                        }).catchError((error) => print(error));
-                      }
-                    },
-                  ),
+                        showDialog<String>(
+                          context: context,
+                          builder: (BuildContext context) => AlertDialog(
+                            title: Text("Book Ticket"),
+                            content: Text(
+                                " Success!You will receive call, for more details"),
+                            actions: <Widget>[
+                              FlatButton(
+                                  onPressed: () {
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                e_counter()));
+                                    _FullName.clear();
+                                  },
+                                  child: Text("OK")),
+                            ],
+                          ),
+                        );
+                      }).catchError((error) => print(error));
+                    }
+                  },
                 ),
+            Row(children: <Widget>[
+              Expanded(
+                child: new Container(
+                    margin: const EdgeInsets.only(
+                        left: 10.0, right: 10.0),
+                    child: Divider(
+                      thickness:
+                      MediaQuery.of(context).size.height *
+                          0.001,
+                      color: Colors.black54,
+                      height:
+                      MediaQuery.of(context).size.height *
+                          0.1,
+                    )),
+              ),
+              Text(
+                "OR",
+                style: TextStyle(
+                    fontSize: 20,
+
+                    color: Colors.black54),
+              ),
+              Expanded(
+                child: new Container(
+                    margin: EdgeInsets.only(
+                        left: 10.0, right: 10.0),
+                    child: Divider(
+                      color: Colors.black54,
+                      thickness:
+                      MediaQuery.of(context).size.height *
+                          0.001,
+                      height: 20,
+                    )),
+              ),
+            ]),
+
+
                 Column(
                   children: <Widget>[
-                    Text(
-                        "Call us directtly to Book \nYou can give miscall\nEmai: Ecounter@gmail.com\nWebSite: WWW.Ecounter.com.np"),
+
                     RaisedButton(
                       onPressed: () => launch('tel:9817931246'),
                       child: Text("Tap to Call us (NTC number)"),
@@ -169,13 +195,13 @@ class _BookState extends State<Book> {
                       child: Text(" Tap to Call us (Smart Cell number)"),
                       color: Colors.yellowAccent,
                     ),
-                    RaisedButton(
-                      onPressed: () => launch('https:www.facebook.com'),
-                      child: Text("Facebook Page"),
-                      color: Colors.yellowAccent,
-                    ),
+                    FacebookButton(onPressed: (){launch('https:www.facebook.com');}),
+                    Text(
+                        "Email: Ecounter@gmail.com\nWebSite: WWW.Ecounter.com.np"),
                   ],
+
                 ),
+
                 Row(children: <Widget>[
                   Image.asset('assets/seatbus.jpg', height: 200, width: 330)
                 ]),
