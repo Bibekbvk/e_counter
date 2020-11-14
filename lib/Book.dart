@@ -177,12 +177,13 @@ class _BookState extends State<Book> {
             ]),
 
 
+
                 Column(
                   children: <Widget>[
-
-
                     Container(
-                      width: MediaQuery.of(context).size.width*0.5,
+                      height: MediaQuery.of(context).size.height*0.2,
+                      width: MediaQuery.of(context).size.width*0.7,
+
                       decoration: BoxDecoration(
                         color: Colors.white,
 
@@ -198,6 +199,8 @@ class _BookState extends State<Book> {
                       child: Column(
                         children: [
                           Text("Tap to Call us and book directly \n You can give missed call too."),
+                          SizedBox(height: 20,),
+
 
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -208,7 +211,7 @@ class _BookState extends State<Book> {
                                   launch('tel:9817931246');
                                 },
                                   child: CircleAvatar(
-                                    radius: 30.0,
+                                    radius: MediaQuery.of(context).size.height*0.05,
                                     backgroundImage:
                                     AssetImage("ntc.png"),
                                     backgroundColor: Colors.transparent,
@@ -221,9 +224,8 @@ class _BookState extends State<Book> {
                                     launch('tel:9817931246');
                                   },
                                   child: CircleAvatar(
-                                    radius: 30.0,
-                                    backgroundImage:
-                                    AssetImage("ncell.jpg"),
+                                    radius: MediaQuery.of(context).size.height*0.05,
+                                    backgroundImage: AssetImage("ncell.jpg"),
                                     backgroundColor: Colors.transparent,
                                   ),
                                 ),
@@ -234,7 +236,7 @@ class _BookState extends State<Book> {
                                     launch('tel:9817931246');
                                   },
                                   child: CircleAvatar(
-                                    radius: 30.0,
+                                    radius: MediaQuery.of(context).size.height*0.05,
                                     backgroundImage:
                                     AssetImage("smartcell.png"),
                                     backgroundColor: Colors.transparent,
@@ -247,8 +249,11 @@ class _BookState extends State<Book> {
                         ],
                       ),
                     ),
+                    SizedBox(height: MediaQuery.of(context).size.height*0.02,),
+
 
                     FacebookButton(onPressed: (){launch('https:www.facebook.com');}),
+
                     Text(
                         "Email: Ecounter@gmail.com\nWebSite: WWW.Ecounter.com.np"),
                   ],
