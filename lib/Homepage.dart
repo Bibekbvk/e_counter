@@ -1,9 +1,10 @@
-import 'file:///E:/AndroidStudioProjects/e_counter/lib/Choose_Booking.dart';
 import 'package:e_counter/Calculate.dart';
+import 'package:e_counter/Choose_Booking.dart';
 import 'package:e_counter/Contact.dart';
 import 'package:e_counter/Movers.dart';
 import 'package:e_counter/Register.dart';
 import 'package:e_counter/Reserve.dart';
+import 'package:e_counter/ViewReserve.dart';
 import 'package:e_counter/offers.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -187,7 +188,7 @@ class _e_counterState extends State<e_counter> {
                                     Navigator.push(
                                         context,
                                         MaterialPageRoute(
-                                            builder: (context) => Reserve()));
+                                            builder: (context) => ReserveList()));
                                   }),
                             ),
                             SizedBox(

@@ -1,8 +1,8 @@
-import 'file:///E:/AndroidStudioProjects/e_counter/lib/view_vehicle_detail.dart';
 import 'package:e_counter/database.dart';
+import 'package:e_counter/view_vehicle_detail.dart';
 import 'package:flutter/material.dart';
 
-import 'Reuseable_codes/display_vehicle_details_card.dart';
+import 'display_vehicle_details_card.dart';
 
 class ShowVehicles extends StatefulWidget {
   @override

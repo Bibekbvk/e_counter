@@ -6,5 +6,5 @@ import 'package:e_counter/showvehicles.dart';
 import 'package:flutter/material.dart';
 
 void main() => runApp(new MaterialApp(
-      home: Aboutpage(),
+      home: e_counter(),
     ));

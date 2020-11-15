@@ -1,8 +1,10 @@
-import 'file:///E:/AndroidStudioProjects/e_counter/lib/Models/usermodel.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:e_counter/Models/movers_model.dart';
+import 'package:e_counter/ReserveModel.dart';
+import 'package:e_counter/movers_model.dart';
+import 'package:e_counter/usermodel.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-import 'Models/DistrictModel.dart';
+import 'DistrictModel.dart';
 
 
 class Database{
@@ -12,8 +14,12 @@ class Database{
     return ref.snapshots().map((val) => val.docs.map((docs) => UserModel.fromFireStore(docs)).toList());
   }
   Stream<List<MoversModel>> getMovers() {
-    var ref = FirebaseFirestore.instance.collection('movers');
+    var ref = FirebaseFirestore.instance.collection('Movers');
     return ref.snapshots().map((val) => val.docs.map((docs) => MoversModel.fromFireStore(docs)).toList());
+  }
+  Stream<List<ReserveModel>> getReserve() {
+    var ref = FirebaseFirestore.instance.collection('Reserve');
+    return ref.snapshots().map((val) => val.docs.map((docs) => ReserveModel.fromFireStore(docs)).toList());
   }
 
   Stream<List<DistrictModel>> getdistrict() {

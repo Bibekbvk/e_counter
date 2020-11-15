@@ -1,4 +1,4 @@
-import 'package:e_counter/Reuseable_codes/display_vehicle_details_card.dart';
+import 'package:e_counter/display_vehicle_details_card.dart';
 import 'package:flutter/material.dart';
 
 class ViewDetails extends StatefulWidget {

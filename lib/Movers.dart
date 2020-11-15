@@ -1,5 +1,5 @@
-import 'package:e_counter/Reuseable_codes/display_vehicle_details_card.dart';
 import 'package:e_counter/database.dart';
+import 'package:e_counter/display_vehicle_details_card.dart';
 import 'package:flutter/material.dart';
 
 class MoversList extends StatefulWidget {
@@ -16,6 +16,7 @@ class _MoversListState extends State<MoversList> {
       body: StreamBuilder(stream:db.getMovers() , builder: (context, snapshot){
         if(snapshot.hasData){
           return ListView.builder(itemCount: snapshot.data.length,itemBuilder: (BuildContext context,int index){
+
              String availability=snapshot.data[index].availability;
              String capacity=snapshot.data[index].capacity;
              String currentlocation=snapshot.data[index].currentlocation;
@@ -23,7 +24,8 @@ class _MoversListState extends State<MoversList> {
              String noofhelpers=snapshot.data[index].noofhelpers;
              String pricing=snapshot.data[index].pricing;
              String vehicleused=snapshot.data[index].vehicleused;
-            return VechicleCard(upper: ["Availability","Capacity","Currentlocation","Insurance","Number of Helpers","Pricing","Vehicle Used"],lower: ["$availability","$capacity","$currentlocation","$insurance","$noofhelpers","$pricing","$vehicleused"],btn1title: "Book",title: "Movers",assetimage: "sumo.png",
+
+            return VechicleCard(upper: ["Availability","Capacity","vehicleused","Insurance","Number of Helpers","Pricing","Vehicle Used"],lower: ["$availability","$capacity","$vehicleused","$insurance","$noofhelpers","$pricing","$vehicleused"],btn1title: "Book",title: "Movers",assetimage: "sumo.png",
             );
           });
         }

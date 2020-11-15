@@ -28,6 +28,7 @@ class _ChooseBookingState extends State<ChooseBooking> {
   String hint="";
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(),
 
       body: StreamBuilder(
         stream:db.getdistrict(),

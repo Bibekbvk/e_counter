@@ -18,13 +18,13 @@ class MoversModel {
     Map data = doc.data();
 
     return MoversModel(
-        availability: data['Available in'],
-        capacity: data['Capacity:'],
-        currentlocation: data['Current location:'],
-        insurance: data['Insurance'],
-        noofhelpers: data['No. of helper '],
-        pricing: data['Pricing '],
-        vehicleused: data['Vehicle Used'],);
+        availability: data['available_in'],
+        capacity: data['capacity'],
+        currentlocation: data['current_location'],
+        insurance: data['insurance'],
+        noofhelpers: data['no_of_helper'],
+        pricing: data['pricing'],
+        vehicleused: data['vehicle_used'],);
 
 
 
