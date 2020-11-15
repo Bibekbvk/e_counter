@@ -1,5 +1,5 @@
 import 'package:e_counter/Homepage.dart';
-import 'package:e_counter/cicular_image_button.dart';
+import 'package:e_counter/circle_image_button.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -228,11 +228,7 @@ class _BookState extends State<Book> {
                                       onTap: (){
                                         launch('tel:9817931246');
                                       },
-                                      child: CircleAvatar(
-                                        radius: MediaQuery.of(context).size.height*0.05,
-                                        backgroundImage: AssetImage("ncell.jpg"),
-                                        backgroundColor: Colors.transparent,
-                                      ),
+                                      child: CircularImageButton("ncell.png"),
                                     ),
                                   ),
                                   Expanded(
@@ -275,18 +271,13 @@ class _BookState extends State<Book> {
                       onTap: (){
                         launch('tel:9817931246');
                       },
-                      child: CircleAvatar(
-                        radius: MediaQuery.of(context).size.height*0.05,
-                        backgroundImage: AssetImage("facebooklogo.png"),
-
-                        backgroundColor: Colors.transparent,
-                      ),
+                      child: CircularImageButton("facebooklogo.png"),
                     ),
                     InkWell(
                       onTap: (){
                         launch('tel:9817931246');
                       },
-                      child: CircularImageButton("gmaillogo.png",context).circularbutton(),
+                      child: CircularImageButton("gmaillogo.png"),
                     ),
 
 
