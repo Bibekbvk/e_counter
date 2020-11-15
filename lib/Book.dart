@@ -1,10 +1,13 @@
 import 'package:e_counter/Homepage.dart';
+import 'package:e_counter/cicular_image_button.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
-import 'package:flutter_awesome_buttons/flutter_awesome_buttons.dart';
+import 'package:getwidget/getwidget.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+
 class Book extends StatefulWidget {
   @override
   final String from;
@@ -19,7 +22,7 @@ class _BookState extends State<Book> {
   String dropdownValue = 'Hiace';
   String dayNight = 'Day';
   var time;
-
+  Key key ;
   @override
   TextEditingController _FullName = TextEditingController();
   TextEditingController _ContactNo = TextEditingController();
@@ -198,64 +201,99 @@ class _BookState extends State<Book> {
                       ),
                       child: Column(
                         children: [
-                          Text("Tap to Call us and book directly \n You can give missed call too."),
-                          SizedBox(height: 20,),
+                          Expanded(child: Text("Tap to Call us and book directly \n You can give missed call too.")),
+                          SizedBox(height: MediaQuery.of(context).size.height*0.005,),
 
 
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: [
-                              Expanded(
-                                child: InkWell(
-                                onTap: (){
-                                  launch('tel:9817931246');
-                                },
-                                  child: CircleAvatar(
-                                    radius: MediaQuery.of(context).size.height*0.05,
-                                    backgroundImage:
-                                    AssetImage("ntc.png"),
-                                    backgroundColor: Colors.transparent,
+                          Expanded(
+                            child: Padding(
+                              padding: const EdgeInsets.fromLTRB(0,0,0,10),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                children: [
+                                  Expanded(
+                                    child: InkWell(
+                                    onTap: (){
+                                      launch('tel:9817931246');
+                                    },
+                                      child: CircleAvatar(
+                                        radius: MediaQuery.of(context).size.height*0.05,
+                                        backgroundImage: AssetImage("ntc.png"),
+                                        backgroundColor: Colors.transparent,
+                                      ),
+                                    ),
                                   ),
-                                ),
-                              ),
-                              Expanded(
-                                child: InkWell(
-                                  onTap: (){
-                                    launch('tel:9817931246');
-                                  },
-                                  child: CircleAvatar(
-                                    radius: MediaQuery.of(context).size.height*0.05,
-                                    backgroundImage: AssetImage("ncell.jpg"),
-                                    backgroundColor: Colors.transparent,
+                                  Expanded(
+                                    child: InkWell(
+                                      onTap: (){
+                                        launch('tel:9817931246');
+                                      },
+                                      child: CircleAvatar(
+                                        radius: MediaQuery.of(context).size.height*0.05,
+                                        backgroundImage: AssetImage("ncell.jpg"),
+                                        backgroundColor: Colors.transparent,
+                                      ),
+                                    ),
                                   ),
-                                ),
-                              ),
-                              Expanded(
-                                child: InkWell(
-                                  onTap: (){
-                                    launch('tel:9817931246');
-                                  },
-                                  child: CircleAvatar(
-                                    radius: MediaQuery.of(context).size.height*0.05,
-                                    backgroundImage:
-                                    AssetImage("smartcell.png"),
-                                    backgroundColor: Colors.transparent,
-                                  ),
-                                ),
-                              ),
+                                  Expanded(
+                                    child: InkWell(
+                                      onTap: (){
+                                        launch('tel:9817931246');
+                                      },
+                                      child: CircleAvatar(
+                                        radius: MediaQuery.of(context).size.height*0.05,
 
-                            ],
+                                        child: ClipOval(child: Image.asset("smartcell.png",fit: BoxFit.fill,)),
+                                        backgroundColor: Colors.transparent,
+                                      ),
+                                    ),
+                                  ),
+
+                                ],
+                              ),
+                            ),
                           ),
                         ],
                       ),
                     ),
                     SizedBox(height: MediaQuery.of(context).size.height*0.02,),
+                  /*  GFButton(
+                        size: GFSize.LARGE,
+                        text: 'View on Playstore',
+                        textStyle:
+                        const TextStyle(fontSize: 16, color: GFColors.WHITE),
+                        icon: SvgPicture.asset(
+                          'facebookicon.svg',
+                          height: 20,
+                        ),
+                        color: GFColors.SUCCESS,
+                        blockButton: true,
+                        onPressed: () {
+
+                        }),*/
+                    InkWell(
+                      onTap: (){
+                        launch('tel:9817931246');
+                      },
+                      child: CircleAvatar(
+                        radius: MediaQuery.of(context).size.height*0.05,
+                        backgroundImage: AssetImage("facebooklogo.png"),
+
+                        backgroundColor: Colors.transparent,
+                      ),
+                    ),
+                    InkWell(
+                      onTap: (){
+                        launch('tel:9817931246');
+                      },
+                      child: CircularImageButton("gmaillogo.png",context).circularbutton(),
+                    ),
 
 
-                    FacebookButton(onPressed: (){launch('https:www.facebook.com');}),
+
 
                     Text(
-                        "Email: Ecounter@gmail.com\nWebSite: WWW.Ecounter.com.np"),
+                        "WebSite: WWW.Ecounter.com.np"),
                   ],
 
                 ),

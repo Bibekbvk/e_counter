@@ -6,7 +6,8 @@ class ShowVehicles extends StatefulWidget {
 
   final String destination;
   final String startlocation;
-  const ShowVehicles({Key key, this.destination, this.startlocation}) : super(key: key);
+  final String vehicletype;
+  const ShowVehicles({Key key, this.destination, this.startlocation, this.vehicletype}) : super(key: key);
   _ShowVehiclesState createState() => _ShowVehiclesState();
 }
 
@@ -16,7 +17,7 @@ class _ShowVehiclesState extends State<ShowVehicles> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Center(child: Text("${widget.startlocation} -  ${widget.destination}")),),
-      body: StreamBuilder(stream:db.getfirebase(widget.destination,widget.startlocation) , builder: (context, snapshot){
+      body: StreamBuilder(stream:db.getfirebase(widget.destination,widget.startlocation,widget.vehicletype) , builder: (context, snapshot){
         if(snapshot.hasData){
           return ListView.builder(itemCount: snapshot.data.length,itemBuilder: (BuildContext context,int index){
             return Padding(
