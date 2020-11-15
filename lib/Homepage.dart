@@ -1,6 +1,7 @@
+import 'file:///E:/AndroidStudioProjects/e_counter/lib/Choose_Booking.dart';
 import 'package:e_counter/Calculate.dart';
-import 'package:e_counter/Choose_Booking.dart';
 import 'package:e_counter/Contact.dart';
+import 'package:e_counter/Movers.dart';
 import 'package:e_counter/Register.dart';
 import 'package:e_counter/Reserve.dart';
 import 'package:e_counter/offers.dart';
@@ -344,23 +345,31 @@ class _e_counterState extends State<e_counter> {
                         child: Row(
                           children: [
                             Expanded(
-                              child: Container(
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(5),
-                                  border: Border.all(color: Colors.lightBlue),
-                                ),
-                                child: Column(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Icon(FontAwesomeIcons.truckLoading,
-                                        color: Colors.blue[900], size: 44),
-                                    Text(
-                                      'Mover',
-                                      style: TextStyle(
-                                          color: Colors.blue[900],
-                                          fontWeight: FontWeight.bold),
-                                    )
-                                  ],
+                              child: InkWell(
+                                onTap: (){
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => MoversList()));
+                                },
+                                child: Container(
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(5),
+                                    border: Border.all(color: Colors.lightBlue),
+                                  ),
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Icon(FontAwesomeIcons.truckLoading,
+                                          color: Colors.blue[900], size: 44),
+                                      Text(
+                                        'Mover',
+                                        style: TextStyle(
+                                            color: Colors.blue[900],
+                                            fontWeight: FontWeight.bold),
+                                      )
+                                    ],
+                                  ),
                                 ),
                               ),
                             ),

@@ -1,12 +1,12 @@
+/*
 import 'package:e_counter/Homepage.dart';
-import 'package:e_counter/circle_image_button.dart';
+import 'package:e_counter/Reuseable_codes/circle_image_button.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
-import 'package:getwidget/getwidget.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+
 
 class Book extends StatefulWidget {
   @override
@@ -21,12 +21,12 @@ class Book extends StatefulWidget {
 class _BookState extends State<Book> {
   String dropdownValue = 'Hiace';
   String dayNight = 'Day';
+  String zone;
   var time;
   Key key ;
   @override
   TextEditingController _FullName = TextEditingController();
   TextEditingController _ContactNo = TextEditingController();
-  TextEditingController _From = TextEditingController();
   TextEditingController _dateController = TextEditingController();
   String dates;
   TextEditingController _To = TextEditingController();
@@ -84,7 +84,6 @@ class _BookState extends State<Book> {
                         showTitleActions: true,
                         onChanged: (date) {}, onConfirm: (date) {
                           setState(() {
-                            String zone;
                             if(date.hour>12){
                               zone="PM";
 
@@ -228,7 +227,7 @@ class _BookState extends State<Book> {
                                       onTap: (){
                                         launch('tel:9817931246');
                                       },
-                                      child: CircularImageButton("ncell.png"),
+                                      child: CircularImageButton("ncell.jpg"),
                                     ),
                                   ),
                                   Expanded(
@@ -253,35 +252,23 @@ class _BookState extends State<Book> {
                       ),
                     ),
                     SizedBox(height: MediaQuery.of(context).size.height*0.02,),
-                  /*  GFButton(
-                        size: GFSize.LARGE,
-                        text: 'View on Playstore',
-                        textStyle:
-                        const TextStyle(fontSize: 16, color: GFColors.WHITE),
-                        icon: SvgPicture.asset(
-                          'facebookicon.svg',
-                          height: 20,
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        InkWell(
+                          onTap: (){
+                            launch('tel:9817931246');
+                          },
+                          child: CircularImageButton("facebooklogo.png"),
                         ),
-                        color: GFColors.SUCCESS,
-                        blockButton: true,
-                        onPressed: () {
-
-                        }),*/
-                    InkWell(
-                      onTap: (){
-                        launch('tel:9817931246');
-                      },
-                      child: CircularImageButton("facebooklogo.png"),
+                        InkWell(
+                          onTap: (){
+                            launch('tel:9817931246');
+                          },
+                          child: CircularImageButton("gmaillogo.png"),
+                        ),
+                      ],
                     ),
-                    InkWell(
-                      onTap: (){
-                        launch('tel:9817931246');
-                      },
-                      child: CircularImageButton("gmaillogo.png"),
-                    ),
-
-
-
 
                     Text(
                         "WebSite: WWW.Ecounter.com.np"),
@@ -289,15 +276,11 @@ class _BookState extends State<Book> {
 
                 ),
 
-                Row(children: <Widget>[
-                  Image.asset('assets/seatbus.jpg', height: 200, width: 330)
-                ]),
-                Row(children: <Widget>[
-                  Image.asset('assets/seathi.jpg', height: 200, width: 330),
-                ])
+
               ]),
             ),
           ),
         ));
   }
 }
+*/

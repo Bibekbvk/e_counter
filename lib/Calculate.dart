@@ -7,7 +7,7 @@ class Calculate extends StatefulWidget {
 
 class _CalculateState extends State<Calculate> {
   @override
-   var firestoreDb = Firestore.instance.collection("Fair").snapshots();
+   var firestoreDb = FirebaseFirestore.instance.collection("Fair").snapshots();
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.green,

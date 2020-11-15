@@ -1,10 +1,8 @@
 import 'package:dropdown_search/dropdown_search.dart';
 import 'package:e_counter/database.dart';
-import 'package:e_counter/districts_search.dart';
 import 'package:e_counter/showvehicles.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
 
 class ChooseBooking extends StatefulWidget {
   @override
@@ -14,7 +12,6 @@ class ChooseBooking extends StatefulWidget {
 class _ChooseBookingState extends State<ChooseBooking> {
 
   @override
-  final TextEditingController _dateController = TextEditingController();
   List<String> district;
   List<String> vehicletype;
   String selected;
