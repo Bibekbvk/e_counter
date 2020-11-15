@@ -20,13 +20,13 @@ class ReserveModel {
     Map data = doc.data();
 
     return ReserveModel(
-      availability: data['Available in'],
-      chargingwifiac: data['Charging/wifi/AC'],
-      driver: data['Driver '],
-      driverexperience: data['Driver Experience '],
-      price: data['Pricing '],
-      seatcapacity: data['Seat Capacity'],
-      currentlocation: data['Vahicle Current Location'],
+      availability: data['available_in'],
+      chargingwifiac: data['charging/ac/wifi/tv'],
+      driver: data['driver'],
+      driverexperience: data['driver_experience'],
+      price: data['pricing'],
+      seatcapacity: data['seat_capacity'],
+      currentlocation: data['vehicle_current_location'],
     type: data['type']);
 
 

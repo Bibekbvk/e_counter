@@ -1,3 +1,4 @@
+import 'package:e_counter/Book.dart';
 import 'package:e_counter/display_vehicle_details_card.dart';
 import 'package:flutter/material.dart';
 
@@ -33,7 +34,13 @@ class _ViewDetailsState extends State<ViewDetails> {
     return Scaffold(
       appBar: AppBar(),
       body: VechicleCard(upper: ["Charger","Breakfast","Lunch","Driver Experience","Offer","Pick Up","Route","Sub-Driver","Vehicle Number","TV/Music/AC","Price","Wifi","Seat","Shift"],
-        lower: [widget.charger,widget.breakfast,widget.lunch,widget.driverexp,widget.offer,widget.pickuploc,widget.route,widget.subdriver,widget.vehiclenumber,widget.tvmusicac,widget.price,widget.wifi,widget.seat,widget.shift],assetimage: "buses.png",title: "bus",btn1title: "Book",),
+        lower: [widget.charger,widget.breakfast,widget.lunch,widget.driverexp,widget.offer,widget.pickuploc,widget.route,widget.subdriver,widget.vehiclenumber,widget.tvmusicac,widget.price,widget.wifi,widget.seat,widget.shift],assetimage: "buses.png",title: "bus",btn1title: "Book",btn1onPressed: (){
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) => Book()));
+
+        },),
     );
   }
 }

@@ -1,5 +1,5 @@
+import 'package:e_counter/book_view_vehicle_details.dart';
 import 'package:e_counter/database.dart';
-import 'package:e_counter/view_vehicle_detail.dart';
 import 'package:flutter/material.dart';
 
 import 'display_vehicle_details_card.dart';
