@@ -9,10 +9,11 @@ class ReserveModel {
   final String seatcapacity;
   final String currentlocation;
   final String type;
+  final String vehicle_id;
 
 
 
-  ReserveModel({this.availability, this.chargingwifiac, this.driver, this.driverexperience, this.price, this.seatcapacity, this.currentlocation,this.type});
+  ReserveModel({this.availability, this.chargingwifiac, this.driver, this.driverexperience, this.price, this.seatcapacity, this.currentlocation,this.type,this.vehicle_id});
 
 
 
@@ -27,7 +28,8 @@ class ReserveModel {
       price: data['pricing'],
       seatcapacity: data['seat_capacity'],
       currentlocation: data['vehicle_current_location'],
-    type: data['type']);
+    type: data['type'],
+    vehicle_id: data['vehicle_id']);
 
 
 

@@ -18,7 +18,8 @@ class UserModel {
   final String charger;
   final String tvmusicac;
   final String wifi;
-  UserModel({this.destination, this.price, this.startlocation, this.type, this.shift, this.breakfast, this.driverexp, this.lunch, this.offer, this.pickuploc, this.route, this.seat, this.subdriver, this.vehiclenumber, this.charger, this.tvmusicac, this.wifi});
+  final String vehicle_id;
+  UserModel({this.destination, this.price, this.startlocation, this.type, this.shift, this.breakfast, this.driverexp, this.lunch, this.offer, this.pickuploc, this.route, this.seat, this.subdriver, this.vehiclenumber, this.charger, this.tvmusicac, this.wifi,this.vehicle_id});
 
 
 
@@ -42,7 +43,8 @@ class UserModel {
     destination:data['destination'],
     startlocation:data['startlocation'],
     shift: data['shift'],
-    type: data['type']);
+    type: data['type'],
+    vehicle_id:data['vehicle_id']);
 
 
     }

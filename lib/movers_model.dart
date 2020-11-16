@@ -8,9 +8,9 @@ class MoversModel {
   final String noofhelpers;
   final String pricing;
   final String vehicleused;
+  final String vehicle_id;
 
-
-  MoversModel({this.availability, this.capacity, this.currentlocation, this.insurance, this.noofhelpers, this.pricing, this.vehicleused});
+  MoversModel({this.availability, this.capacity, this.currentlocation, this.insurance, this.noofhelpers, this.pricing, this.vehicleused,this.vehicle_id});
 
 
 
@@ -24,7 +24,8 @@ class MoversModel {
         insurance: data['insurance'],
         noofhelpers: data['no_of_helper'],
         pricing: data['pricing'],
-        vehicleused: data['vehicle_used'],);
+        vehicleused: data['vehicle_used'],
+    vehicle_id:data['vehicle_id']);
 
 
 

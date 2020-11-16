@@ -26,8 +26,8 @@ class _MoversListState extends State<MoversList> {
              String noofhelpers=snapshot.data[index].noofhelpers;
              String pricing=snapshot.data[index].pricing;
              String vehicleused=snapshot.data[index].vehicleused;
-
-             MoversModel moversmodel = MoversModel(availability: availability,capacity: capacity,currentlocation: currentlocation,insurance: insurance,noofhelpers: noofhelpers,pricing: pricing,vehicleused: vehicleused);
+             String vehicle_id=snapshot.data[index].vehicle_id;
+             MoversModel moversmodel = MoversModel(availability: availability,capacity: capacity,currentlocation: currentlocation,insurance: insurance,noofhelpers: noofhelpers,pricing: pricing,vehicleused: vehicleused,vehicle_id: vehicle_id);
 
             return VechicleCard(upper: ["Availability","Capacity","vehicleused","Insurance","Number of Helpers","Pricing","Vehicle Used"],lower: ["$availability","$capacity","$vehicleused","$insurance","$noofhelpers","$pricing","$vehicleused"],btn1title: "Book",title: "Movers",assetimage: "sumo.png",btn1onPressed: (){
               Navigator.push(

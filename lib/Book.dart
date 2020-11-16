@@ -41,21 +41,27 @@ class _BookState extends State<Book> {
   TextEditingController _Seat = TextEditingController();
   var firestoreDb = FirebaseFirestore.instance.collection("app").snapshots();
   final _formKey = GlobalKey<FormState>();
-
+  String vehicle_id;
   Widget build(BuildContext context) {
     if(widget.usermodel!=null){
       _serviceController.text="Booking Vehicle";
       _pricing.text=("${widget.usermodel.price}");
-      firebasecollectionname="Selected Booking Vehicle";
+      vehicle_id=widget.usermodel.vehicle_id;
+      firebasecollectionname="User Booking";
+
     }
     else if(widget.reservemodel!=null){
       _serviceController.text="Reserve Vehicle";
-      firebasecollectionname="Selected Reserve Vehicle";
+      firebasecollectionname="User Reserve";
+      vehicle_id=widget.reservemodel.vehicle_id;
+
       _pricing.text=("${widget.reservemodel.price}");
     }
     else if(widget.moversmodel!=null){
       _pricing.text=("${widget.moversmodel.pricing}");
-      firebasecollectionname="Selected Movers Vehicle";
+      vehicle_id=widget.moversmodel.vehicle_id;
+
+      firebasecollectionname="User Movers";
       _serviceController.text="Movers Vehicle";
     }
     return Scaffold(
@@ -150,7 +156,8 @@ class _BookState extends State<Book> {
                         "Name": _FullName.text,
                         "timestamp": new DateTime.now(),
                         "by": dropdownValue,
-                        "ticket for": dates
+                        "ticket for": dates,
+                        "vehicle id": vehicle_id,
                       }).then((response) {
                         print(response.id);
 

@@ -242,6 +242,7 @@ class _LogInPageState extends State<LogInPage> with TickerProviderStateMixin {
                                           dismissDirection:
                                               FlushbarDismissDirection.VERTICAL,
                                         )..show(context);
+
                                       else {
                                         Flushbar(
                                           backgroundColor: Colors.red[600],
