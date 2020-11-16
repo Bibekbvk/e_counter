@@ -35,7 +35,7 @@ class UserModel {
     route:data['route'],
     seat:data['seat'],
     subdriver:data['sub_driver'],
-    vehiclenumber:data['vehicle_number:'],
+    vehiclenumber:data['vehicle_number'],
     charger:data['charger'],
     tvmusicac:data['tv/music/AC'],
     wifi:data['wifi'],

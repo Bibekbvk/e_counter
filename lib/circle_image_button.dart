@@ -8,7 +8,8 @@ class CircularImageButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return CircleAvatar(
       radius: MediaQuery.of(context).size.height*0.05,
-      backgroundImage: AssetImage("$assetimage"),
+
+      child: ClipOval(child: Image.asset("$assetimage")),
       backgroundColor: Colors.transparent,
     );
   }

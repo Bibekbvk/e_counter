@@ -5,6 +5,7 @@ import 'package:e_counter/Movers.dart';
 import 'package:e_counter/Register.dart';
 import 'package:e_counter/Reserve.dart';
 import 'package:e_counter/ViewReserve.dart';
+import 'package:e_counter/circle_image_button.dart';
 import 'package:e_counter/offers.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -99,16 +100,7 @@ class _e_counterState extends State<e_counter> {
       body: SafeArea(
         child: Column(
           children: [
-            Expanded(
-              flex: 1,
-              child: Padding(
-                padding: EdgeInsets.all(10),
-                child: Text(
-                  'Select Services',
-                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-                ),
-              ),
-            ),
+
             Expanded(
               flex: 5,
               child: Padding(
@@ -440,29 +432,43 @@ class _e_counterState extends State<e_counter> {
                 ),
               ),
             ),
-            Expanded(
-              flex: 1,
-              child: Padding(
-                padding: EdgeInsets.fromLTRB(10, 0, 0, 10),
-                child: Container(
-                  height: MediaQuery.of(context).size.height * 0.01,
-                  width: MediaQuery.of(context).size.width * 0.7,
-                  decoration: BoxDecoration(
-                    color: Colors.blue[900],
-                    border: Border.all(color: Colors.lightBlue),
-                    borderRadius: BorderRadius.circular(10),
-                  ),
-                  child: Center(
-                      child: Text(
-                    'Next',
-                    style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 15,
-                        color: Colors.white),
-                  )),
-                ),
+            Row(children: <Widget>[
+              Expanded(
+                child: new Container(
+                    margin: const EdgeInsets.only(
+                        left: 10.0, right: 10.0),
+                    child: Divider(
+                      thickness:
+                      MediaQuery.of(context).size.height *
+                          0.001,
+                      color: Colors.black54,
+                      height:
+                      MediaQuery.of(context).size.height *
+                          0.1,
+                    )),
               ),
-            ),
+              Text(
+                "E-counter Nepal",
+                style: TextStyle(
+                    fontSize: 20,
+
+                    color: Colors.black54),
+              ),
+              Expanded(
+                child: new Container(
+                    margin: EdgeInsets.only(
+                        left: 10.0, right: 10.0),
+                    child: Divider(
+                      color: Colors.black54,
+                      thickness:
+                      MediaQuery.of(context).size.height *
+                          0.001,
+                      height: 20,
+                    )),
+              ),
+            ]),
+
+
           ],
         ),
       ),
