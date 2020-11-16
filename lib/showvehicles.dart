@@ -1,5 +1,6 @@
 import 'package:e_counter/book_view_vehicle_details.dart';
 import 'package:e_counter/database.dart';
+import 'package:e_counter/usermodel.dart';
 import 'package:flutter/material.dart';
 
 import 'display_vehicle_details_card.dart';
@@ -42,13 +43,14 @@ class _ShowVehiclesState extends State<ShowVehicles> {
              String charger= snapshot.data[index].charger;
              String tvmusicac= snapshot.data[index].tvmusicac;
              String wifi= snapshot.data[index].wifi;
+             UserModel booking = UserModel(destination: destination,startlocation: startlocation,type: type,breakfast: breakfast,driverexp: driverexp,lunch: lunch,
+                 offer: offer,pickuploc: pickuploc,route: route,subdriver: subdriver,vehiclenumber: vehiclenumber,charger: charger,tvmusicac: tvmusicac,price: price,wifi: wifi,shift: shift,seat: seat);
             return VechicleCard(upper: ["Price","Wifi","Shift","Seat"],lower: ["$price","$wifi","$shift","$seat"],btn1title: "View",title: "Mahalaxmi Deluxe",assetimage: "buses.png",
             btn1onPressed: (){
               Navigator.push(
                   context,
                   MaterialPageRoute(
-                      builder: (context) => ViewDetails(destination: destination,startlocation: startlocation,type: type,breakfast: breakfast,driverexp: driverexp,lunch: lunch,
-                      offer: offer,pickuploc: pickuploc,route: route,subdriver: subdriver,vehiclenumber: vehiclenumber,charger: charger,tvmusicac: tvmusicac,price: price,wifi: wifi,shift: shift,seat: seat,)));
+                      builder: (context) => ViewDetails(model: booking,)));
             },
             );
           });
