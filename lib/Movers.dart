@@ -1,5 +1,7 @@
+import 'package:e_counter/Book.dart';
 import 'package:e_counter/database.dart';
 import 'package:e_counter/display_vehicle_details_card.dart';
+import 'package:e_counter/movers_model.dart';
 import 'package:flutter/material.dart';
 
 class MoversList extends StatefulWidget {
@@ -25,7 +27,14 @@ class _MoversListState extends State<MoversList> {
              String pricing=snapshot.data[index].pricing;
              String vehicleused=snapshot.data[index].vehicleused;
 
-            return VechicleCard(upper: ["Availability","Capacity","vehicleused","Insurance","Number of Helpers","Pricing","Vehicle Used"],lower: ["$availability","$capacity","$vehicleused","$insurance","$noofhelpers","$pricing","$vehicleused"],btn1title: "Book",title: "Movers",assetimage: "sumo.png",
+             MoversModel moversmodel = MoversModel(availability: availability,capacity: capacity,currentlocation: currentlocation,insurance: insurance,noofhelpers: noofhelpers,pricing: pricing,vehicleused: vehicleused);
+
+            return VechicleCard(upper: ["Availability","Capacity","vehicleused","Insurance","Number of Helpers","Pricing","Vehicle Used"],lower: ["$availability","$capacity","$vehicleused","$insurance","$noofhelpers","$pricing","$vehicleused"],btn1title: "Book",title: "Movers",assetimage: "sumo.png",btn1onPressed: (){
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => Book(moversmodel: moversmodel,)));
+            },
             );
           });
         }

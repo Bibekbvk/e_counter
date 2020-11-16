@@ -1,6 +1,9 @@
 
 import 'package:e_counter/Homepage.dart';
+import 'package:e_counter/ReserveModel.dart';
 import 'package:e_counter/circle_image_button.dart';
+import 'package:e_counter/movers_model.dart';
+import 'package:e_counter/usermodel.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -10,11 +13,11 @@ import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
 
 class Book extends StatefulWidget {
   @override
-  final String from;
-  final String to;
-  final String shift;
+ final UserModel usermodel;
+  final ReserveModel reservemodel;
+  final MoversModel moversmodel;
 
-  const Book({Key key, this.from, this.to, this.shift}) : super(key: key);
+  const Book({Key key, this.usermodel, this.reservemodel, this.moversmodel, }) : super(key: key);
   _BookState createState() => _BookState();
 }
 
@@ -22,12 +25,17 @@ class _BookState extends State<Book> {
   String dropdownValue = 'Hiace';
   String dayNight = 'Day';
   String zone;
+  String firebasecollectionname;
   var time;
   Key key ;
   @override
   TextEditingController _FullName = TextEditingController();
   TextEditingController _ContactNo = TextEditingController();
   TextEditingController _dateController = TextEditingController();
+  TextEditingController _serviceController = TextEditingController();
+  TextEditingController _pricing = TextEditingController();
+
+
   String dates;
   TextEditingController _To = TextEditingController();
   TextEditingController _Seat = TextEditingController();
@@ -35,6 +43,21 @@ class _BookState extends State<Book> {
   final _formKey = GlobalKey<FormState>();
 
   Widget build(BuildContext context) {
+    if(widget.usermodel!=null){
+      _serviceController.text="Booking Vehicle";
+      _pricing.text=("${widget.usermodel.price}");
+      firebasecollectionname="Selected Booking Vehicle";
+    }
+    else if(widget.reservemodel!=null){
+      _serviceController.text="Reserve Vehicle";
+      firebasecollectionname="Selected Reserve Vehicle";
+      _pricing.text=("${widget.reservemodel.price}");
+    }
+    else if(widget.moversmodel!=null){
+      _pricing.text=("${widget.moversmodel.pricing}");
+      firebasecollectionname="Selected Movers Vehicle";
+      _serviceController.text="Movers Vehicle";
+    }
     return Scaffold(
         appBar: AppBar(title: Text("Book Ticket")),
         body: Container(
@@ -64,6 +87,22 @@ class _BookState extends State<Book> {
                   val.isEmpty ? "Please enter Correct Number" : null,
                   decoration: InputDecoration(
                       labelText: "Enter Contact Number",
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(16),
+                      )),
+                ),
+                TextFormField(
+                  controller: _serviceController,
+                  decoration: InputDecoration(
+                      labelText: "Service Selected",
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(16),
+                      )),
+                ),
+                TextFormField(
+                  controller: _pricing,
+                  decoration: InputDecoration(
+                      labelText: "Pricing",
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(16),
                       )),
@@ -106,14 +145,11 @@ class _BookState extends State<Book> {
                   child: Text("Book Ticket"),
                   onPressed: () {
                     if (_formKey.currentState.validate()) {
-                      FirebaseFirestore.instance.collection("app").add({
+                      FirebaseFirestore.instance.collection("${firebasecollectionname}").add({
                         "Contact": _ContactNo.text,
                         "Name": _FullName.text,
                         "timestamp": new DateTime.now(),
-                        "from": widget.from,
-                        "to": widget.to,
                         "by": dropdownValue,
-                        "Shift": widget.shift,
                         "ticket for": dates
                       }).then((response) {
                         print(response.id);
@@ -121,7 +157,7 @@ class _BookState extends State<Book> {
                         showDialog<String>(
                           context: context,
                           builder: (BuildContext context) => AlertDialog(
-                            title: Text("Book Ticket"),
+                            title: Text("Book"),
                             content: Text(
                                 " Success!You will receive call, for more details"),
                             actions: <Widget>[

@@ -1,3 +1,5 @@
+import 'package:e_counter/Book.dart';
+import 'package:e_counter/ReserveModel.dart';
 import 'package:e_counter/database.dart';
 import 'package:e_counter/display_vehicle_details_card.dart';
 import 'package:flutter/material.dart';
@@ -26,9 +28,16 @@ class _ReserveListState extends State<ReserveList> {
             String seatcapacity=snapshot.data[index].seatcapacity;
             String currentlocation=snapshot.data[index].currentlocation;
             String type=snapshot.data[index].type;
+            ReserveModel reserveModel = ReserveModel(availability: availability,chargingwifiac: chargingwifiac,driver: driver,driverexperience: driverexperience,price: price,seatcapacity: seatcapacity,currentlocation: currentlocation,type: type);
 
             print("$availability +$chargingwifiac,$currentlocation,$driverexperience,$price,$seatcapacity");
-            return VechicleCard(upper: ["Availability","Charging/Wifi/AC","Driver","Driver Experience","Price","Seat Capacity","Current Location","Type"],lower: ["$availability","$chargingwifiac","$driver","$driverexperience","$price","$seatcapacity","$currentlocation","$type"],btn1title: "Book",title: "Reserve",assetimage: "car.png",
+            return VechicleCard(upper: ["Availability","Charging/Wifi/AC","Driver","Driver Experience","Price","Seat Capacity","Current Location","Type"],lower: ["$availability","$chargingwifiac","$driver","$driverexperience","$price","$seatcapacity","$currentlocation","$type"],btn1title: "Book",title: "Reserve",assetimage: "car.png",btn1onPressed:(){
+
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => Book(reservemodel:reserveModel)));
+            },
             );
           });
         }
