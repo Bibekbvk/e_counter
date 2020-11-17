@@ -64,6 +64,7 @@ class _BookState extends State<Book> {
       firebasecollectionname="User Movers";
       _serviceController.text="Movers Vehicle";
     }
+    print('${vehicle_id}+vehilceee idddd');
     return Scaffold(
         appBar: AppBar(title: Text("Book Ticket")),
         body: Container(
@@ -152,12 +153,12 @@ class _BookState extends State<Book> {
                   onPressed: () {
                     if (_formKey.currentState.validate()) {
                       FirebaseFirestore.instance.collection("${firebasecollectionname}").add({
-                        "Contact": _ContactNo.text,
-                        "Name": _FullName.text,
+                        "contact": _ContactNo.text,
+                        "name": _FullName.text,
                         "timestamp": new DateTime.now(),
                         "by": dropdownValue,
-                        "ticket for": dates,
-                        "vehicle id": vehicle_id,
+                        "ticket_for": dates,
+                        "vehicle_id": vehicle_id,
                       }).then((response) {
                         print(response.id);
 
@@ -258,11 +259,7 @@ class _BookState extends State<Book> {
                                     onTap: (){
                                       launch('tel:9817931246');
                                     },
-                                      child: CircleAvatar(
-                                        radius: MediaQuery.of(context).size.height*0.05,
-                                        backgroundImage: AssetImage("ntc.png"),
-                                        backgroundColor: Colors.transparent,
-                                      ),
+                                      child: CircularImageButton("ntc.png"),
                                     ),
                                   ),
                                   Expanded(
@@ -278,12 +275,7 @@ class _BookState extends State<Book> {
                                       onTap: (){
                                         launch('tel:9817931246');
                                       },
-                                      child: CircleAvatar(
-                                        radius: MediaQuery.of(context).size.height*0.05,
-
-                                        child: ClipOval(child: Image.asset("smartcell.png",fit: BoxFit.fill,)),
-                                        backgroundColor: Colors.transparent,
-                                      ),
+                                      child: CircularImageButton("smartcell.png"),
                                     ),
                                   ),
 
