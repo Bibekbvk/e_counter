@@ -14,9 +14,12 @@ import 'package:url_launcher/url_launcher.dart';
 import 'About.dart';
 import 'Book.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:share/share.dart';
+
+import 'main.dart';
 
 //import 'package:cloud_firestore/cloud_firestore.dart';
 class e_counter extends StatefulWidget {
@@ -27,6 +30,8 @@ class e_counter extends StatefulWidget {
 class _e_counterState extends State<e_counter> {
   final FirebaseMessaging _messaging = FirebaseMessaging();
   @override
+
+
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -396,10 +401,17 @@ class _e_counterState extends State<e_counter> {
                             Expanded(
                               child: InkWell(
                                 onTap: (){
+                                  getid() async{
+                                  SharedPreferences prefs = await SharedPreferences.getInstance();
+                                  //Return String
+                                   id = prefs.getStringList('listid');}
+                                  getid();
                                   if(id==null){
 
                                   }
                                   else{
+
+
                                   Navigator.push(
                                       context,
                                       MaterialPageRoute(
@@ -476,4 +488,5 @@ class _e_counterState extends State<e_counter> {
       ),
     );
   }
+
 }

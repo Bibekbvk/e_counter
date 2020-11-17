@@ -9,7 +9,8 @@ import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
-List id;
+import 'package:shared_preferences/shared_preferences.dart';
+List<String> id;
 
 class Book extends StatefulWidget {
   @override
@@ -171,6 +172,7 @@ class _BookState extends State<Book> {
                       else{
                         id.add('${time.millisecond}${time.second}');
                       }
+
                       FirebaseFirestore.instance.collection("${firebasecollectionname}").doc('${time.millisecond}${time.second}').set({
                         "contact": _ContactNo.text,
                         "full_name": _FullName.text,
@@ -195,7 +197,9 @@ class _BookState extends State<Book> {
                                 " Success!You will receive call, for more details"),
                             actions: <Widget>[
                               FlatButton(
-                                  onPressed: () {
+                                  onPressed: () async{
+                                    SharedPreferences prefs = await SharedPreferences.getInstance();
+                                    prefs.setStringList('listid', id);
                                     Navigator.push(
                                         context,
                                         MaterialPageRoute(
