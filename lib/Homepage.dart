@@ -6,6 +6,7 @@ import 'package:e_counter/Register.dart';
 import 'package:e_counter/Reserve.dart';
 import 'package:e_counter/ViewReserve.dart';
 import 'package:e_counter/circle_image_button.dart';
+import 'package:e_counter/my_tickets.dart';
 import 'package:e_counter/offers.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -41,18 +42,7 @@ class _e_counterState extends State<e_counter> {
                   Image.asset('assets/logo.png'),
                 ],
               )),
-          // UserAccountsDrawerHeader(
-          //     otherAccountsPictures: [
-          //       Image.asset('assets/logo.png',
-          //       width:300,
-          //       height:200)
-          //     ],
 
-          //     accountName: Text("E-counter Nepal"),
-          //     accountEmail: Text("ecounternepal@gmail.com"),
-          //     currentAccountPicture: CircleAvatar(
-          //     backgroundImage: NetworkImage('https://picsum.photos/200/300'),
-          //     ),),
           Card(
             elevation: 22,
             shadowColor: Colors.yellowAccent,
@@ -404,23 +394,35 @@ class _e_counterState extends State<e_counter> {
                               width: MediaQuery.of(context).size.width * 0.02,
                             ),
                             Expanded(
-                              child: Container(
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(5),
-                                  border: Border.all(color: Colors.lightBlue),
-                                ),
-                                child: Column(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Icon(Icons.feedback,
-                                        color: Colors.blue[900], size: 44),
-                                    Text(
-                                      'Feedback',
-                                      style: TextStyle(
-                                          color: Colors.blue[900],
-                                          fontWeight: FontWeight.bold),
-                                    )
-                                  ],
+                              child: InkWell(
+                                onTap: (){
+                                  if(id==null){
+
+                                  }
+                                  else{
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => Ticket()));}
+                                },
+                                child: Container(
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(5),
+                                    border: Border.all(color: Colors.lightBlue),
+                                  ),
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Icon(Icons.feedback,
+                                          color: Colors.blue[900], size: 44),
+                                      Text(
+                                        'My Tickets',
+                                        style: TextStyle(
+                                            color: Colors.blue[900],
+                                            fontWeight: FontWeight.bold),
+                                      )
+                                    ],
+                                  ),
                                 ),
                               ),
                             ),

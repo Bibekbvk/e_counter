@@ -1,11 +1,11 @@
 import 'package:e_counter/Book.dart';
+import 'package:e_counter/book_model.dart';
 import 'package:e_counter/display_vehicle_details_card.dart';
-import 'package:e_counter/usermodel.dart';
 import 'package:flutter/material.dart';
 
 class ViewDetails extends StatefulWidget {
   @override
-  final UserModel model;
+  final BookModel model;
 
 
   const ViewDetails({Key key, this.model}) : super(key: key);

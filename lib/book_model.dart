@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-class UserModel {
+class BookModel {
   final String destination;
   final String price;
   final String startlocation;
@@ -19,14 +19,14 @@ class UserModel {
   final String tvmusicac;
   final String wifi;
   final String vehicle_id;
-  UserModel({this.destination, this.price, this.startlocation, this.type, this.shift, this.breakfast, this.driverexp, this.lunch, this.offer, this.pickuploc, this.route, this.seat, this.subdriver, this.vehiclenumber, this.charger, this.tvmusicac, this.wifi,this.vehicle_id});
+  BookModel({this.destination, this.price, this.startlocation, this.type, this.shift, this.breakfast, this.driverexp, this.lunch, this.offer, this.pickuploc, this.route, this.seat, this.subdriver, this.vehiclenumber, this.charger, this.tvmusicac, this.wifi,this.vehicle_id});
 
 
 
-  factory UserModel.fromFireStore(DocumentSnapshot doc) {
+  factory BookModel.fromFireStore(DocumentSnapshot doc) {
     Map data = doc.data();
 
-    return UserModel(
+    return BookModel(
         breakfast: data['breakFast'],
         driverexp: data['driver_experience'],
         lunch: data['launch'],

@@ -1,34 +1,44 @@
 
 import 'package:e_counter/Homepage.dart';
 import 'package:e_counter/ReserveModel.dart';
+import 'package:e_counter/book_model.dart';
 import 'package:e_counter/circle_image_button.dart';
 import 'package:e_counter/movers_model.dart';
-import 'package:e_counter/usermodel.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
-
+List id;
 
 class Book extends StatefulWidget {
   @override
- final UserModel usermodel;
+ final BookModel usermodel;
   final ReserveModel reservemodel;
   final MoversModel moversmodel;
 
   const Book({Key key, this.usermodel, this.reservemodel, this.moversmodel, }) : super(key: key);
   _BookState createState() => _BookState();
 }
+DateTime time = DateTime.now();
+
+
 
 class _BookState extends State<Book> {
+
   String dropdownValue = 'Hiace';
   String dayNight = 'Day';
+
   String zone;
   String firebasecollectionname;
   var time;
   Key key ;
   @override
+  void initState() {
+    time = DateTime.now();
+
+    super.initState();
+  }
   TextEditingController _FullName = TextEditingController();
   TextEditingController _ContactNo = TextEditingController();
   TextEditingController _dateController = TextEditingController();
@@ -37,6 +47,7 @@ class _BookState extends State<Book> {
 
 
   String dates;
+  String vehicle_number;
   TextEditingController _To = TextEditingController();
   TextEditingController _Seat = TextEditingController();
   var firestoreDb = FirebaseFirestore.instance.collection("app").snapshots();
@@ -47,12 +58,14 @@ class _BookState extends State<Book> {
       _serviceController.text="Booking Vehicle";
       _pricing.text=("${widget.usermodel.price}");
       vehicle_id=widget.usermodel.vehicle_id;
+      vehicle_number=widget.usermodel.vehiclenumber;
       firebasecollectionname="User Booking";
 
     }
     else if(widget.reservemodel!=null){
       _serviceController.text="Reserve Vehicle";
       firebasecollectionname="User Reserve";
+      vehicle_number=widget.reservemodel.vehicle_number;
       vehicle_id=widget.reservemodel.vehicle_id;
 
       _pricing.text=("${widget.reservemodel.price}");
@@ -152,15 +165,27 @@ class _BookState extends State<Book> {
                   child: Text("Book Ticket"),
                   onPressed: () {
                     if (_formKey.currentState.validate()) {
-                      FirebaseFirestore.instance.collection("${firebasecollectionname}").add({
+                      if(id==null){
+                        id=['${time.millisecond}${time.second}'];
+                      }
+                      else{
+                        id.add('${time.millisecond}${time.second}');
+                      }
+                      FirebaseFirestore.instance.collection("${firebasecollectionname}").doc('${time.millisecond}${time.second}').set({
                         "contact": _ContactNo.text,
-                        "name": _FullName.text,
+                        "full_name": _FullName.text,
                         "timestamp": new DateTime.now(),
-                        "by": dropdownValue,
+
                         "ticket_for": dates,
                         "vehicle_id": vehicle_id,
+                        "vehicle_number":vehicle_number,
+                        "transaction_id":'${time.millisecond}${time.second}',
+                        'status':'pending',
+                        'link':"https://scontent.xx.fbcdn.net/v/t1.15752-0/p280x280/125465745_3611747162218459_8121577149771972212_n.png?_nc_cat=110&ccb=2&_nc_sid=ae9488&_nc_ohc=HMallbbkjFsAX_kLAR-&_nc_ad=z-m&_nc_cid=0&_nc_ht=scontent.xx&oh=f6d8104a464cfc8d6aee9efe4ade7938&oe=5FDAD458",
+
                       }).then((response) {
-                        print(response.id);
+
+
 
                         showDialog<String>(
                           context: context,
@@ -317,5 +342,6 @@ class _BookState extends State<Book> {
           ),
         ));
   }
+
 }
 
