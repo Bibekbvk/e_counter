@@ -1,15 +1,15 @@
 import 'dart:ui';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:e_counter/Book.dart';
-import 'package:e_counter/Homepage.dart';
-import 'package:e_counter/offers.dart';
-import 'package:e_counter/registerpage.dart';
+import 'file:///E:/AndroidStudioProjects/e_counter/lib/Homepage/Homepage.dart';
+import 'file:///E:/AndroidStudioProjects/e_counter/lib/Homepage/offers.dart';
+import 'file:///E:/AndroidStudioProjects/e_counter/lib/UserAuthentication/registerpage.dart';
 import 'package:e_counter/seatgui.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flushbar/flushbar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:e_counter/auth.dart';
+import 'file:///E:/AndroidStudioProjects/e_counter/lib/UserAuthentication/auth.dart';
 //import 'package:garageinc/core/services/database.dart';
 //import 'package:garageinc/ui/views/register/registerpage.dart';
 

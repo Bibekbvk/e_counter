@@ -1,11 +1,11 @@
 import 'dart:ui';
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:e_counter/UserAuthentication/auth.dart';
 import 'package:flushbar/flushbar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:email_validator/email_validator.dart';
 import 'package:flutter_icons/flutter_icons.dart';
-import 'package:e_counter/auth.dart';
 import 'package:google_fonts/google_fonts.dart';
 //import 'package:lottie/lottie.dart';
 import 'package:responsive_flutter/responsive_flutter.dart';

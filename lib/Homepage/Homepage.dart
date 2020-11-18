@@ -1,26 +1,24 @@
-import 'package:e_counter/Calculate.dart';
-import 'package:e_counter/Choose_Booking.dart';
-import 'package:e_counter/Contact.dart';
-import 'package:e_counter/Movers.dart';
-import 'package:e_counter/Register.dart';
-import 'package:e_counter/Reserve.dart';
-import 'package:e_counter/ViewReserve.dart';
-import 'package:e_counter/choose_reserve.dart';
-import 'package:e_counter/circle_image_button.dart';
-import 'package:e_counter/my_tickets.dart';
-import 'package:e_counter/offers.dart';
+
+import 'package:e_counter/Homepage/Contact.dart';
+import 'package:e_counter/Homepage/Fair.dart';
+import 'package:e_counter/Homepage/Movers.dart';
+import 'package:e_counter/Homepage/Register.dart';
+import 'package:e_counter/Homepage/Reserve/ViewReserve.dart';
+import 'package:e_counter/Homepage/TicketBooking/Choose_Booking.dart';
+import 'package:e_counter/Homepage/my_tickets.dart';
+import 'package:e_counter/Homepage/offers.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'About.dart';
-import 'Book.dart';
+import '../Book.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:share/share.dart';
 
-import 'main.dart';
+import '../main.dart';
 
 //import 'package:cloud_firestore/cloud_firestore.dart';
 class e_counter extends StatefulWidget {

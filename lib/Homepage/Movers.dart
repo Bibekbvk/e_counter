@@ -1,7 +1,8 @@
 import 'package:e_counter/Book.dart';
+import 'package:e_counter/Models/movers_model.dart';
+import 'package:e_counter/Reuseable_codes/display_vehicle_details_card.dart';
 import 'package:e_counter/database.dart';
-import 'package:e_counter/display_vehicle_details_card.dart';
-import 'package:e_counter/movers_model.dart';
+
 import 'package:flutter/material.dart';
 
 class MoversList extends StatefulWidget {

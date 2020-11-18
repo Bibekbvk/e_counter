@@ -1,8 +1,6 @@
 import 'package:e_counter/Book.dart';
-import 'package:e_counter/ReserveModel.dart';
+import 'package:e_counter/Homepage/TicketBooking/display_ticket.dart';
 import 'package:e_counter/database.dart';
-import 'package:e_counter/display_ticket.dart';
-import 'package:e_counter/display_vehicle_details_card.dart';
 import 'package:e_counter/main.dart';
 import 'package:flutter/material.dart';
 

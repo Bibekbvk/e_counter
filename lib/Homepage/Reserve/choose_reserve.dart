@@ -1,5 +1,6 @@
-import 'package:e_counter/ViewReserve.dart';
-import 'package:e_counter/districts_search.dart';
+
+import 'package:e_counter/Homepage/Reserve/ViewReserve.dart';
+import 'package:e_counter/Reuseable_codes/districts_search.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
 

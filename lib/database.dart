@@ -1,13 +1,11 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:e_counter/Book.dart';
-import 'package:e_counter/ReserveModel.dart';
-import 'package:e_counter/UserModel.dart';
-import 'package:e_counter/book_model.dart';
-import 'package:e_counter/main.dart';
-import 'package:e_counter/movers_model.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:e_counter/Models/DistrictModel.dart';
+import 'package:e_counter/Models/ReserveModel.dart';
+import 'package:e_counter/Models/book_model.dart';
+import 'package:e_counter/Models/movers_model.dart';
 
-import 'DistrictModel.dart';
+import 'Models/users.dart';
 
 
 class Database{

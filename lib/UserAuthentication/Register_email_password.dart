@@ -1,9 +1,7 @@
-//TODO: Need Message Handling
 
+import 'package:e_counter/UserAuthentication/auth.dart';
 import 'package:flushbar/flushbar.dart';
 import 'package:flutter/material.dart';
-import 'package:e_counter/auth.dart';
-//import 'package:garageinc/core/services/database.dart';
 
 class RegisterUserEmailPassword extends StatefulWidget {
   @override

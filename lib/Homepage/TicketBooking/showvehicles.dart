@@ -1,9 +1,10 @@
-import 'package:e_counter/book_model.dart';
-import 'package:e_counter/book_view_vehicle_details.dart';
+
+import 'package:e_counter/Homepage/TicketBooking/book_view_vehicle_details.dart';
+import 'package:e_counter/Models/book_model.dart';
+import 'package:e_counter/Reuseable_codes/display_vehicle_details_card.dart';
 import 'package:e_counter/database.dart';
 import 'package:flutter/material.dart';
 
-import 'display_vehicle_details_card.dart';
 
 class ShowVehicles extends StatefulWidget {
   @override

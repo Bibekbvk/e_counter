@@ -1,7 +1,5 @@
-import 'package:e_counter/model/users.dart';
+import 'package:e_counter/Models/users.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:e_counter/login.dart';
-import 'package:toast/toast.dart';
 
 class AuthService {
   final FirebaseAuth _auth = FirebaseAuth.instance;
