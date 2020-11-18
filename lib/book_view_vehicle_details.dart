@@ -19,7 +19,7 @@ class _ViewDetailsState extends State<ViewDetails> {
     return Scaffold(
       appBar: AppBar(),
       body: VechicleCard(upper: ["Charger","Breakfast","Lunch","Driver Experience","Offer","Pick Up","Route","Sub-Driver","Vehicle Number","TV/Music/AC","Price","Wifi","Seat","Shift"],
-        lower: [widget.model.charger,widget.model.breakfast,widget.model.lunch,widget.model.driverexp,widget.model.offer,widget.model.pickuploc,widget.model.route,widget.model.subdriver,widget.model.vehiclenumber,widget.model.tvmusicac,widget.model.price,widget.model.wifi,widget.model.seat,widget.model.shift],assetimage: "buses.png",title: "bus",btn1title: "Book",btn1onPressed: (){
+        lower: [widget.model.charger,widget.model.breakfast,widget.model.lunch,widget.model.driverexp,widget.model.offer,widget.model.pickuploc,widget.model.route,widget.model.subdriver,widget.model.vehiclenumber,widget.model.tvmusicac,widget.model.price,widget.model.wifi,widget.model.seat,widget.model.shift],imageurl: "${widget.model.img_url}",title: "${widget.model.vehicle_name}",btn1title: "Book",btn1onPressed: (){
           Navigator.push(
               context,
               MaterialPageRoute(

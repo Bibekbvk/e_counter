@@ -3,6 +3,7 @@ import 'package:e_counter/database.dart';
 import 'package:e_counter/showvehicles.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
 
 class ChooseBooking extends StatefulWidget {
   @override
@@ -26,6 +27,8 @@ class _ChooseBookingState extends State<ChooseBooking> {
   Database db = Database();
   String selectedtime="";
   String hint="";
+  TextEditingController _departure_dateController = TextEditingController();
+
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(),
@@ -102,6 +105,26 @@ class _ChooseBookingState extends State<ChooseBooking> {
                     selectedvehicletype = val;
                   },
                   selectedItem: selectedvehicletype),
+            ),  TextFormField(
+              onTap: (){
+
+                DatePicker.showDatePicker(context,
+                    showTitleActions: true,
+                    onChanged: (date) {}, onConfirm: (date) {
+
+                      String dates =  "${date.year}/${date.month}/${date.day}";
+                      _departure_dateController.text=dates;
+                    });
+              },
+              controller: _departure_dateController,
+              keyboardType: TextInputType.text,
+              validator: (val) =>
+              val.isEmpty ? "Enter Vehicle Number" : null,
+              decoration: InputDecoration(
+                  labelText: "Departure Date",
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(16),
+                  )),
             ),
 
             RaisedButton(
@@ -109,7 +132,7 @@ class _ChooseBookingState extends State<ChooseBooking> {
 
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => ShowVehicles(destination: selecteddistrictdes,startlocation: selecteddistrict,vehicletype:selectedvehicletype)),
+                  MaterialPageRoute(builder: (context) => ShowVehicles(destination: selecteddistrictdes,startlocation: selecteddistrict,vehicletype:selectedvehicletype,departure_date: _departure_dateController.text,)),
                 );
               },
               child: Text("Search"),

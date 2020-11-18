@@ -9,10 +9,10 @@ class VechicleCard extends StatefulWidget {
   final btn1onPressed;
   final String btn1title;
   final String title;
-  final String assetimage;
+  final String imageurl;
 
 
-  const VechicleCard({Key key, this.upper, this.lower, this.btn1onPressed, this.btn1title, this.title, this.assetimage}) : super(key: key);
+  const VechicleCard({Key key, this.upper, this.lower, this.btn1onPressed, this.btn1title, this.title, this.imageurl}) : super(key: key);
   _VechicleCardState createState() => _VechicleCardState();
 }
 
@@ -30,7 +30,7 @@ class _VechicleCardState extends State<VechicleCard> {
         flex: 3,
         child: Padding(
           padding: EdgeInsets.fromLTRB(20,0,20,0),
-          child: Image.asset("${widget.assetimage}"),
+          child: Image.network("${widget.imageurl}"),
         ),
       ),
       ] ;

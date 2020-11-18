@@ -164,15 +164,17 @@ class _BookState extends State<Book> {
                 RaisedButton(
                   color: Colors.blue.shade700,
                   child: Text("Book Ticket"),
-                  onPressed: () {
+                  onPressed: () async{
                     if (_formKey.currentState.validate()) {
+                      if(firebasecollectionname=='User Booking'){
                       if(id==null){
                         id=['${time.millisecond}${time.second}'];
                       }
                       else{
                         id.add('${time.millisecond}${time.second}');
-                      }
-
+                      }}
+                      SharedPreferences prefs = await SharedPreferences.getInstance();
+                      prefs.setStringList('listid', id);
                       FirebaseFirestore.instance.collection("${firebasecollectionname}").doc('${time.millisecond}${time.second}').set({
                         "contact": _ContactNo.text,
                         "full_name": _FullName.text,
@@ -197,9 +199,8 @@ class _BookState extends State<Book> {
                                 " Success!You will receive call, for more details"),
                             actions: <Widget>[
                               FlatButton(
-                                  onPressed: () async{
-                                    SharedPreferences prefs = await SharedPreferences.getInstance();
-                                    prefs.setStringList('listid', id);
+                                  onPressed: () {
+
                                     Navigator.push(
                                         context,
                                         MaterialPageRoute(

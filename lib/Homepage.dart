@@ -5,6 +5,7 @@ import 'package:e_counter/Movers.dart';
 import 'package:e_counter/Register.dart';
 import 'package:e_counter/Reserve.dart';
 import 'package:e_counter/ViewReserve.dart';
+import 'package:e_counter/choose_reserve.dart';
 import 'package:e_counter/circle_image_button.dart';
 import 'package:e_counter/my_tickets.dart';
 import 'package:e_counter/offers.dart';
@@ -175,7 +176,7 @@ class _e_counterState extends State<e_counter> {
                                     Navigator.push(
                                         context,
                                         MaterialPageRoute(
-                                            builder: (context) => ReserveList()));
+                                            builder: (context) => ChooseReserve()));
                                   }),
                             ),
                             SizedBox(

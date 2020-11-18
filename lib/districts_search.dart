@@ -2,20 +2,44 @@ import 'package:flutter/material.dart';
 
 
 class DistrictSearch extends StatefulWidget {
+  final TextEditingController searched;
+
+  const DistrictSearch({Key key, this.searched}) : super(key: key);
+
+
+
   @override
   _DistrictSearchState createState() => _DistrictSearchState();
 }
-final TextEditingController _locationController = TextEditingController();
+final TextEditingController _searchController = TextEditingController();
+
+
 List<String> district = ["Kathmandu","Pokhara","Dhadhing","Kaku"];
 List hints=["Select","Kathmandu","Pokhara","Dhadhing","Kaku"];
+
 class _DistrictSearchState extends State<DistrictSearch> {
+
+
   @override
   Widget build(BuildContext context) {
+
+
     return Scaffold(
+      appBar: AppBar(
+        actions: [
+          FlatButton(onPressed: (){
+            widget.searched.text= _searchController.text;
+            Navigator.pop(context);
+
+          }, child: Text("Proceed"))
+        ],
+      ),
       body: SingleChildScrollView(
         child: Column(children: [
           TextField(
-            controller: _locationController,
+
+
+            controller: _searchController,
             onChanged: (val){
               hints=["Select "];
               for(var each in district){
@@ -35,7 +59,7 @@ class _DistrictSearchState extends State<DistrictSearch> {
 
             return InkWell(
               onTap: (){
-                _locationController.text=hints[index];
+                _searchController.text=hints[index];
 
               },
               child: Container(
@@ -53,7 +77,7 @@ class _DistrictSearchState extends State<DistrictSearch> {
 
           }
 
-          ,),]),
+            ,),]),
       ),
     );
   }

@@ -228,7 +228,7 @@ class _LogInPageState extends State<LogInPage> with TickerProviderStateMixin {
                                       return;
                                     }
                                     if (result != null) {
-                                      if (result is User)
+                                      if (result is User){
                                         Flushbar(
                                           backgroundColor: Colors.green[600],
                                           flushbarPosition:
@@ -242,6 +242,9 @@ class _LogInPageState extends State<LogInPage> with TickerProviderStateMixin {
                                           dismissDirection:
                                               FlushbarDismissDirection.VERTICAL,
                                         )..show(context);
+                                      print("logged in");
+
+                                      }
 
                                       else {
                                         Flushbar(
