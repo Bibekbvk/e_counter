@@ -1,16 +1,16 @@
-import 'package:e_counter/Models/users.dart';
+import 'package:e_counter/Models/auth_model.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 class AuthService {
   final FirebaseAuth _auth = FirebaseAuth.instance;
 
   //create user object based on firebase user
-  UserModel _userFromFirebaseUser(User user) {
-    return user != null ? UserModel(uid: user.uid) : null;
+  AuthModel _userFromFirebaseUser(User user) {
+    return user != null ? AuthModel(uid: user.uid) : null;
   }
 
   // auth change user streama
-  Stream<UserModel> get user {
+  Stream<AuthModel> get user {
     return _auth
         .authStateChanges()
         //.map((FirebaseUser user) => _userFromFirebaseUser(user));
