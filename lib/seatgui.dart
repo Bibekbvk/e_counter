@@ -388,9 +388,9 @@ Widget seathiace(String seat){
                       height: 60,
                       width: 60,
                       child: Text(
-                        "13",
+                        "$seat",
                         style: TextStyle(
                           fontSize: 33,
                         ),
-                      )),
+                      ));
 }
