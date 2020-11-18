@@ -1,7 +1,10 @@
 import 'dart:ui';
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:e_counter/Book.dart';
+import 'package:e_counter/Homepage.dart';
 import 'package:e_counter/offers.dart';
 import 'package:e_counter/registerpage.dart';
+import 'package:e_counter/seatgui.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flushbar/flushbar.dart';
 import 'package:flutter/material.dart';
@@ -353,8 +356,7 @@ class _LogInPageState extends State<LogInPage> with TickerProviderStateMixin {
                                     Navigator.push(
                                         context,
                                         MaterialPageRoute(
-                                            builder: (context) =>
-                                                RegisterPage()));
+                                            builder: (context) => seatGui()));
                                   },
                                 )
                               ],
