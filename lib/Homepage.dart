@@ -176,7 +176,7 @@ class _e_counterState extends State<e_counter> {
                                     Navigator.push(
                                         context,
                                         MaterialPageRoute(
-                                            builder: (context) => ChooseReserve()));
+                                            builder: (context) => ReserveList()));
                                   }),
                             ),
                             SizedBox(

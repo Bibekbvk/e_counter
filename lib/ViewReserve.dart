@@ -6,6 +6,9 @@ import 'package:flutter/material.dart';
 
 class ReserveList extends StatefulWidget {
   @override
+  final String location;
+
+  const ReserveList({Key key, this.location}) : super(key: key);
   _ReserveListState createState() => _ReserveListState();
 }
 

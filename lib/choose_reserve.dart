@@ -7,7 +7,9 @@ class ChooseReserve extends StatefulWidget {
   @override
   _ChooseReserveState createState() => _ChooseReserveState();
 }
-TextEditingController _locationController = TextEditingController();
+TextEditingController _fromController = TextEditingController();
+
+TextEditingController _toController = TextEditingController();
 TextEditingController _departure_dateController = TextEditingController();
 
 class _ChooseReserveState extends State<ChooseReserve> {
@@ -18,16 +20,31 @@ class _ChooseReserveState extends State<ChooseReserve> {
       body:Column(
         children: [
           TextField(
+            onTap: (){
+
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => DistrictSearch(searched: _fromController,)),
+              );},
+            controller: _fromController,
+            keyboardType: TextInputType.text,
+            decoration: InputDecoration(
+                labelText: "From",
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(16),
+                )),
+          ),
+          TextField(
       onTap: (){
 
               Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => DistrictSearch(searched: _locationController,)),
+              MaterialPageRoute(builder: (context) => DistrictSearch(searched: _toController,)),
               );},
-            controller: _locationController,
+            controller: _toController,
             keyboardType: TextInputType.text,
             decoration: InputDecoration(
-                labelText: "Choose District",
+                labelText: "To",
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(16),
                 )),
@@ -57,7 +74,7 @@ class _ChooseReserveState extends State<ChooseReserve> {
             onPressed: (){
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => ReserveList()),
+                MaterialPageRoute(builder: (context) => ReserveList(location: _toController.text,)),
               );
             },
             child: Text("Search"),

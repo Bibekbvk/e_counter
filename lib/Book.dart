@@ -45,7 +45,9 @@ class _BookState extends State<Book> {
   TextEditingController _dateController = TextEditingController();
   TextEditingController _serviceController = TextEditingController();
   TextEditingController _pricing = TextEditingController();
-
+  TextEditingController _from = TextEditingController();
+  TextEditingController _to = TextEditingController();
+  bool editable=true;
 
   String dates;
   String vehicle_number;
@@ -59,22 +61,25 @@ class _BookState extends State<Book> {
       _serviceController.text="Booking Vehicle";
       _pricing.text=("${widget.usermodel.price}");
       vehicle_id=widget.usermodel.vehicle_id;
+      _from.text=widget.usermodel.startlocation;
+      _to.text=widget.usermodel.destination;
+      _dateController.text=widget.usermodel.departure_date;
       vehicle_number=widget.usermodel.vehiclenumber;
       firebasecollectionname="User Booking";
-
+      editable=true;
     }
     else if(widget.reservemodel!=null){
       _serviceController.text="Reserve Vehicle";
       firebasecollectionname="User Reserve";
       vehicle_number=widget.reservemodel.vehicle_number;
       vehicle_id=widget.reservemodel.vehicle_id;
-
+      editable=false;
       _pricing.text=("${widget.reservemodel.price}");
     }
     else if(widget.moversmodel!=null){
       _pricing.text=("${widget.moversmodel.pricing}");
       vehicle_id=widget.moversmodel.vehicle_id;
-
+      editable=false;
       firebasecollectionname="User Movers";
       _serviceController.text="Movers Vehicle";
     }
@@ -128,6 +133,25 @@ class _BookState extends State<Book> {
                         borderRadius: BorderRadius.circular(16),
                       )),
                 ),
+                TextFormField(
+                  readOnly: editable,
+                  controller: _to,
+                  decoration: InputDecoration(
+                      labelText: "To Location",
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(16),
+                      )),
+                ),
+                TextFormField(
+                  readOnly: editable,
+                  controller: _from,
+                  decoration: InputDecoration(
+                      labelText: "From Location",
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(16),
+                      )),
+                ),
+
                 SizedBox(height: MediaQuery.of(context).size.height*0.02,),
 
                 TextField(
@@ -140,6 +164,7 @@ class _BookState extends State<Book> {
                     labelText: "Date"
                   ),
                   onTap: (){
+                    if(firebasecollectionname!="User Booking"){
                     DatePicker.showPicker(context,
                         showTitleActions: true,
                         onChanged: (date) {}, onConfirm: (date) {
@@ -156,7 +181,7 @@ class _BookState extends State<Book> {
                           });
                         },
 
-                      );
+                      );}
                   },
                 ),
                 SizedBox(height: MediaQuery.of(context).size.height*0.02,),
@@ -172,7 +197,7 @@ class _BookState extends State<Book> {
                       }
                       else{
                         id.add('${time.millisecond}${time.second}');
-                      }}
+                      }
                       SharedPreferences prefs = await SharedPreferences.getInstance();
                       prefs.setStringList('listid', id);
                       FirebaseFirestore.instance.collection("${firebasecollectionname}").doc('${time.millisecond}${time.second}').set({
@@ -213,6 +238,51 @@ class _BookState extends State<Book> {
                           ),
                         );
                       }).catchError((error) => print(error));
+
+
+                      }
+                      else{
+                        FirebaseFirestore.instance.collection("${firebasecollectionname}").doc('${time.millisecond}${time.second}').set({
+                          "contact": _ContactNo.text,
+                          "full_name": _FullName.text,
+                          "timestamp": new DateTime.now(),
+                          "from": _from,
+                          "to":_to,
+                          "ticket_for": dates,
+                          "vehicle_id": vehicle_id,
+                          "vehicle_number":vehicle_number,
+                          "transaction_id":'${time.millisecond}${time.second}',
+                          'status':'pending',
+                          'link':"https://scontent.xx.fbcdn.net/v/t1.15752-0/p280x280/125465745_3611747162218459_8121577149771972212_n.png?_nc_cat=110&ccb=2&_nc_sid=ae9488&_nc_ohc=HMallbbkjFsAX_kLAR-&_nc_ad=z-m&_nc_cid=0&_nc_ht=scontent.xx&oh=f6d8104a464cfc8d6aee9efe4ade7938&oe=5FDAD458",
+
+                        }).then((response) {
+
+
+
+                          showDialog<String>(
+                            context: context,
+                            builder: (BuildContext context) => AlertDialog(
+                              title: Text("Book"),
+                              content: Text(
+                                  " Success!You will receive call, for more details"),
+                              actions: <Widget>[
+                                FlatButton(
+                                    onPressed: () {
+
+                                      Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) =>
+                                                  e_counter()));
+                                      _FullName.clear();
+                                    },
+                                    child: Text("OK")),
+                              ],
+                            ),
+                          );
+                        }).catchError((error) => print(error));
+                      }
+
                     }
                   },
                 ),
