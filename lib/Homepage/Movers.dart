@@ -15,7 +15,9 @@ class _MoversListState extends State<MoversList> {
   Database db = new Database();
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        title: Center(child: Text("Movers")),
+      ),
       body: StreamBuilder(stream:db.getMovers() , builder: (context, snapshot){
         if(snapshot.hasData){
           return ListView.builder(itemCount: snapshot.data.length,itemBuilder: (BuildContext context,int index){

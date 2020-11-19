@@ -21,7 +21,7 @@ class _RegisterState extends State<Register> {
   final _formKey = GlobalKey<FormState>();
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(title: Text("Register My Vehicle")),
+        appBar: AppBar(title: Center(child: Text("Register My Vehicle"))),
         body: Container(
           margin: EdgeInsets.all(12),
           child: SingleChildScrollView(

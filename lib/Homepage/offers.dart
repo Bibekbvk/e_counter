@@ -20,38 +20,54 @@ class _offersState extends State<offers> {
      
     ),  
 
-    body: Card(
-      
-      color: Colors.green,
-          child: Padding(
+    body: StreamBuilder(
+
+     stream: firestoreDb,
+     builder: (context, snapshot){
+       if(! snapshot.hasData) return CircularProgressIndicator();
+      return ListView.builder(
+
+
+
+    itemCount: snapshot.data.documents.length,
+    itemBuilder: (context, int index) {
+
+
+      return Padding(
         padding: const EdgeInsets.all(8.0),
-        
-        child: StreamBuilder(
-          
-           stream: firestoreDb,
-           builder: (context, snapshot){
-             if(! snapshot.hasData) return CircularProgressIndicator();
-            return ListView.builder(
-              
+        child: Container(
 
-              
-              itemCount: snapshot.data.documents.length,
-              itemBuilder: (context, int index) {
-               
-               
-                return Text(snapshot.data.documents[index]['Offer 2'], style: TextStyle( 
-                  fontSize:20.0, fontWeight: FontWeight.w800
-                ), );  
-              }
-             
-              
+          height: MediaQuery.of(context).size.height*0.08,
 
-            );
-           }
-           ),
-      ),
-    ),
-            backgroundColor: Colors.yellowAccent,
+          decoration: BoxDecoration(
+
+
+            borderRadius: BorderRadius.circular(20),
+            color: Colors.white,
+            boxShadow: [
+              BoxShadow(
+                color: Colors.grey.withOpacity(0.5),
+                spreadRadius: 5,
+                blurRadius: 7,
+                offset: Offset(0, 3), // changes position of shadow
+              ),
+            ],
+          ),
+          child: Center(
+            child: Text(snapshot.data.documents[index]['Offer 2'], style: TextStyle(
+              fontSize:20
+            ), ),
+          ),
+        ),
+      );
+    }
+
+
+
+      );
+     }
+     ),
+
        
     );
   }

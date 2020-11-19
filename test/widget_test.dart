@@ -6,6 +6,7 @@
 // tree, read text, and verify that the values of widget properties are correct.
 
 import 'file:///E:/AndroidStudioProjects/e_counter/lib/Homepage/Homepage.dart';
+import 'package:e_counter/Homepage/Homepage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
