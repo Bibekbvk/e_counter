@@ -20,7 +20,7 @@ class _TicketState extends State<Ticket> {
 
     return Scaffold(
         appBar: AppBar(
-          title: Text('Ticket'),
+          title: Center(child: Text('Ticket')),
         ),
         body: Center(
           child: ListView.builder(itemCount: id.length,itemBuilder: (BuildContext context,int index){
@@ -28,10 +28,17 @@ class _TicketState extends State<Ticket> {
               padding:  EdgeInsets.fromLTRB(20, 20, 20, 0),
               child: Container(
 
-                height: MediaQuery.of(context).size.height*0.05,
+
+
+                height: MediaQuery.of(context).size.height*0.08,
 
                 decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(20),
+                    gradient: LinearGradient(
+                        begin: Alignment.topRight,
+                        end: Alignment.bottomLeft,
+                        colors: [Colors.blue[100], Colors.white]),
+
+                borderRadius: BorderRadius.circular(20),
                   color: Colors.white,
                   boxShadow: [
                     BoxShadow(
@@ -52,16 +59,12 @@ class _TicketState extends State<Ticket> {
                   },
 
                   child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
 
                     children: [
 
-                      Text("Ticket Number : ${id[index]}"),
-                      Icon(Icons.arrow_forward_ios_sharp, size: 10,color: Colors.black,),
-
-
-
-
+                      Text("Choose Ticket", style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),),
+                      Icon(Icons.arrow_forward_ios_sharp, size: 15,color: Colors.black,),
 
 
                     ],

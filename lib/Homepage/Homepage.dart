@@ -7,6 +7,7 @@ import 'package:e_counter/Homepage/Reserve/ViewReserve.dart';
 import 'package:e_counter/Homepage/TicketBooking/Choose_Booking.dart';
 import 'package:e_counter/Homepage/my_tickets.dart';
 import 'package:e_counter/Homepage/offers.dart';
+import 'package:flushbar/flushbar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -396,8 +397,7 @@ class _e_counterState extends State<e_counter> {
                                   }),
                             ),
                             SizedBox(
-                              width: MediaQuery.of(context).size.width * 0.02,
-                            ),
+                              width: MediaQuery.of(context).size.width * 0.02,),
                             Expanded(
                               child: InkWell(
                                 onTap: (){
@@ -405,10 +405,29 @@ class _e_counterState extends State<e_counter> {
                                     SharedPreferences prefs = await SharedPreferences.getInstance();
                                     //Return String
                                     id = prefs.getStringList('listid');
-                                    if(id==null){
-                                      print("null");
 
-                                    }
+                                    if(id == null){
+
+
+
+
+                                        Flushbar(
+                                          backgroundColor: Colors.red[600],
+                                          flushbarPosition: FlushbarPosition.TOP,
+                                          flushbarStyle: FlushbarStyle.FLOATING,
+                                          title: "Booking Required",
+                                          message: "Ticket is not available ",
+                                          duration: Duration(seconds: 2),
+                                          margin: EdgeInsets.all(8),
+                                          borderRadius: 8,
+                                          blockBackgroundInteraction: true,
+                                          dismissDirection:
+                                          FlushbarDismissDirection.VERTICAL,
+                                        )..show(context);
+                                        return;
+
+                                      }
+
                                     else{
 
 

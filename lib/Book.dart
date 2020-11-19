@@ -100,7 +100,7 @@ class _BookState extends State<Book> {
                   controller: _FullName,
                   keyboardType: TextInputType.text,
                   validator: (val) =>
-                  val.isEmpty ? "Please enter Number" : null,
+                  val.isEmpty ? "Please enter your name" : null,
                   decoration: InputDecoration(
                       labelText: "Enter your full Name",
                       border: OutlineInputBorder(
@@ -112,41 +112,53 @@ class _BookState extends State<Book> {
                   controller: _ContactNo,
                   keyboardType: TextInputType.phone,
                   validator: (val) =>
-                  val.isEmpty ? "Please enter Correct Number" : null,
+                  val.isEmpty ? "Please enter phone number" : null,
                   decoration: InputDecoration(
                       labelText: "Enter Contact Number",
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(16),
                       )),
                 ),
+                SizedBox(height: MediaQuery.of(context).size.height*0.02,),
                 TextFormField(
                   controller: _serviceController,
+                  validator: (val) =>
+                  val.isEmpty ? "Please enter  price" : null,
                   decoration: InputDecoration(
                       labelText: "Service Selected",
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(16),
                       )),
                 ),
+                SizedBox(height: MediaQuery.of(context).size.height*0.02,),
                 TextFormField(
                   controller: _pricing,
+                  validator: (val) =>
+                  val.isEmpty ? "Please enter your name" : null,
                   decoration: InputDecoration(
                       labelText: "Pricing",
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(16),
                       )),
                 ),
+                SizedBox(height: MediaQuery.of(context).size.height*0.02,),
                 TextFormField(
                   readOnly: editable,
                   controller: _to,
+                  validator: (val) =>
+                  val.isEmpty ? "Please enter Location" : null,
                   decoration: InputDecoration(
                       labelText: "To Location",
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(16),
                       )),
                 ),
+                SizedBox(height: MediaQuery.of(context).size.height*0.02,),
                 TextFormField(
                   readOnly: editable,
                   controller: _from,
+                  validator: (val) =>
+                  val.isEmpty ? "Please enter Location" : null,
                   decoration: InputDecoration(
                       labelText: "From Location",
                       border: OutlineInputBorder(
@@ -156,9 +168,16 @@ class _BookState extends State<Book> {
 
                 SizedBox(height: MediaQuery.of(context).size.height*0.02,),
 
-                TextField(
+                TextFormField(
+
                   readOnly: true,
+                  validator: (val) =>
+                  val.isEmpty ? "Please enter date": null,
+
+
+
                   controller: _dateController,
+
                   decoration: InputDecoration(
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(16),
