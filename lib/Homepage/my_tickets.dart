@@ -1,6 +1,8 @@
 import 'package:e_counter/Book.dart';
 import 'package:e_counter/Homepage/TicketBooking/display_ticket.dart';
+
 import 'package:e_counter/database.dart';
+
 import 'package:e_counter/main.dart';
 import 'package:flutter/material.dart';
 
@@ -17,34 +19,61 @@ class _TicketState extends State<Ticket> {
 
 
     return Scaffold(
-      appBar: AppBar(),
-      body: Center(
-      child:
-      ListView.builder(itemCount: id.length,itemBuilder: (BuildContext context,int index){
-        return Column(
-          children: [
-            RaisedButton(onPressed: (){
-              Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => Myticket(num:index.toString())));
+        appBar: AppBar(
+          title: Text('Ticket'),
+        ),
+        body: Center(
+          child: ListView.builder(itemCount: id.length,itemBuilder: (BuildContext context,int index){
+            return Padding(
+              padding:  EdgeInsets.fromLTRB(20, 20, 20, 0),
+              child: Container(
+
+                height: MediaQuery.of(context).size.height*0.05,
+
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(20),
+                  color: Colors.white,
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.grey.withOpacity(0.5),
+                      spreadRadius: 5,
+                      blurRadius: 7,
+                      offset: Offset(0, 3), // changes position of shadow
+                    ),
+                  ],
+                ),
+
+                child: InkWell(
+                  onTap: (){
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => Myticket(num:index.toString())));
+                  },
+
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+
+                    children: [
+
+                      Text("Ticket Number : ${id[index]}"),
+                      Icon(Icons.arrow_forward_ios_sharp, size: 10,color: Colors.black,),
 
 
 
-            },child: Text("Check"),),
-            Text("Ticket Number : ${id[index]}"),
-
-
-          ],
-        );
-
-
-      }
-
-    ),
 
 
 
-      ));
+                    ],
+                  ),
+                ),
+              ),
+            );
+
+
+          }
+
+          ),
+        ));
   }
 }
