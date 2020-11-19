@@ -472,9 +472,9 @@ class _RegisterPageState extends State<RegisterPage>
       print("in condition");
       var result =
           await authService.registerWithEmailPassword(emailText, passwordText);
+
       var resultData = result;
       if(resultData is UserCredential){
-        print("logged in");
         Navigator.push(
             context,
             MaterialPageRoute(

@@ -233,8 +233,7 @@ class _LogInPageState extends State<LogInPage> with TickerProviderStateMixin {
                                       return;
                                     }
                                     if (result != null) {
-                                      print(User);
-                                      print(result);
+
                                       if (result is AuthModel){
                                         Flushbar(
                                           backgroundColor: Colors.green[600],
@@ -249,6 +248,7 @@ class _LogInPageState extends State<LogInPage> with TickerProviderStateMixin {
                                           dismissDirection:
                                               FlushbarDismissDirection.VERTICAL,
                                         )..show(context);
+                                        print(result.fullName);
 
                                         Navigator.push(
                                             context,
