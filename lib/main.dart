@@ -9,5 +9,5 @@ void main() async{
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   runApp(new MaterialApp(
-      home: seatGui(),
+      home: e_counter(),
     ));}

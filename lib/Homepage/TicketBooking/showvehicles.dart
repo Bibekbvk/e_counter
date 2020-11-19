@@ -48,8 +48,9 @@ class _ShowVehiclesState extends State<ShowVehicles> {
              String vehicle_id= snapshot.data[index].vehicle_id;
              String vehicle_name=snapshot.data[index].vehicle_name;
              String img_url = snapshot.data[index].img_url;
+             String departure_date = snapshot.data[index].departure_date;
              BookModel booking = BookModel(destination: destination,startlocation: startlocation,type: type,breakfast: breakfast,driverexp: driverexp,lunch: lunch,
-                 offer: offer,pickuploc: pickuploc,route: route,subdriver: subdriver,vehiclenumber: vehiclenumber,charger: charger,tvmusicac: tvmusicac,price: price,wifi: wifi,shift: shift,seat: seat,vehicle_id:vehicle_id,vehicle_name: vehicle_name,img_url: img_url);
+                 offer: offer,pickuploc: pickuploc,route: route,subdriver: subdriver,vehiclenumber: vehiclenumber,charger: charger,tvmusicac: tvmusicac,price: price,wifi: wifi,shift: shift,seat: seat,vehicle_id:vehicle_id,vehicle_name: vehicle_name,img_url: img_url,departure_date: departure_date);
             return VechicleCard(upper: ["Price","Wifi","Shift","Seat"],lower: ["$price","$wifi","$shift","$seat"],btn1title: "View",title: "${vehicle_name}",imageurl: "${img_url}",
             btn1onPressed: (){
               Navigator.push(

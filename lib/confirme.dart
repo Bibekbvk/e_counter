@@ -25,8 +25,8 @@ class _ConfirmedPurchaseState extends State<ConfirmedPurchase> {
               flex: 2,
               child: Container(child: Column(
                 children: [
-                  Text('Confirmed Purchase!',style:TextStyle(fontSize: ResponsiveFlutter.of(context).fontSize(3.5),fontWeight: FontWeight.bold)),
-                  Text('Keep in Touch Our team will contact you soon!'),
+                  Text('Confirmed Booking!',style:TextStyle(fontSize: ResponsiveFlutter.of(context).fontSize(3.5),fontWeight: FontWeight.bold)),
+                  Text('Your Ticket is being Processed in the MyTickets Section Please Check After Few Hours!'),
                 ],
               ),),),
             Expanded(
@@ -45,6 +45,7 @@ class _ConfirmedPurchaseState extends State<ConfirmedPurchase> {
                         child: Text('Continue',style: TextStyle(color: Colors.white,fontSize:ResponsiveFlutter.of(context).fontSize(3.5) ),),
                       ),
                       onPressed: () {
+                        ticketcolor=Colors.green;
                         Navigator.push(
                             context,
                             MaterialPageRoute(
