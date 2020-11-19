@@ -66,6 +66,7 @@ class _BookState extends State<Book> {
       _dateController.text=widget.usermodel.departure_date;
       vehicle_number=widget.usermodel.vehiclenumber;
       firebasecollectionname="User Booking";
+      _dateController.text=widget.usermodel.departure_date;
       editable=true;
     }
     else if(widget.reservemodel!=null){
@@ -74,12 +75,14 @@ class _BookState extends State<Book> {
       vehicle_number=widget.reservemodel.vehicle_number;
       vehicle_id=widget.reservemodel.vehicle_id;
       editable=false;
+
       _pricing.text=("${widget.reservemodel.price}");
     }
     else if(widget.moversmodel!=null){
       _pricing.text=("${widget.moversmodel.pricing}");
       vehicle_id=widget.moversmodel.vehicle_id;
       editable=false;
+
       firebasecollectionname="User Movers";
       _serviceController.text="Movers Vehicle";
     }
@@ -182,6 +185,9 @@ class _BookState extends State<Book> {
                         },
 
                       );}
+
+
+
                   },
                 ),
                 SizedBox(height: MediaQuery.of(context).size.height*0.02,),
