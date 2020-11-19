@@ -22,8 +22,8 @@ class _VechicleCardState extends State<VechicleCard> {
   Widget build(BuildContext context) {
     List<Widget> text=[ Expanded(
       child: Align(
-        alignment: Alignment.centerLeft,
-        child: Text("${widget.title}",style: TextStyle(fontWeight: FontWeight.bold,fontSize: ResponsiveFlutter.of(context).fontSize(2)),),
+        alignment: Alignment.center,
+        child: Text("${widget.title}",style: TextStyle(color: Colors.black.withOpacity(0.6),fontWeight: FontWeight.bold,fontSize: ResponsiveFlutter.of(context).fontSize(2)),),
       ),
     ),
       Expanded(
@@ -46,11 +46,14 @@ class _VechicleCardState extends State<VechicleCard> {
             flex: 2,
             child: textColumn(widget.upper[i],widget.lower[i],widget.upper[i+1],widget.lower[i+1])));
     }
-    text.add(RaisedButton(
-      shape: RoundedRectangleBorder(
-          borderRadius:
-          BorderRadius.all(Radius.circular(40.0))),
-      onPressed: widget.btn1onPressed, child: Text("${widget.btn1title}",style: TextStyle(color: Colors.black,fontSize: ResponsiveFlutter.of(context).fontSize(2)),),));
+    text.add(Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: RaisedButton(
+        shape: RoundedRectangleBorder(
+            borderRadius:
+            BorderRadius.all(Radius.circular(40.0))),
+        onPressed: widget.btn1onPressed, child: Text("${widget.btn1title}",style: TextStyle(color: Colors.black,fontSize: ResponsiveFlutter.of(context).fontSize(2)),),),
+    ));
 
     return Padding(
       padding:  EdgeInsets.fromLTRB(50,20,50,20),
@@ -76,10 +79,10 @@ class _VechicleCardState extends State<VechicleCard> {
 
   }
   Text uppertextstyle(String name){
-    return Text("$name",style: TextStyle(color: Colors.grey,fontSize: ResponsiveFlutter.of(context).fontSize(2)));
+    return Text("$name",style: TextStyle(color: Colors.black.withOpacity(0.4), fontWeight: FontWeight.bold,fontSize: ResponsiveFlutter.of(context).fontSize(2)));
   }
   Text lowertextstyle(String text){
-    return  Text("$text",style: TextStyle(fontWeight: FontWeight.bold,fontSize: ResponsiveFlutter.of(context).fontSize(2)),);
+    return  Text("$text",style: TextStyle(color: Colors.black.withOpacity(0.6), fontWeight: FontWeight.bold, fontSize: ResponsiveFlutter.of(context).fontSize(2)),);
   }
   Row textColumn(String uppertext1, String lowertext1 , String uppertext2, String lowertext2){
     return Row(

@@ -73,6 +73,9 @@ class _ChooseBookingState extends State<ChooseBooking> {
                                     mode: Mode.MENU,
                                     showSelectedItem: true,
                                     items:  district,
+                                    validator: (val) =>
+                                    val.isEmpty ? "Please  select the Vehicletype " : null,
+
 
 
                                     onChanged: (val){
@@ -94,6 +97,8 @@ class _ChooseBookingState extends State<ChooseBooking> {
                                     mode: Mode.MENU,
                                     showSelectedItem: true,
                                     items:district,
+                                    validator: (val) =>
+                                    val.isEmpty ? "Please  select the Vehicletype " : null,
 
                                     onChanged: (val){
                                       selecteddistrictdes = val;

@@ -28,6 +28,7 @@ dependencies:
   firebase_messaging:
   firebase_image:
   autocomplete_textfield: ^1.7.3
+  lottie: ^0.7.0+1
   getwidget: ^1.1.0
   flutter_svg: ^0.19.1
   responsive_flutter: ^0.0.4
