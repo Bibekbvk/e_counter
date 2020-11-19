@@ -1,6 +1,7 @@
 import 'package:dropdown_search/dropdown_search.dart';
 import 'package:e_counter/Homepage/TicketBooking/showvehicles.dart';
 import 'package:e_counter/database.dart';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
@@ -28,118 +29,143 @@ class _ChooseBookingState extends State<ChooseBooking> {
   String selectedtime="";
   String hint="";
   TextEditingController _departure_dateController = TextEditingController();
+  final _formKey = GlobalKey<FormState>();
 
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(),
 
       body: StreamBuilder(
-        stream:db.getdistrict(),
-    builder: (context, snapshot){
-        if(snapshot.hasData){
-          for(var each in snapshot.data[0].district){
-            if(district!=null){
-            district.add(each.toString());}
-            else{
-              district=[each.toString()];
-            }
-          }
-          for(var each in snapshot.data[0].vehicles){
-            if(vehicletype!=null){
-              vehicletype.add(each.toString());}
-            else{
-              vehicletype=[each.toString()];
-            }
-          }
+          stream:db.getdistrict(),
+          builder: (context, snapshot){
+            if(snapshot.hasData){
+              for(var each in snapshot.data[0].district){
+                if(district!=null){
+                  district.add(each.toString());}
+                else{
+                  district=[each.toString()];
+                }
+              }
+              for(var each in snapshot.data[0].vehicles){
+                if(vehicletype!=null){
+                  vehicletype.add(each.toString());}
+                else{
+                  vehicletype=[each.toString()];
+                }
+              }
 
 
-        return Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Row(children: [
-              Expanded(
+              return Form(
+                key: _formKey,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text("From"),
-                    Padding(
-                      padding: EdgeInsets.fromLTRB(20,0,20,0),
-                      child: DropdownSearch<String>(
-                          mode: Mode.MENU,
-                          showSelectedItem: true,
-                          items:  district,
-                          onChanged: (val){
-                            selecteddistrict = val;
-                          },
-                          selectedItem: selecteddistrict),
-                    ),],),
-              ),
-              Expanded(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text("To"),
-                    Padding(
-                      padding: EdgeInsets.fromLTRB(20,0,20,0),
-                      child: DropdownSearch<String>(
-                          mode: Mode.MENU,
-                          showSelectedItem: true,
-                          items:district,
-                          onChanged: (val){
-                            selecteddistrictdes = val;
-                          },
-                          selectedItem: selecteddistrictdes),
+                    Row(
+                      children: [
+                        Expanded(
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text("From"),
+                              Padding(
+                                padding: EdgeInsets.fromLTRB(20,0,20,0),
+                                child: DropdownSearch<String>(
+                                    mode: Mode.MENU,
+                                    showSelectedItem: true,
+                                    items:  district,
+
+
+                                    onChanged: (val){
+                                      selecteddistrict = val;
+
+                                    },
+
+                                    selectedItem: selecteddistrict),
+                              ),],),
+                        ),
+                        Expanded(
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text("To"),
+                              Padding(
+                                padding: EdgeInsets.fromLTRB(20,0,20,0),
+                                child: DropdownSearch<String>(
+                                    mode: Mode.MENU,
+                                    showSelectedItem: true,
+                                    items:district,
+
+                                    onChanged: (val){
+                                      selecteddistrictdes = val;
+                                    },
+                                    selectedItem: selecteddistrictdes),
+                              ),
+                            ],)
+                          ,
+                        ),
+                      ],
                     ),
-                  ],),
-              ),
-            ],),
 
-            Padding(
-              padding: EdgeInsets.fromLTRB(20,10,20,10),
-              child: DropdownSearch<String>(
-                  mode: Mode.MENU,
-                  label: "Vehicle Type",
-                  showSelectedItem: true,
-                  items:vehicletype,
-                  onChanged: (val){
-                    selectedvehicletype = val;
-                  },
-                  selectedItem: selectedvehicletype),
-            ),  TextFormField(
-              onTap: (){
+                    Padding(
+                      padding: EdgeInsets.fromLTRB(20,10,20,10),
+                      child: DropdownSearch<String>(
+                          mode: Mode.MENU,
+                          label: "Vehicle Type",
+                          validator: (val) =>
+                          val.isEmpty ? "Please  select the Vehicletype " : null,
+                          showSelectedItem: true,
+                          items:vehicletype,
+                          onChanged: (val){
+                            selectedvehicletype = val;
+                          },
+                          selectedItem: selectedvehicletype),
+                    ),  Padding(
+                      padding: EdgeInsets.fromLTRB(20,10,20,10),
+                      child: TextFormField(
+                        onTap: (){
 
-                DatePicker.showDatePicker(context,
-                    showTitleActions: true,
-                    onChanged: (date) {}, onConfirm: (date) {
+                          DatePicker.showDatePicker(context,
+                              showTitleActions: true,
+                              onChanged: (date) {}, onConfirm: (date) {
 
-                      String dates =  "${date.year}/${date.month}/${date.day}";
-                      _departure_dateController.text=dates;
-                    });
-              },
-              controller: _departure_dateController,
-              keyboardType: TextInputType.text,
-              validator: (val) =>
-              val.isEmpty ? "Enter Vehicle Number" : null,
-              decoration: InputDecoration(
-                  labelText: "Departure Date",
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(16),
-                  )),
-            ),
+                                String dates =  "${date.year}/${date.month}/${date.day}";
+                                _departure_dateController.text=dates;
+                              });
+                        },
+                        controller: _departure_dateController,
+                        keyboardType: TextInputType.text,
+                        validator: (value) => value.isEmpty ? 'Date is required' : null,
+                        decoration: InputDecoration(
+                            labelText: "Departure Date",
+                            border: OutlineInputBorder(
 
-            RaisedButton(
-              onPressed: (){
+                            )),
+                      ),
+                    ),
 
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => ShowVehicles(destination: selecteddistrictdes,startlocation: selecteddistrict,vehicletype:selectedvehicletype,departure_date: _departure_dateController.text,)),
-                );
-              },
-              child: Text("Search"),
-            )
-          ],
+                    RaisedButton(
 
-        );}else{return CircularProgressIndicator();}}
+
+                      onPressed: (){
+                        if (_formKey.currentState.validate()) {
+                          //form is valid, proceed further
+                          _formKey.currentState.save();//save once fields are valid, onSaved method invoked for every form fields
+
+                        }
+
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => ShowVehicles(destination: selecteddistrictdes,startlocation: selecteddistrict,vehicletype:selectedvehicletype,departure_date: _departure_dateController.text,)),
+                        );
+                      },
+                      child: Text("Search"),
+
+                    )
+                  ],
+
+                ),
+              )
+              ;}else{return CircularProgressIndicator();}}
       ),
     );
   }
