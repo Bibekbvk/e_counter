@@ -1,7 +1,11 @@
 import 'dart:ui';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:e_counter/Book.dart';
+import 'package:e_counter/Homepage/Homepage.dart';
+import 'package:e_counter/Homepage/Register.dart';
+import 'package:e_counter/Models/auth_model.dart';
 import 'package:e_counter/UserAuthentication/auth.dart';
+import 'package:e_counter/UserAuthentication/registerpage.dart';
 
 import 'package:e_counter/seatgui.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -229,7 +233,9 @@ class _LogInPageState extends State<LogInPage> with TickerProviderStateMixin {
                                       return;
                                     }
                                     if (result != null) {
-                                      if (result is User){
+                                      print(User);
+                                      print(result);
+                                      if (result is AuthModel){
                                         Flushbar(
                                           backgroundColor: Colors.green[600],
                                           flushbarPosition:
@@ -243,11 +249,16 @@ class _LogInPageState extends State<LogInPage> with TickerProviderStateMixin {
                                           dismissDirection:
                                               FlushbarDismissDirection.VERTICAL,
                                         )..show(context);
-                                      print("logged in");
+
+                                        Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                                builder: (context) => e_counter()));
 
                                       }
 
                                       else {
+
                                         Flushbar(
                                           backgroundColor: Colors.red[600],
                                           flushbarPosition:
@@ -354,7 +365,7 @@ class _LogInPageState extends State<LogInPage> with TickerProviderStateMixin {
                                     Navigator.push(
                                         context,
                                         MaterialPageRoute(
-                                            builder: (context) => seatGui()));
+                                            builder: (context) => RegisterPage()));
                                   },
                                 )
                               ],

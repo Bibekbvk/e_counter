@@ -1,6 +1,8 @@
 import 'dart:ui';
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:e_counter/Homepage/Homepage.dart';
 import 'package:e_counter/UserAuthentication/auth.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flushbar/flushbar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -433,7 +435,7 @@ class _RegisterPageState extends State<RegisterPage>
 
   _register() async {
     String emailText = emailController.text;
-    String passwordText = emailController.text;
+    String passwordText = passwordController.text;
     String nametext = nameControlller.text;
     if (confirmpassController.text != passwordController.text) {
       flushbar("Invalid", "Passwords Doesnot Match");
@@ -471,7 +473,15 @@ class _RegisterPageState extends State<RegisterPage>
       var result =
           await authService.registerWithEmailPassword(emailText, passwordText);
       var resultData = result;
-      flushbar(" ", "${resultData}");
+      if(resultData is UserCredential){
+        print("logged in");
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) => e_counter()));
+      }
+      else{
+      flushbar(" ", "${resultData}");}
 
       return;
     }

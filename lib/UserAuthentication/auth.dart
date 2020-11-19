@@ -23,8 +23,10 @@ class AuthService {
       UserCredential result = await _auth.signInWithEmailAndPassword(
           email: email, password: password);
       User user = result.user;
+
       return _userFromFirebaseUser(user);
     } catch (e) {
+      print(e.toString());
       print(e.toString());
       var splitMessage = e.toString().split(']');
       return splitMessage[1].trim();
