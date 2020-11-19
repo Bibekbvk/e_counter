@@ -1,6 +1,7 @@
+import 'package:e_counter/Reuseable_codes/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:responsive_flutter/responsive_flutter.dart';
-
+import 'constants.dart';
 class VechicleCard extends StatefulWidget {
   @override
 
@@ -30,7 +31,7 @@ class _VechicleCardState extends State<VechicleCard> {
         flex: 3,
         child: Padding(
           padding: EdgeInsets.fromLTRB(20,0,20,0),
-          child: Image.network("${widget.imageurl}"),
+          child: ClipRRect(borderRadius: BorderRadius.circular(8.0),   child: Image.network("${widget.imageurl}")),
         ),
       ),
       ] ;
@@ -56,12 +57,13 @@ class _VechicleCardState extends State<VechicleCard> {
     ));
 
     return Padding(
-      padding:  EdgeInsets.fromLTRB(50,20,50,20),
+      padding:  EdgeInsets.fromLTRB(30,20,30,20),
       child: Container(
         height: MediaQuery.of(context).size.height*cardheight,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(20),
-          color: Colors.white,
+
+          gradient: kPrimaryGradientColor,
           boxShadow: [
             BoxShadow(
               color: Colors.grey.withOpacity(0.5),
@@ -79,14 +81,22 @@ class _VechicleCardState extends State<VechicleCard> {
 
   }
   Text uppertextstyle(String name){
-    return Text("$name",style: TextStyle(color: Colors.black.withOpacity(0.4), fontWeight: FontWeight.bold,fontSize: ResponsiveFlutter.of(context).fontSize(2)));
+    return Text("$name",style: TextStyle(
+      fontSize: 15,
+      fontWeight: FontWeight.bold,
+      color: Colors.black,
+      height: 1.5,
+    ));
   }
   Text lowertextstyle(String text){
-    return  Text("$text",style: TextStyle(color: Colors.black.withOpacity(0.6), fontWeight: FontWeight.bold, fontSize: ResponsiveFlutter.of(context).fontSize(2)),);
-  }
+    return  Text("$text",style: TextStyle(
+      fontSize: 15,
+      fontWeight: FontWeight.bold,
+      color: Colors.black,
+      height: 1.5,
+    ));}
   Row textColumn(String uppertext1, String lowertext1 , String uppertext2, String lowertext2){
     return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
         Expanded(
           child: Column(

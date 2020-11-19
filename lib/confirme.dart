@@ -45,7 +45,7 @@ class _ConfirmedPurchaseState extends State<ConfirmedPurchase> {
                         child: Text('Continue',style: TextStyle(color: Colors.white,fontSize:ResponsiveFlutter.of(context).fontSize(3.5) ),),
                       ),
                       onPressed: () {
-                        ticketcolor=Colors.green;
+
                         Navigator.push(
                             context,
                             MaterialPageRoute(

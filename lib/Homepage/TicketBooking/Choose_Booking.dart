@@ -37,7 +37,7 @@ class _ChooseBookingState extends State<ChooseBooking> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Center(child: Text("Book Ticket")),
+        title: Center(child: Text("Book Ticket"))
       ),
 
       body: StreamBuilder(
@@ -148,9 +148,7 @@ class _ChooseBookingState extends State<ChooseBooking> {
                         validator: (value) => value.isEmpty ? 'Date is required' : null,
                         decoration: InputDecoration(
                             labelText: "Departure Date",
-                            border: OutlineInputBorder(
 
-                            ),
                         ),
                       ),
 
