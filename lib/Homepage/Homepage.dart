@@ -1,6 +1,4 @@
-
 import 'dart:async';
-
 import 'package:e_counter/Contactus.dart';
 import 'package:e_counter/Homepage/Contact.dart';
 import 'package:e_counter/Homepage/Fair.dart';
@@ -21,9 +19,8 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:share/share.dart';
-
-
 import '../main.dart';
+
 //import 'package:cloud_firestore/cloud_firestore.dart';
 Color ticketcolor =AppColor;
 class e_counter extends StatefulWidget {
@@ -66,60 +63,6 @@ class _e_counterState extends State<e_counter> {
         "E-counter Nepal",
       ),
           )),
-     /* drawer: Drawer(
-        child: ListView(children: <Widget>[
-          DrawerHeader(
-              padding: EdgeInsets.all(1),
-              child: ListView(
-                children: [
-                  Image.asset('assets/logo.png'),
-                ],
-              )),
-
-          Card(
-            elevation: 22,
-            shadowColor: Colors.yellowAccent,
-            child: ListTile(
-              leading: Icon(Icons.info),
-              title: Text("About"),
-              onTap: () {
-                Navigator.of(context).pop();
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => Aboutpage()));
-              },
-            ),
-          ),
-
-          Card(
-            elevation: 22,
-            shadowColor: Colors.yellowAccent,
-            child: ListTile(
-              leading: Icon(FontAwesomeIcons.star),
-              title: Text("Rate us"),
-              onTap: () {
-                launch(
-                    'https://play.google.com/store/apps/details?id=com.f1soft.esewa&hl=en');
-              },
-            ),
-          ),
-
-          Card(
-            elevation: 22,
-            shadowColor: Colors.yellowAccent,
-            child: ListTile(
-              leading: Icon(Icons.share),
-              title: Text("Share"),
-              onTap: () {
-                Share.share(
-                    "Please Download our app, https://play.google.com/store/apps/details?id=com.f1soft.esewa&hl=en ");
-                // Navigator.of(context).pop();
-
-                // Navigator.push(context, MaterialPageRoute(builder: (context)=>Aboutpage()));
-              },
-            ),
-          ),
-        ]),
-      ),*/
       body: SafeArea(
         child: Column(
           children: [
