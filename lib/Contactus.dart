@@ -2,19 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:typicons_flutter/typicons_flutter.dart';
 
-class MyApp extends StatelessWidget {
+class ContactUs extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        appBar: AppBar(
+    return
 
-          backgroundColor: Colors.orange.withOpacity(0.8),
-          leading: Icon(Icons.arrow_back_ios_sharp, size: 20,
-          ),
+      Scaffold(
+        appBar: AppBar(
           title: Center(child: Text('Contact Us')),
-        ),
+
+          ),
+
         
         body: Column(
           children: [
@@ -28,7 +26,7 @@ class MyApp extends StatelessWidget {
 
           ],
         ),
-      ),
+
     );
   }
   Widget displayCard(String name,IconData icon,String id,String type){

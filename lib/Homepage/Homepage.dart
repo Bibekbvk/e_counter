@@ -1,6 +1,7 @@
 
 import 'dart:async';
 
+import 'package:e_counter/Contactus.dart';
 import 'package:e_counter/Homepage/Contact.dart';
 import 'package:e_counter/Homepage/Fair.dart';
 import 'package:e_counter/Homepage/Movers.dart';
@@ -18,14 +19,13 @@ import 'About.dart';
 import '../Book.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:indexed_list_view/indexed_list_view.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:share/share.dart';
 
 
 import '../main.dart';
 //import 'package:cloud_firestore/cloud_firestore.dart';
-Color ticketcolor =kPrimaryColor;
+Color ticketcolor =AppColor;
 class e_counter extends StatefulWidget {
   @override
   _e_counterState createState() => _e_counterState();
@@ -58,6 +58,7 @@ class _e_counterState extends State<e_counter> {
     return Scaffold(
 
       appBar: AppBar(
+
 
 
           title: Center(
@@ -149,7 +150,7 @@ class _e_counterState extends State<e_counter> {
                                     decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(5),
                                       border:
-                                          Border.all(width: 2,color: kPrimaryColor),
+                                          Border.all(width: 2,color: AppColor),
 
                                     ),
                                     child: Column(
@@ -157,11 +158,11 @@ class _e_counterState extends State<e_counter> {
                                           MainAxisAlignment.center,
                                       children: [
                                         Icon(FontAwesomeIcons.bus,
-                                            color: kPrimaryColor, size: 44),
+                                            color: AppColor, size: 44),
                                         Text(
                                           'Book Ticket',
                                           style: TextStyle(
-                                              color:kPrimaryColor,
+                                              color:AppColor,
                                               fontWeight: FontWeight.bold),
                                         )
                                       ],
@@ -183,18 +184,18 @@ class _e_counterState extends State<e_counter> {
                                     decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(5),
                                       border:
-                                          Border.all(width: 2,color: kPrimaryColor),
+                                          Border.all(width: 2,color: AppColor),
                                     ),
                                     child: Column(
                                       mainAxisAlignment:
                                           MainAxisAlignment.center,
                                       children: [
                                         Icon(FontAwesomeIcons.car,
-                                            color: kPrimaryColor, size: 44),
+                                            color: AppColor, size: 44),
                                         Text(
                                           'Reserve',
                                           style: TextStyle(
-                                              color: kPrimaryColor,
+                                              color: AppColor,
                                               fontWeight: FontWeight.bold),
                                         )
                                       ],
@@ -214,7 +215,7 @@ class _e_counterState extends State<e_counter> {
                               child: Container(
                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(5),
-                                  border: Border.all(width: 2,color: kPrimaryColor),
+                                  border: Border.all(width: 2,color: AppColor),
                                 ),
                                 child: InkWell(
                                     child: Column(
@@ -222,11 +223,11 @@ class _e_counterState extends State<e_counter> {
                                           MainAxisAlignment.center,
                                       children: [
                                         Icon(Icons.contact_phone_outlined,
-                                            color: kPrimaryColor, size: 44),
+                                            color: AppColor, size: 44),
                                         Text(
                                           'Contact us',
                                           style: TextStyle(
-                                              color: kPrimaryColor,
+                                              color: AppColor,
                                               fontWeight: FontWeight.bold),
                                         )
                                       ],
@@ -235,7 +236,7 @@ class _e_counterState extends State<e_counter> {
                                       Navigator.push(
                                           context,
                                           MaterialPageRoute(
-                                              builder: (context) => Contact()));
+                                              builder: (context) => ContactUs()));
                                     }),
                               ),
                             ),
@@ -258,18 +259,18 @@ class _e_counterState extends State<e_counter> {
                                     decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(5),
                                       border:
-                                          Border.all(width: 2,color: kPrimaryColor),
+                                          Border.all(width: 2,color: AppColor),
                                     ),
                                     child: Column(
                                       mainAxisAlignment:
                                           MainAxisAlignment.center,
                                       children: [
                                         Icon(Icons.app_registration,
-                                            color: kPrimaryColor, size: 44),
+                                            color: AppColor, size: 44),
                                         Text(
                                           'Register',
                                           style: TextStyle(
-                                              color: kPrimaryColor,
+                                              color: AppColor,
                                               fontWeight: FontWeight.bold),
                                         )
                                       ],
@@ -291,18 +292,18 @@ class _e_counterState extends State<e_counter> {
                                     decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(5),
                                       border:
-                                          Border.all(width: 2,color: kPrimaryColor),
+                                          Border.all(width: 2,color: AppColor),
                                     ),
                                     child: Column(
                                       mainAxisAlignment:
                                           MainAxisAlignment.center,
                                       children: [
                                         Icon(Icons.money_off_outlined,
-                                            color: kPrimaryColor, size: 44),
+                                            color: AppColor, size: 44),
                                         Text(
                                           'Faire',
                                           style: TextStyle(
-                                              color: kPrimaryColor,
+                                              color: AppColor,
                                               fontWeight: FontWeight.bold),
                                         )
                                       ],
@@ -324,18 +325,18 @@ class _e_counterState extends State<e_counter> {
                                     decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(5),
                                       border:
-                                          Border.all(width: 2,color: kPrimaryColor),
+                                          Border.all(width: 2,color: AppColor),
                                     ),
                                     child: Column(
                                       mainAxisAlignment:
                                           MainAxisAlignment.center,
                                       children: [
                                         Icon(Icons.celebration,
-                                            color: kPrimaryColor, size: 44),
+                                            color: AppColor, size: 44),
                                         Text(
                                           'Offer',
                                           style: TextStyle(
-                                              color: kPrimaryColor,
+                                              color: AppColor,
                                               fontWeight: FontWeight.bold),
                                         )
                                       ],
@@ -372,17 +373,17 @@ class _e_counterState extends State<e_counter> {
                                 child: Container(
                                   decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(5),
-                                    border: Border.all(width: 2,color: kPrimaryColor),
+                                    border: Border.all(width: 2,color: AppColor),
                                   ),
                                   child: Column(
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
                                       Icon(FontAwesomeIcons.truckLoading,
-                                          color: kPrimaryColor, size: 44),
+                                          color: AppColor, size: 44),
                                       Text(
                                         'Mover',
                                         style: TextStyle(
-                                            color: kPrimaryColor,
+                                            color: AppColor,
                                             fontWeight: FontWeight.bold),
                                       )
                                     ],
@@ -399,19 +400,19 @@ class _e_counterState extends State<e_counter> {
                                     decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(5),
                                       border:
-                                          Border.all(width: 2,color: kPrimaryColor),
+                                          Border.all(width: 2,color: AppColor),
                                     ),
                                     child: Column(
                                       mainAxisAlignment:
                                           MainAxisAlignment.center,
                                       children: [
                                         Icon(FontAwesomeIcons.info,
-                                            color: kPrimaryColor, size: 44),
+                                            color: AppColor, size: 44),
                                         SizedBox(height: 20),
                                         Text(
                                           'About Us',
                                           style: TextStyle(
-                                              color: kPrimaryColor,
+                                              color: AppColor,
                                               fontWeight: FontWeight.bold),
                                         )
                                       ],
