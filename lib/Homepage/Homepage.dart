@@ -1,4 +1,6 @@
 
+import 'dart:async';
+
 import 'package:e_counter/Homepage/Contact.dart';
 import 'package:e_counter/Homepage/Fair.dart';
 import 'package:e_counter/Homepage/Movers.dart';
@@ -14,7 +16,7 @@ import 'About.dart';
 import '../Book.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
+import 'package:indexed_list_view/indexed_list_view.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:share/share.dart';
 
@@ -28,11 +30,29 @@ class e_counter extends StatefulWidget {
 }
 
 class _e_counterState extends State<e_counter> {
+
+
+  ScrollController _scrollController = new ScrollController();
+
   final FirebaseMessaging _messaging = FirebaseMessaging();
   @override
+  List<Widget> services= [Text("Offer1", style: TextStyle(color: Colors.black),) ,Text("offers"),
+    FlatButton(onPressed: (){
+      print("Text Okayy");
 
+
+    },child: Text("Offering"),)];
 
   Widget build(BuildContext context) {
+    Timer(
+      Duration(seconds: 2),
+          () => _scrollController.animateTo(
+            _scrollController.position.maxScrollExtent,
+            duration: Duration(seconds:25),
+            curve: Curves.fastOutSlowIn,
+          ),
+    );
+
     return Scaffold(
       appBar: AppBar(
           title: Text(
@@ -96,8 +116,9 @@ class _e_counterState extends State<e_counter> {
         child: Column(
           children: [
 
+
             Expanded(
-              flex: 5,
+              flex: 6,
               child: Padding(
                 padding: EdgeInsets.fromLTRB(
                     MediaQuery.of(context).size.width * 0.115,
@@ -445,6 +466,57 @@ class _e_counterState extends State<e_counter> {
                       ),
                     ),
                   ],
+                ),
+              ),
+            ),
+            Expanded(
+              flex: 2,
+              child: Padding(
+                padding: const EdgeInsets.fromLTRB(0,10,0,0),
+                child: Container(
+                  height: MediaQuery.of(context).size.height*0.2,
+                  width: MediaQuery.of(context).size.width*1,
+                  child: ListView.builder(
+                      controller: _scrollController,
+                      itemCount: services.length,
+                      scrollDirection: Axis.horizontal,
+                      itemBuilder: (context, index){
+                        print(index);
+                        return Padding(
+                            padding:  EdgeInsets.fromLTRB(50, 10, 50, 10),
+
+                            child: Center(
+                              child: Container(
+                                  height: MediaQuery.of(context).size.height*0.2,
+                                  width: MediaQuery.of(context).size.width*0.5,
+
+                                  decoration: BoxDecoration(color: Colors.blueGrey,borderRadius: BorderRadius.circular(20),),
+                                  child: Center(child: services[index])),
+                            )
+                        );
+
+
+
+                      }
+
+                    /**children: [
+
+
+
+                        /  SizedBox(width: MediaQuery.of(context).size.width*0.5,),
+                        Container(decoration: BoxDecoration(color: Colors.blue,borderRadius: BorderRadius.circular(20)),  height: MediaQuery.of(context).size.height*0.2,
+                        width: MediaQuery.of(context).size.width*0.5,child: Center(child: Text("fzs")),),
+                        SizedBox(width: MediaQuery.of(context).size.width*0.5,),
+                        Container(decoration: BoxDecoration(color: Colors.blue,borderRadius: BorderRadius.circular(20)),   height: MediaQuery.of(context).size.height*0.2,
+                        width: MediaQuery.of(context).size.width*0.5,child: Center(child: Text("R1")),),
+                        SizedBox(width: MediaQuery.of(context).size.width*0.5,),
+                        Container(decoration: BoxDecoration(color: Colors.blue,borderRadius: BorderRadius.circular(20)), height: MediaQuery.of(context).size.height*0.2,
+                        width: MediaQuery.of(context).size.width*0.5,child: Center(child: Text("Ducati")),),
+                        SizedBox(width: MediaQuery.of(context).size.width*0.5,),
+                        Container(decoration: BoxDecoration(color: Colors.blue,borderRadius: BorderRadius.circular(20)),height: MediaQuery.of(context).size.height*0.2,
+                        width: MediaQuery.of(context).size.width*0.5,child: Center(child: Text("Harley")),),
+                        ]**/
+                  ),
                 ),
               ),
             ),
