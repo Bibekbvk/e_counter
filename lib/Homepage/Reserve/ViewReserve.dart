@@ -17,7 +17,11 @@ class _ReserveListState extends State<ReserveList> {
   Database db = new Database();
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+
+          title: Center(child: Text("Reserve")),
+
+      ),
       body: StreamBuilder(stream:db.getReserve() , builder: (context, snapshot){
         if(snapshot.hasData){
           return ListView.builder(itemCount: snapshot.data.length,itemBuilder: (BuildContext context,int index){

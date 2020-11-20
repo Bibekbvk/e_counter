@@ -1,6 +1,7 @@
 import 'package:dropdown_search/dropdown_search.dart';
 import 'package:e_counter/Homepage/TicketBooking/showvehicles.dart';
 import 'package:e_counter/database.dart';
+import 'package:flushbar/flushbar.dart';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -20,6 +21,7 @@ class _ChooseBookingState extends State<ChooseBooking> {
   String dates="";
   String selecteddistrictdes="";
   String selectedvehicletype="";
+  String selectedday="";
 
   String selecteddistrict="";
   List<String> hints ;
@@ -30,10 +32,13 @@ class _ChooseBookingState extends State<ChooseBooking> {
   String hint="";
   TextEditingController _departure_dateController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
+  List<String> _day = ["Day", "Night"];
 
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        title: Center(child: Text("Book Ticket")),
+      ),
 
       body: StreamBuilder(
           stream:db.getdistrict(),
@@ -134,7 +139,8 @@ class _ChooseBookingState extends State<ChooseBooking> {
                               onChanged: (date) {}, onConfirm: (date) {
 
                                 String dates =  "${date.year}/${date.month}/${date.day}";
-                                _departure_dateController.text=dates;
+                                _departure_dateController.text=dates
+                                ;
                               });
                         },
                         controller: _departure_dateController,
@@ -144,25 +150,149 @@ class _ChooseBookingState extends State<ChooseBooking> {
                             labelText: "Departure Date",
                             border: OutlineInputBorder(
 
-                            )),
+                            ),
+                        ),
                       ),
-                    ),
 
+                    ),
+                    Padding(
+                      padding: EdgeInsets.fromLTRB(20,0,20,0),
+                      child: DropdownSearch<String>(
+                        label: "Shift",
+                          mode: Mode.MENU,
+                          showSelectedItem: true,
+                          items: _day,
+
+                          validator: (val) =>
+                          val.isEmpty ? "Please  select the Time " : null,
+
+                          onChanged: (val){
+                            selectedday = val;
+                          },
+                          selectedItem: selectedday),
+                    ),
                     RaisedButton(
 
 
                       onPressed: (){
-                        if (_formKey.currentState.validate()) {
-                          //form is valid, proceed further
-                          _formKey.currentState.save();//save once fields are valid, onSaved method invoked for every form fields
 
-                        }
 
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => ShowVehicles(destination: selecteddistrictdes,startlocation: selecteddistrict,vehicletype:selectedvehicletype,departure_date: _departure_dateController.text,)),
-                        );
+
+                          if  (selectedvehicletype=="") {
+
+
+                            Flushbar(
+                              backgroundColor: Colors.red[600],
+                              flushbarPosition: FlushbarPosition.TOP,
+                              flushbarStyle: FlushbarStyle.FLOATING,
+                              title: "VehicleType Required",
+                              message: "Please select VehicleType",
+                              duration: Duration(seconds: 2),
+                              margin: EdgeInsets.all(8),
+                              borderRadius: 8,
+                              blockBackgroundInteraction: true,
+                              dismissDirection:
+                              FlushbarDismissDirection.VERTICAL,
+                            )..show(context);
+                            return;
+
+                          }
+                          else if (selectedday==""){
+                            Flushbar(
+                              backgroundColor: Colors.red[600],
+                              flushbarPosition: FlushbarPosition.TOP,
+                              flushbarStyle: FlushbarStyle.FLOATING,
+                              title: "Dayuuuu Required",
+                              message: "Please select your date",
+                              duration: Duration(seconds: 2),
+                              margin: EdgeInsets.all(8),
+                              borderRadius: 8,
+                              blockBackgroundInteraction: true,
+                              dismissDirection:
+                              FlushbarDismissDirection.VERTICAL,
+                            )..show(context);
+                            return;
+
+
+                          }
+                          else if (_day==""){
+                            Flushbar(
+                              backgroundColor: Colors.red[600],
+                              flushbarPosition: FlushbarPosition.TOP,
+                              flushbarStyle: FlushbarStyle.FLOATING,
+                              title: "Shift Required",
+                              message: "Please select your shift",
+                              duration: Duration(seconds: 2),
+                              margin: EdgeInsets.all(8),
+                              borderRadius: 8,
+                              blockBackgroundInteraction: true,
+                              dismissDirection:
+                              FlushbarDismissDirection.VERTICAL,
+                            )..show(context);
+                            return;
+
+
+                          }
+
+                          else if (selecteddistrict==""){
+                            Flushbar(
+                              backgroundColor: Colors.red[600],
+                              flushbarPosition: FlushbarPosition.TOP,
+                              flushbarStyle: FlushbarStyle.FLOATING,
+                              title: "District Required",
+                              message: "Please enter your location",
+                              duration: Duration(seconds: 2),
+                              margin: EdgeInsets.all(8),
+                              borderRadius: 8,
+                              blockBackgroundInteraction: true,
+                              dismissDirection:
+                              FlushbarDismissDirection.VERTICAL,
+                            )..show(context);
+                            return;
+
+
+                          }
+                          else if (selecteddistrictdes==""){
+                            Flushbar(
+                              backgroundColor: Colors.red[600],
+                              flushbarPosition: FlushbarPosition.TOP,
+                              flushbarStyle: FlushbarStyle.FLOATING,
+                              title: "Destination Required",
+                              message: "Please select your destination",
+                              duration: Duration(seconds: 2),
+                              margin: EdgeInsets.all(8),
+                              borderRadius: 8,
+                              blockBackgroundInteraction: true,
+                              dismissDirection:
+                              FlushbarDismissDirection.VERTICAL,
+                            )..show(context);
+                            return;
+
+
+                          }
+                          else  Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) => ShowVehicles(destination: selecteddistrictdes,startlocation: selecteddistrict,vehicletype:selectedvehicletype,departure_date: _departure_dateController.text,)),
+                            );
+
+
+
+
+
                       },
+
+
+
+
+
+
+
+
+
+
+
+
+
                       child: Text("Search"),
 
                     )

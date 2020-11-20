@@ -11,7 +11,7 @@ class _ContactState extends State<Contact> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Contact us directly....")),
+      appBar: AppBar(title: Center(child: Text("Contact Us Directly"))),
       body:  Column(
         children: <Widget>[
           Expanded(

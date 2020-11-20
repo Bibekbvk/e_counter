@@ -9,7 +9,7 @@ class _AboutpageState extends State<Aboutpage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("About us.............")
+        title: Center(child: Text("About Us"))
       ),
       body: Row(
        children:<Widget>[
@@ -18,12 +18,14 @@ class _AboutpageState extends State<Aboutpage> {
        mainAxisAlignment: MainAxisAlignment.start,
        crossAxisAlignment: CrossAxisAlignment.center,
          children: [
-          Image.asset('assets/ecounter.png', height: 200, width: 300,),
+          Center(child: Image.asset('assets/ecounter.png', height: 200, width: 300,)),
 
-          Container(
-           child: Card(
-                          
-              child: Text("E-counter App is the solution\nof booking ticket without\nvisitng  ticket counter, We\nassure to you that we will try our best to\nprivide you cheapest ticket, without \ncompormising quality", textAlign: TextAlign.justify, style: TextStyle(fontSize: 22),), )
+          Center(
+            child: Container(
+             child: Card(
+
+                child: Text("E-counter App is the solution\nof booking ticket without\nvisitng  ticket counter, We\nassure to you that we will try our best to\nprivide you cheapest ticket, without \ncompormising quality", textAlign: TextAlign.justify, style: TextStyle(fontSize: 22),), )
+            ),
           )
 
        

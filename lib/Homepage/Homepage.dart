@@ -7,6 +7,7 @@ import 'package:e_counter/Homepage/Reserve/ViewReserve.dart';
 import 'package:e_counter/Homepage/TicketBooking/Choose_Booking.dart';
 import 'package:e_counter/Homepage/my_tickets.dart';
 import 'package:e_counter/Homepage/offers.dart';
+import 'package:flushbar/flushbar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -21,6 +22,7 @@ import 'package:share/share.dart';
 import '../main.dart';
 
 //import 'package:cloud_firestore/cloud_firestore.dart';
+Color ticketcolor = Colors.blue[900];
 class e_counter extends StatefulWidget {
   @override
   _e_counterState createState() => _e_counterState();
@@ -395,41 +397,61 @@ class _e_counterState extends State<e_counter> {
                                   }),
                             ),
                             SizedBox(
-                              width: MediaQuery.of(context).size.width * 0.02,
-                            ),
+                              width: MediaQuery.of(context).size.width * 0.02,),
                             Expanded(
                               child: InkWell(
                                 onTap: (){
                                   getid() async{
-                                  SharedPreferences prefs = await SharedPreferences.getInstance();
-                                  //Return String
-                                   id = prefs.getStringList('listid');}
+                                    SharedPreferences prefs = await SharedPreferences.getInstance();
+                                    //Return String
+                                    id = prefs.getStringList('listid');
+
+                                    if(id == null){
+
+
+
+
+                                        Flushbar(
+                                          backgroundColor: Colors.red[600],
+                                          flushbarPosition: FlushbarPosition.TOP,
+                                          flushbarStyle: FlushbarStyle.FLOATING,
+                                          title: "Booking Required",
+                                          message: "Ticket is not available ",
+                                          duration: Duration(seconds: 2),
+                                          margin: EdgeInsets.all(8),
+                                          borderRadius: 8,
+                                          blockBackgroundInteraction: true,
+                                          dismissDirection:
+                                          FlushbarDismissDirection.VERTICAL,
+                                        )..show(context);
+                                        return;
+
+                                      }
+
+                                    else{
+
+
+                                      Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) => Ticket()));}}
                                   getid();
-                                  if(id==null){
 
-                                  }
-                                  else{
-
-
-                                  Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) => Ticket()));}
                                 },
                                 child: Container(
                                   decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(5),
-                                    border: Border.all(color: Colors.lightBlue),
+                                    border: Border.all(color: ticketcolor),
                                   ),
                                   child: Column(
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
                                       Icon(Icons.feedback,
-                                          color: Colors.blue[900], size: 44),
+                                          color: ticketcolor, size: 44),
                                       Text(
                                         'My Tickets',
                                         style: TextStyle(
-                                            color: Colors.blue[900],
+                                            color: ticketcolor,
                                             fontWeight: FontWeight.bold),
                                       )
                                     ],
