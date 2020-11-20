@@ -1,7 +1,10 @@
 
 import 'package:e_counter/Homepage/Homepage.dart';
+import 'package:e_counter/Reuseable_codes/circle_image_button.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter_icons/flutter_icons.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:firebase_image/firebase_image.dart';
 
@@ -17,6 +20,7 @@ class _RegisterState extends State<Register> {
   TextEditingController _VechileName = TextEditingController();
   TextEditingController _ServiceLocation = TextEditingController();
   TextEditingController _SeactCapacity = TextEditingController();
+  Color color_ = Colors.deepPurple.withOpacity(0.8);
   var firestoreDb = Firestore.instance.collection("app").snapshots();
   final _formKey = GlobalKey<FormState>();
   Widget build(BuildContext context) {
@@ -38,63 +42,74 @@ class _RegisterState extends State<Register> {
                   validator: (val) =>
                       val.isEmpty ? "Please enter Number" : null,
                   decoration: InputDecoration(
+                      prefixIcon: Icon(Icons.person, color: color_,),
                       labelText: "Enter your full Name",
-                      helperText: "Enter your full Name ",
+                      
                       border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(16),
+                        borderRadius: BorderRadius.circular(6),
                       )),
                 ),
+                SizedBox(height: MediaQuery.of(context).size.height*0.03),
                 TextFormField(
                   controller: _ContactNo,
                   keyboardType: TextInputType.phone,
                   validator: (val) =>
                       val.isEmpty ? "Please enter Correct Number" : null,
                   decoration: InputDecoration(
+                      prefixIcon: Icon(Icons.phone_enabled, color: color_,),
                       labelText: "Enter Contact Number",
-                      helperText: "Please enter correct Contact number ",
+                      hintText: "9868187674",
                       border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(16),
+                        borderRadius: BorderRadius.circular(6),
                       )),
                 ),
+                SizedBox(height: MediaQuery.of(context).size.height*0.03),
                 TextFormField(
                   controller: _VechileName,
                   keyboardType: TextInputType.text,
                   validator: (val) => val.isEmpty ? "Please enter Place" : null,
                   decoration: InputDecoration(
+                      prefixIcon: Icon(Icons.bus_alert, color: color_,),
+                    hintText: "Deluxe, Kankrebihar",
                       labelText: "Name/ Type of Vechile",
-                      helperText: "Eg:- Car/Hiace/BUS (Tata)",
+
                       border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(16),
+                        borderRadius: BorderRadius.circular(6),
                       )),
                 ),
+                SizedBox(height: MediaQuery.of(context).size.height*0.03),
                 TextFormField(
                   controller: _ServiceLocation,
                   validator: (val) => val.isEmpty ? "Please enter Place" : null,
                   keyboardType: TextInputType.text,
                   decoration: InputDecoration(
                       labelText: "Service location",
-                      helperText: "Eg:- kathmandu, Nepal, Jhapa",
+                      prefixIcon: Icon(Icons.design_services, color: color_,),
+                      hintText: "Eg:- kathmandu, Nepal, Jhapa",
                       border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(16),
+                        borderRadius: BorderRadius.circular(6),
                       )),
                 ),
+                SizedBox(height: MediaQuery.of(context).size.height*0.03),
                 TextFormField(
                   controller: _SeactCapacity,
                   validator: (val) => val.isEmpty ? "Please enter Seat" : null,
                   keyboardType: TextInputType.phone,
                   decoration: InputDecoration(
+                      prefixIcon: Icon(Icons.airline_seat_recline_normal_sharp, color: color_,),
                       labelText: "Enter Seat Number",
-                      helperText: "Eg: 35, 14 10",
+                      hintText: "Eg: 35, 14 10",
                       border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(16),
+                        borderRadius: BorderRadius.circular(6),
                       )),
                 ),
-                SizedBox(
-                  width: 150,
-                  height: 40,
-                  child: RaisedButton(
-                    color: Colors.blue.shade700,
-                    child: Text("Register My Vehicle"),
+                SizedBox(height: MediaQuery.of(context).size.height*0.02),
+
+
+
+                   RaisedButton(
+                    color: Colors.deepPurpleAccent,
+                    child: Text("Register My Vehicle", style: TextStyle(color: Colors.white),),
                     onPressed: () {
                       if (_formKey.currentState.validate()) {
                         Firestore.instance.collection("Register").add({
@@ -109,7 +124,7 @@ class _RegisterState extends State<Register> {
                           showDialog<String>(
                             context: context,
                             builder: (BuildContext context) => AlertDialog(
-                              title: Text("Register My Vehicle"),
+                              title: Text("Register My Vehicle", style: TextStyle(color: Colors.white),),
                               content: Text(
                                   " Success!You will receive call, for more details"),
                               actions: <Widget>[
@@ -130,31 +145,41 @@ class _RegisterState extends State<Register> {
                       }
                     },
                   ),
-                ),
-                Column(
-                  children: <Widget>[
-                    Text(
-                        "Call us directtly to Register \nYou can give miscall\nEmai: Ecounter@gmail.com\nWebSite: WWW.Ecounter.com.np"),
-                    RaisedButton(
-                      onPressed: () => launch('tel:9817931246'),
-                      child: Text("Tap to Call us (NTC number)"),
-                      color: Colors.yellowAccent,
+                SizedBox(height: MediaQuery.of(context).size.height*0.005,),
+
+                Container(
+                  height:  MediaQuery.of(context).size.height*0.09,
+                  child: Text
+                  ("Call us directly to Register.\nYou can give missed call too",style: GoogleFonts.laila(fontSize: 15, fontWeight: FontWeight.bold,color: Colors.deepPurpleAccent),),),
+
+                SizedBox(height: MediaQuery.of(context).size.height*0.005,),
+
+
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    InkWell(
+                      onTap: (){
+                        launch('tel:9817931246');
+                      },
+                      child: CircularImageButton("ntc.png"),
                     ),
-                    RaisedButton(
-                      onPressed: () => launch('tel:9817931246'),
-                      child: Text("Tap to Call us (NCELL number)"),
-                      color: Colors.yellowAccent,
+                    InkWell(
+                      onTap: (){
+                        launch('tel:9817931246');
+                      },
+                      child: CircularImageButton("ncell.jpg"),
                     ),
-                    RaisedButton(
-                      onPressed: () => launch('tel:9817931246'),
-                      child: Text(" Tap to Call us (Smart Cell number)"),
-                      color: Colors.yellowAccent,
+                    InkWell(
+                      onTap: (){
+                        launch('tel:9817931246');
+                      },
+                      child: CircularImageButton("smartcell.png"),
                     ),
-                    RaisedButton(
-                      onPressed: () => launch('https:www.facebook.com'),
-                      child: Text("Facebook Page"),
-                      color: Colors.yellowAccent,
-                    ),
+
+
+
+
                   ],
                 ),
               ]),

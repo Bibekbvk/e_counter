@@ -1,3 +1,4 @@
+import 'dart:html';
 import 'dart:ui';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:e_counter/Book.dart';
@@ -10,6 +11,7 @@ import 'package:e_counter/UserAuthentication/registerpage.dart';
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flushbar/flushbar.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 //import 'package:garageinc/core/services/database.dart';
@@ -76,6 +78,7 @@ class _LogInPageState extends State<LogInPage> with TickerProviderStateMixin {
   String password = '';
   String error = '';
   String b = "";
+  Color purcolor = Colors.deepPurpleAccent;
 
   @override
   Widget build(BuildContext context) {
@@ -84,129 +87,170 @@ class _LogInPageState extends State<LogInPage> with TickerProviderStateMixin {
         backgroundColor: const Color(0xffffffff),
         body: Stack(
           children: <Widget>[
-            SlideTransition(
-              position: _backgroundOffset,
-              child: Container(
-                width: double.infinity,
-                height: size.height * 0.3,
-                decoration: BoxDecoration(
-                    image: DecorationImage(
-                        image: AssetImage("images/login_background.png"),
-                        fit: BoxFit.fill)),
-//                  child: Image(
-//                    image: AssetImage("images/login_background.png"),fit: BoxFit.contain,
-//                  ),
+            Padding(
+              padding:  EdgeInsets.fromLTRB(0, 15, 0, 15),
+              child: Column(
+                children: [
+
+                  Container(
+
+                    height: size.height * 0.2,
+                    decoration: BoxDecoration(
+                        image: DecorationImage(
+                            image: NetworkImage("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRDe4nlATrSg_eYenOjdxWcYWQFRzbMh0a9hg&usqp=CAU"),
+                            ),
+
+                    ),
+                  ),
+                  Text("E-Counter", style: GoogleFonts.laBelleAurore(color: Colors.deepPurpleAccent,  fontSize: 34, fontWeight: FontWeight.bold)),
+                ],
               ),
             ),
-            SlideTransition(
-              position: _contentOffset,
-              child: SingleChildScrollView(
-                child: Padding(
-                  padding: EdgeInsets.fromLTRB(size.width * 0.06, 0,
-                      size.width * 0.06, size.height * 0.04),
-                  child: Container(
-                    width: size.width,
-                    height: size.height,
-                    child: Form(
-                      key: _formKey,
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: <Widget>[
-                          SizedBox(
-                            height: MediaQuery.of(context).size.height * 0.32,
+
+            SingleChildScrollView(
+              child: Padding(
+                padding: EdgeInsets.fromLTRB(size.width * 0.06, 0,
+                    size.width * 0.06, size.height * 0.04),
+
+                child: Container(
+                  width: size.width,
+                  height: size.height,
+                  child: Form(
+                    key: _formKey,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        SizedBox(
+                          height: MediaQuery.of(context).size.height * 0.32,
+                        ),
+                        Expanded(
+                          flex: 1,
+                          child: TextFormField(
+                            keyboardType: TextInputType.emailAddress,
+                            decoration: InputDecoration(
+                                prefixIcon: Icon(
+                                  Icons.person,
+                                  color: purcolor,
+                                ),
+                                hintText: "Email",
+                                hintStyle: TextStyle(
+                                    color: Colors.black.withOpacity(0.6),),
+                                fillColor: Colors.white,
+
+                                enabledBorder: UnderlineInputBorder(
+                                  borderSide: BorderSide(color: purcolor),
+                                ),
+                                focusedBorder: UnderlineInputBorder(
+                                  borderSide: BorderSide(color: Colors.black),
+                                ),
+                                contentPadding: EdgeInsets.symmetric(
+                                    horizontal: 20.0, vertical: 6.0)),
+                            onChanged: (val) {
+                              setState(() => email = val);
+                            },
                           ),
-                          Expanded(
-                            flex: 1,
-                            child: TextFormField(
-                              keyboardType: TextInputType.emailAddress,
-                              decoration: InputDecoration(
-                                  prefixIcon: Icon(
-                                    Icons.person,
-                                    color: Colors.black26,
-                                  ),
-                                  hintText: "Email",
-                                  hintStyle: TextStyle(
-                                      color: Colors.black26, fontSize: 20),
-                                  fillColor: Colors.white,
-                                  enabledBorder: UnderlineInputBorder(
-                                    borderSide: BorderSide(color: Colors.blue),
-                                  ),
-                                  focusedBorder: UnderlineInputBorder(
-                                    borderSide: BorderSide(color: Colors.black),
-                                  ),
-                                  contentPadding: EdgeInsets.symmetric(
-                                      horizontal: 20.0, vertical: 6.0)),
-                              onChanged: (val) {
-                                setState(() => email = val);
-                              },
-                            ),
+                        ),
+                        Expanded(
+                          flex: 1,
+                          child: TextFormField(
+                            decoration: InputDecoration(
+                                prefixIcon: Icon(
+
+                                  Icons.lock,
+                                  color: purcolor,
+                                ),
+                                hintText: "Password",
+                                hintStyle: TextStyle(
+
+                                ),
+                                fillColor: Colors.white,
+                                enabledBorder: UnderlineInputBorder(
+                                  borderSide: BorderSide(color: purcolor),
+                                ),
+                                focusedBorder: UnderlineInputBorder(
+                                  borderSide: BorderSide(color: Colors.black),
+                                ),
+                                contentPadding: EdgeInsets.symmetric(
+                                    horizontal: 20.0, vertical: 16.0)),
+                            obscureText: true,
+                            onChanged: (val) {
+                              setState(() => password = val);
+                            },
                           ),
-                          Expanded(
-                            flex: 1,
-                            child: TextFormField(
-                              decoration: InputDecoration(
-                                  prefixIcon: Icon(
-                                    Icons.lock,
-                                    color: Colors.black26,
-                                  ),
-                                  hintText: "Password",
-                                  hintStyle: TextStyle(
-                                    color: Colors.black26,
-                                  ),
-                                  fillColor: Colors.white,
-                                  enabledBorder: UnderlineInputBorder(
-                                    borderSide: BorderSide(color: Colors.blue),
-                                  ),
-                                  focusedBorder: UnderlineInputBorder(
-                                    borderSide: BorderSide(color: Colors.black),
-                                  ),
-                                  contentPadding: EdgeInsets.symmetric(
-                                      horizontal: 20.0, vertical: 16.0)),
-                              obscureText: true,
-                              onChanged: (val) {
-                                setState(() => password = val);
-                              },
-                            ),
-                          ),
-                          Expanded(
-                            child: Container(
-                              alignment: Alignment.centerRight,
-                              child: FlatButton(
-                                onPressed: () =>
-                                    print('Forgot Password Button Pressed'),
-                                child: AutoSizeText(
-                                  'Forgot Password?',
-                                  style: TextStyle(
-                                    color: Colors.blue,
-                                    fontWeight: FontWeight.bold,
-                                    fontFamily: 'OpenSans',
-                                    fontSize: size.height * 0.018,
-                                  ),
+                        ),
+                        Expanded(
+                          child: Container(
+                            alignment: Alignment.centerRight,
+                            child: FlatButton(
+                              onPressed: () =>
+                                  print('Forgot Password Button Pressed'),
+                              child: AutoSizeText(
+                                'Forgot Password?',
+                                style: TextStyle(
+                                  color: purcolor,
+                                  fontWeight: FontWeight.bold,
+                                  fontFamily: 'OpenSans',
+                                  fontSize: size.height * 0.018,
                                 ),
                               ),
                             ),
                           ),
-                          SizedBox(
-                            height: MediaQuery.of(context).size.height * 0.008,
-                          ),
-                          Expanded(
-                            flex: 1,
-                            child: Container(
-                              width: double.infinity,
-                              child: RaisedButton(
-                                color: Colors.blue,
-                                onPressed: () async {
-                                  if (_formKey.currentState.validate()) {
-                                    dynamic result =
-                                        await _auth.signInWithEmailPassword(
-                                            email, password);
-                                    if (email.isEmpty) {
+                        ),
+                        SizedBox(
+                          height: MediaQuery.of(context).size.height * 0.008,
+                        ),
+                        Expanded(
+                          flex: 1,
+                          child: Container(
+                            width: double.infinity,
+                            child: RaisedButton(
+                              color: purcolor,
+                              onPressed: () async {
+                                if (_formKey.currentState.validate()) {
+                                  dynamic result =
+                                      await _auth.signInWithEmailPassword(
+                                          email, password);
+                                  if (email.isEmpty) {
+                                    Flushbar(
+                                      backgroundColor: Colors.red[600],
+                                      flushbarPosition: FlushbarPosition.TOP,
+                                      flushbarStyle: FlushbarStyle.FLOATING,
+                                      title: "Email Required",
+                                      message: "Please enter your email",
+                                      duration: Duration(seconds: 2),
+                                      margin: EdgeInsets.all(8),
+                                      borderRadius: 8,
+                                      blockBackgroundInteraction: true,
+                                      dismissDirection:
+                                          FlushbarDismissDirection.VERTICAL,
+                                    )..show(context);
+                                    return;
+                                  }
+                                  if (password.isEmpty) {
+                                    Flushbar(
+                                      backgroundColor: Colors.red[600],
+                                      flushbarPosition: FlushbarPosition.TOP,
+                                      flushbarStyle: FlushbarStyle.FLOATING,
+                                      title: "Password Required",
+                                      message: "Please enter your password",
+                                      duration: Duration(seconds: 2),
+                                      margin: EdgeInsets.all(8),
+                                      borderRadius: 8,
+                                      blockBackgroundInteraction: true,
+                                      dismissDirection:
+                                          FlushbarDismissDirection.VERTICAL,
+                                    )..show(context);
+                                    return;
+                                  }
+                                  if (result != null) {
+
+                                    if (result is AuthModel){
                                       Flushbar(
-                                        backgroundColor: Colors.red[600],
-                                        flushbarPosition: FlushbarPosition.TOP,
+                                        backgroundColor: Colors.green[600],
+                                        flushbarPosition:
+                                            FlushbarPosition.TOP,
                                         flushbarStyle: FlushbarStyle.FLOATING,
-                                        title: "Email Required",
-                                        message: "Please enter your email",
+                                        message: "User Logged In",
                                         duration: Duration(seconds: 2),
                                         margin: EdgeInsets.all(8),
                                         borderRadius: 8,
@@ -214,15 +258,23 @@ class _LogInPageState extends State<LogInPage> with TickerProviderStateMixin {
                                         dismissDirection:
                                             FlushbarDismissDirection.VERTICAL,
                                       )..show(context);
-                                      return;
+                                      print(result.fullName);
+
+                                      Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) => e_counter()));
+
                                     }
-                                    if (password.isEmpty) {
+
+                                    else {
+
                                       Flushbar(
                                         backgroundColor: Colors.red[600],
-                                        flushbarPosition: FlushbarPosition.TOP,
+                                        flushbarPosition:
+                                            FlushbarPosition.TOP,
                                         flushbarStyle: FlushbarStyle.FLOATING,
-                                        title: "Password Required",
-                                        message: "Please enter your password",
+                                        message: result.toString(),
                                         duration: Duration(seconds: 2),
                                         margin: EdgeInsets.all(8),
                                         borderRadius: 8,
@@ -230,149 +282,68 @@ class _LogInPageState extends State<LogInPage> with TickerProviderStateMixin {
                                         dismissDirection:
                                             FlushbarDismissDirection.VERTICAL,
                                       )..show(context);
-                                      return;
-                                    }
-                                    if (result != null) {
-
-                                      if (result is AuthModel){
-                                        Flushbar(
-                                          backgroundColor: Colors.green[600],
-                                          flushbarPosition:
-                                              FlushbarPosition.TOP,
-                                          flushbarStyle: FlushbarStyle.FLOATING,
-                                          message: "User Logged In",
-                                          duration: Duration(seconds: 2),
-                                          margin: EdgeInsets.all(8),
-                                          borderRadius: 8,
-                                          blockBackgroundInteraction: true,
-                                          dismissDirection:
-                                              FlushbarDismissDirection.VERTICAL,
-                                        )..show(context);
-                                        print(result.fullName);
-
-                                        Navigator.push(
-                                            context,
-                                            MaterialPageRoute(
-                                                builder: (context) => e_counter()));
-
-                                      }
-
-                                      else {
-
-                                        Flushbar(
-                                          backgroundColor: Colors.red[600],
-                                          flushbarPosition:
-                                              FlushbarPosition.TOP,
-                                          flushbarStyle: FlushbarStyle.FLOATING,
-                                          message: result.toString(),
-                                          duration: Duration(seconds: 2),
-                                          margin: EdgeInsets.all(8),
-                                          borderRadius: 8,
-                                          blockBackgroundInteraction: true,
-                                          dismissDirection:
-                                              FlushbarDismissDirection.VERTICAL,
-                                        )..show(context);
-                                      }
                                     }
                                   }
-                                },
-                                elevation: 11,
-                                shape: RoundedRectangleBorder(
-                                    borderRadius:
-                                        BorderRadius.all(Radius.circular(5.0))),
-                                child: AutoSizeText("Login",
-                                    style: GoogleFonts.lato(
-                                        textStyle:
-                                            TextStyle(color: Colors.white),
-                                        fontSize: size.height * 0.025,
-                                        fontWeight: FontWeight.bold)),
-                              ),
+                                }
+                              },
+                              elevation: 11,
+                              shape: RoundedRectangleBorder(
+                                  borderRadius:
+                                      BorderRadius.all(Radius.circular(5.0))),
+                              child: AutoSizeText("Login",
+                                  style: GoogleFonts.lato(
+                                      textStyle:
+                                          TextStyle(color: Colors.white),
+                                      fontSize: size.height * 0.025,
+                                      fontWeight: FontWeight.bold)),
                             ),
                           ),
-                          Expanded(
-                            flex: 1,
-                            child: Row(children: <Widget>[
-                              Expanded(
-                                child: new Container(
-                                    margin: const EdgeInsets.only(
-                                        left: 10.0, right: 10.0),
-                                    child: Divider(
-                                      thickness:
-                                          MediaQuery.of(context).size.height *
-                                              0.001,
-                                      color: Colors.black54,
-                                      height:
-                                          MediaQuery.of(context).size.height *
-                                              0.1,
-                                    )),
-                              ),
+                        ),
+
+
+
+                        SizedBox(
+                          height: size.height * 0.05,
+                        ),
+                        Expanded(
+                          flex: 1,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
                               AutoSizeText(
-                                "OR",
+                                'Don\'t have an account?',
                                 style: TextStyle(
-                                    fontSize: ResponsiveFlutter.of(context)
-                                        .fontSize(1.3),
-                                    color: Colors.black54),
-                              ),
-                              Expanded(
-                                child: new Container(
-                                    margin: EdgeInsets.only(
-                                        left: 10.0, right: 10.0),
-                                    child: Divider(
-                                      color: Colors.black54,
-                                      thickness:
-                                          MediaQuery.of(context).size.height *
-                                              0.001,
-                                      height: 20,
-                                    )),
-                              ),
-                            ]),
-                          ),
-                          Expanded(
-                            flex: 1,
-                            child: Center(child: GoogleSignInButton(
-                              onPressed: () {/* ... */},
-                              // default: false
-                            )),
-                          ),
-                          SizedBox(
-                            height: size.height * 0.05,
-                          ),
-                          Expanded(
-                            flex: 1,
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                AutoSizeText(
-                                  'Don\'t have an account?',
-                                  style: TextStyle(
-                                    fontSize: ResponsiveFlutter.of(context)
-                                        .fontSize(1.7),
-                                    color: Colors.black54,
-                                    fontFamily: 'OpenSans',
-                                  ),
+                                  fontSize: ResponsiveFlutter.of(context)
+                                      .fontSize(1.7),
+                                  color: Colors.black54,
+                                  fontFamily: 'OpenSans',
                                 ),
-                                FlatButton(
-                                  child: AutoSizeText(
-                                    "Register",
-                                    style: TextStyle(
-                                        color: Colors.blue,
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: ResponsiveFlutter.of(context)
-                                            .fontSize(1.7)),
-                                  ),
-                                  onPressed: () {
-                                    setState(() {});
-                                    Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                            builder: (context) => RegisterPage()));
-                                  },
-                                )
-                              ],
-                            ),
+                              ),
+                              FlatButton(
+                                child: AutoSizeText(
+                                  "Register",
+                                  style: TextStyle(
+                                      color: purcolor,
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: ResponsiveFlutter.of(context)
+                                          .fontSize(1.7)),
+                                ),
+                                onPressed: () {
+                                  setState(() {});
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => RegisterPage()));
+                                },
+                              )
+                            ],
                           ),
-                        ],
-                      ),
+                        ),
+                        Expanded(flex: 3,
+                          child: Container(
+
+                          ),),
+                      ],
                     ),
                   ),
                 ),
