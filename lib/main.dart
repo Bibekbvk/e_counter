@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:theme_provider/theme_provider.dart';
 
+
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
@@ -20,6 +21,7 @@ void main() async{
     MyApp());}
 
 class MyApp extends StatelessWidget {
+  static final String customAppThemeId = 'custom_theme';
   @override
   Widget build(BuildContext context) {
     return ThemeProvider(
@@ -33,7 +35,8 @@ class MyApp extends StatelessWidget {
           Brightness platformBrightness =
               SchedulerBinding.instance.window.platformBrightness;
           if (platformBrightness == Brightness.dark) {
-            controller.setTheme('purple');
+            controller.addTheme(customAppTheme());
+            controller.setTheme('custom_theme');
           } else {
             controller.setTheme('light');
           }
@@ -43,7 +46,7 @@ class MyApp extends StatelessWidget {
       themes: <AppTheme>[
         AppTheme.light(id: 'light'),
         AppTheme.dark(id: 'dark'),
-        AppTheme.purple(id:"purple"),
+        AppTheme.purple(id:'purple'),
       ],
       child: ThemeConsumer(
         child: Builder(
@@ -53,6 +56,19 @@ class MyApp extends StatelessWidget {
             home: e_counter(),
           ),
         ),
+      ),
+    );
+  }
+  AppTheme customAppTheme() {
+    return AppTheme(
+      id: customAppThemeId,
+      description: "Custom Color Scheme",
+      data: ThemeData(
+        accentColor: Colors.deepPurple,
+        primaryColor: Colors.deepPurple,
+        scaffoldBackgroundColor: Colors.white,
+        buttonColor: Colors.deepPurple,
+        dialogBackgroundColor: Colors.deepPurple,
       ),
     );
   }
