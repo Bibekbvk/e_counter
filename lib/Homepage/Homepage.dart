@@ -13,15 +13,11 @@ import 'package:e_counter/UserAuthentication/login.dart';
 import 'package:flushbar/flushbar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:url_launcher/url_launcher.dart';
 import 'About.dart';
 import '../Book.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
-import 'package:share/share.dart';
-
-
 import '../main.dart';
 
 class e_counter extends StatefulWidget {
