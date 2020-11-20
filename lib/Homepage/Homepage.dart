@@ -23,7 +23,6 @@ import 'package:share/share.dart';
 
 
 import '../main.dart';
-//import 'package:cloud_firestore/cloud_firestore.dart';
 
 class e_counter extends StatefulWidget {
   @override
@@ -169,7 +168,7 @@ class _e_counterState extends State<e_counter> {
                               ),
                               Expanded(
                                 child: InkWell(
-                                    child:containers(Icons.celebration,'Logout'),
+                                    child:containers(Icons.supervised_user_circle,'Logout'),
                                     onTap: () async{
                                       SharedPreferences prefs = await SharedPreferences.getInstance();
 
