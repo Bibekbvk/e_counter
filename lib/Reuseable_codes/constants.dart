@@ -1,6 +1,4 @@
-import 'package:e_counter/Reuseable_codes/sizeconfig.dart';
 import 'package:flutter/material.dart';
-Color AppColor = Colors.deepPurple;
 Color kPrimaryColor =Colors.deepPurple;
 Color kPrimaryLightColor = Colors.purple[400];
 const kPrimaryGradientColor = LinearGradient(

@@ -3,7 +3,8 @@
 import 'package:e_counter/Homepage/Homepage.dart';
 import 'package:e_counter/Reuseable_codes/constants.dart';
 import 'package:e_counter/Reuseable_codes/theme.dart';
-import 'package:e_counter/seatgui.dart';
+import 'package:e_counter/UserAuthentication/seatBus.dart';
+
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';

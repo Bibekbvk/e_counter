@@ -1,8 +1,16 @@
+import 'package:e_counter/Book.dart';
+import 'package:e_counter/Models/ReserveModel.dart';
+import 'package:e_counter/Models/book_model.dart';
+import 'package:e_counter/Models/movers_model.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class seatSumo extends StatefulWidget {
   @override
+  final BookModel usermodel;
+  final ReserveModel reservemodel;
+  final MoversModel moversmodel;
+  const seatSumo({Key key, this.usermodel, this.reservemodel, this.moversmodel, }) : super(key: key);
   _seatSumoState createState() => _seatSumoState();
 }
 
@@ -31,6 +39,15 @@ class _seatSumoState extends State<seatSumo> {
   Widget build(BuildContext context) {
     init();
     return Scaffold(
+        floatingActionButton: RaisedButton(onPressed: (){
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) => Book(usermodel: widget.usermodel,moversmodel: widget.moversmodel,reservemodel: widget.reservemodel,seatnumber: ticketListSumo,)));
+
+
+
+        },child: Text("Select"),),
         body: ListView(
           children: [
             Column(children: <Widget>[

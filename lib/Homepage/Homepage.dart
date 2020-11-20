@@ -23,7 +23,7 @@ import 'package:share/share.dart';
 
 import '../main.dart';
 //import 'package:cloud_firestore/cloud_firestore.dart';
-Color ticketcolor =AppColor;
+
 class e_counter extends StatefulWidget {
   @override
   _e_counterState createState() => _e_counterState();
@@ -36,7 +36,7 @@ class _e_counterState extends State<e_counter> {
 
   final FirebaseMessaging _messaging = FirebaseMessaging();
   @override
-  List<Widget> services= [Image.network("https://sites.google.com/site/busticketbookingofKfers/_/rsrc/1489062843285/home/online-bus-ticket-booking.gif"), Image.network("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRqJMqbFacvHMv1_tqVjGVcZ1DxEo7uQf1Q-g&usqp=CAU"),
+  List<Widget> services= [ Image.network("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRqJMqbFacvHMv1_tqVjGVcZ1DxEo7uQf1Q-g&usqp=CAU"),
   Image.network("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQdUpin4uY98l5G_XN_zztinOEZLPQlpI8cog&usqp=CAU"), Image.network("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRqJMqbFacvHMv1_tqVjGVcZ1DxEo7uQf1Q-g&usqp=CAU") ];
 
   Widget build(BuildContext context) {
@@ -273,7 +273,6 @@ class _e_counterState extends State<e_counter> {
                         itemCount: services.length,
                         scrollDirection: Axis.horizontal,
                         itemBuilder: (context, index){
-                          print(index);
                           return Padding(
                               padding:  EdgeInsets.fromLTRB(MediaQuery.of(context).size.width*0.3, 10, MediaQuery.of(context).size.width*0.3, 10),
 
@@ -343,7 +342,7 @@ class _e_counterState extends State<e_counter> {
 
       borderRadius: BorderRadius.circular(5),
       border:
-      Border.all(width: 1.3,color: Colors.purple[900]),
+      Border.all(width: 1.3,color: kPrimaryColor),
 
     );
   }
@@ -354,11 +353,11 @@ class _e_counterState extends State<e_counter> {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Icon(icons,
-              color: ticketcolor, size: 44),
+              color: kPrimaryColor, size: 44),
           Text(
             text,
             style: TextStyle(
-                color: ticketcolor,
+                color: kPrimaryColor,
                 fontWeight: FontWeight.bold),
           )
         ],

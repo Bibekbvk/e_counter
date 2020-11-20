@@ -7,7 +7,7 @@ import 'package:e_counter/Models/auth_model.dart';
 import 'package:e_counter/UserAuthentication/auth.dart';
 import 'package:e_counter/UserAuthentication/registerpage.dart';
 
-import 'package:e_counter/seatgui.dart';
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flushbar/flushbar.dart';
 import 'package:flutter/material.dart';
