@@ -29,7 +29,7 @@ class _BookState extends State<Book> {
 
   String dropdownValue = 'Hiace';
   String dayNight = 'Day';
-  Color color_ = Colors.blue.withOpacity(0.8);
+  Color color_ = Colors.deepPurple.withOpacity(0.8);
 
   String zone;
   String firebasecollectionname;

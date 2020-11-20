@@ -38,10 +38,7 @@ class _e_counterState extends State<e_counter> {
   @override
   List<Widget> services= [Text("Offer1", style: TextStyle(color: Colors.black),) ,Text("offers"),
     FlatButton(onPressed: (){
-      print("Text Okayy");
-
-
-    },child: Text("Offering"),)];
+      print("Text Okayy");},child: Text("Offering"),)   ];
 
   Widget build(BuildContext context) {
     Timer(
