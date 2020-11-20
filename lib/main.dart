@@ -46,7 +46,7 @@ class MyApp extends StatelessWidget {
       themes: <AppTheme>[
         AppTheme.light(id: 'light'),
         AppTheme.dark(id: 'dark'),
-        AppTheme.purple(id:'purple'),
+
       ],
       child: ThemeConsumer(
         child: Builder(
