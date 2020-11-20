@@ -4,6 +4,7 @@ import 'package:e_counter/Models/ReserveModel.dart';
 import 'package:e_counter/Models/book_model.dart';
 import 'package:e_counter/Models/movers_model.dart';
 import 'package:e_counter/Reuseable_codes/circle_image_button.dart';
+import 'package:e_counter/Reuseable_codes/constants.dart';
 import 'package:e_counter/confirme.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -30,7 +31,7 @@ class _BookState extends State<Book> {
 
   String dropdownValue = 'Hiace';
   String dayNight = 'Day';
-  Color color_ = Colors.deepPurple.withOpacity(0.8);
+  Color color_ = kPrimaryColor;
 
   String zone;
   String firebasecollectionname;

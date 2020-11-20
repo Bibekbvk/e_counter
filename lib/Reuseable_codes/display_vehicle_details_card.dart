@@ -65,7 +65,7 @@ class _VechicleCardState extends State<VechicleCard> {
 
 
           border:
-          Border.all(width: 1.3,color: Colors.purple[900]),
+          Border.all(width: 1.3,color:kPrimaryColor),
           boxShadow: [
             BoxShadow(
               color: Colors.grey.withOpacity(0.5),

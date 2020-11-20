@@ -9,6 +9,7 @@ import 'package:e_counter/Homepage/TicketBooking/Choose_Booking.dart';
 import 'package:e_counter/Homepage/my_tickets.dart';
 import 'package:e_counter/Homepage/offers.dart';
 import 'package:e_counter/Reuseable_codes/constants.dart';
+import 'package:e_counter/UserAuthentication/login.dart';
 import 'package:flushbar/flushbar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -30,6 +31,7 @@ class e_counter extends StatefulWidget {
 }
 
 class _e_counterState extends State<e_counter> {
+  SharedPreferences prefs;
   static final String customAppThemeId = 'custom_theme';
 
 
@@ -37,10 +39,15 @@ class _e_counterState extends State<e_counter> {
 
   final FirebaseMessaging _messaging = FirebaseMessaging();
   @override
+  void init() async{
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.setString('login', "yes");
+  }
   List<Widget> services= [ Image.network("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRqJMqbFacvHMv1_tqVjGVcZ1DxEo7uQf1Q-g&usqp=CAU"),
   Image.network("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQdUpin4uY98l5G_XN_zztinOEZLPQlpI8cog&usqp=CAU"), Image.network("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRqJMqbFacvHMv1_tqVjGVcZ1DxEo7uQf1Q-g&usqp=CAU") ];
 
   Widget build(BuildContext context) {
+    init();
     Timer(
       Duration(seconds: 2),
           () => _scrollController.animateTo(
@@ -162,12 +169,15 @@ class _e_counterState extends State<e_counter> {
                               ),
                               Expanded(
                                 child: InkWell(
-                                    child:containers(Icons.celebration,'Offer'),
-                                    onTap: () {
+                                    child:containers(Icons.celebration,'Logout'),
+                                    onTap: () async{
+                                      SharedPreferences prefs = await SharedPreferences.getInstance();
+
+                                      prefs.setString('login', "no");
                                       Navigator.push(
                                           context,
                                           MaterialPageRoute(
-                                              builder: (context) => offers()));
+                                              builder: (context) => LogInPage()));
                                     }),
                               ),
                             ],

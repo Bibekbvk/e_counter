@@ -3,18 +3,31 @@
 import 'package:e_counter/Homepage/Homepage.dart';
 import 'package:e_counter/Reuseable_codes/constants.dart';
 import 'package:e_counter/Reuseable_codes/theme.dart';
+import 'package:e_counter/UserAuthentication/login.dart';
 import 'package:e_counter/UserAuthentication/seatBus.dart';
 
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:theme_provider/theme_provider.dart';
 
-
+Widget checkwidget = LogInPage();
 void main() async{
+
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
+  SharedPreferences prefs = await SharedPreferences.getInstance();
 
+  String check = prefs.getString('login');
+  if(check=="yes"){
+
+    checkwidget= e_counter();
+  }
+  else{
+    checkwidget=LogInPage();
+  }
+  print(check);
 
 
   runApp(
@@ -23,6 +36,7 @@ void main() async{
     MyApp());}
 
 class MyApp extends StatelessWidget {
+
   static final String customAppThemeId = 'custom_theme';
   @override
   Widget build(BuildContext context) {
@@ -30,6 +44,7 @@ class MyApp extends StatelessWidget {
       saveThemesOnChange: true,
       loadThemeOnInit: false,
       onInitCallback: (controller, previouslySavedThemeFuture) async {
+
         String savedTheme = await previouslySavedThemeFuture;
         if (savedTheme != null) {
           controller.setTheme(savedTheme);
@@ -53,7 +68,7 @@ class MyApp extends StatelessWidget {
           builder: (themeContext) => MaterialApp(
             theme: ThemeProvider.themeOf(themeContext).data,
 
-            home: e_counter(),
+            home: checkwidget,
           ),
         ),
       ),
@@ -72,4 +87,5 @@ class MyApp extends StatelessWidget {
       ),
     );
   }
+
 }
