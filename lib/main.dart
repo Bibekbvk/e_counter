@@ -1,6 +1,7 @@
 
 
 import 'package:e_counter/Homepage/Homepage.dart';
+import 'package:e_counter/Reuseable_codes/constants.dart';
 import 'package:e_counter/Reuseable_codes/theme.dart';
 import 'package:e_counter/seatgui.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -62,11 +63,11 @@ class MyApp extends StatelessWidget {
       id: customAppThemeId,
       description: "Custom Color Scheme",
       data: ThemeData(
-        accentColor: Colors.deepPurple,
-        primaryColor: Colors.deepPurple,
+        accentColor: kPrimaryColor,
+        primaryColor: kPrimaryColor,
         scaffoldBackgroundColor: Colors.white,
-        buttonColor: Colors.deepPurple,
-        dialogBackgroundColor: Colors.deepPurple,
+        buttonColor: kPrimaryColor,
+        dialogBackgroundColor: kPrimaryColor,
       ),
     );
   }
