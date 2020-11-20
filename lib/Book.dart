@@ -8,6 +8,7 @@ import 'package:e_counter/confirme.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -219,8 +220,8 @@ class _BookState extends State<Book> {
                 SizedBox(height: MediaQuery.of(context).size.height*0.02,),
 
                 RaisedButton(
-                  color: Colors.blue.shade700,
-                  child: Text("Book Ticket"),
+                  color:color_,
+                  child: Text("Book Ticket", style: TextStyle(color: Colors.white ),),
                   onPressed: () async{
                     if (_formKey.currentState.validate()) {
                       if(firebasecollectionname=='User Booking'){
@@ -358,7 +359,7 @@ class _BookState extends State<Book> {
                       ),
                       child: Column(
                         children: [
-                          Expanded(child: Text("Tap to Call us and book directly \n You can give missed call too.")),
+                          Expanded(child: Text("Tap to Call us and book directly \n You can give missed call too.", style: GoogleFonts.laila(fontSize: 15, fontWeight: FontWeight.bold, color: color_),)),
                           SizedBox(height: MediaQuery.of(context).size.height*0.005,),
 
 
@@ -400,33 +401,14 @@ class _BookState extends State<Book> {
                         ],
                       ),
                     ),
-                    SizedBox(height: MediaQuery.of(context).size.height*0.02,),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        InkWell(
-                          onTap: (){
-                            launch('tel:9817931246');
-                          },
-                          child: CircularImageButton("facebooklogo.png"),
-                        ),
-                        InkWell(
-                          onTap: (){
-                            launch('tel:9817931246');
-                          },
-                          child: CircularImageButton("gmaillogo.png"),
-                        ),
-                      ],
-                    ),
 
-                    Text(
-                        "WebSite: WWW.Ecounter.com.np"),
                   ],
 
                 ),
 
 
-              ]),
+              ]
+              ),
             ),
           ),
         ));

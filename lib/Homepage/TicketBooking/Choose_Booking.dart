@@ -6,6 +6,7 @@ import 'package:flushbar/flushbar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class ChooseBooking extends StatefulWidget {
   @override
@@ -71,7 +72,7 @@ class _ChooseBookingState extends State<ChooseBooking> {
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              Text("From", style: TextStyle(fontSize: 15,color: Colors.black ,  fontWeight: FontWeight.bold),),
+                              Text("From", style:GoogleFonts.laila(fontSize: 18,color: Colors.deepPurpleAccent ,  fontWeight: FontWeight.bold),),
                               Padding(
                                 padding: EdgeInsets.fromLTRB(20,0,20,0),
                                 child: DropdownSearch<String>(
@@ -95,7 +96,7 @@ class _ChooseBookingState extends State<ChooseBooking> {
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              Text("To",  style: TextStyle(fontSize: 15, color: Colors.black, fontWeight: FontWeight.bold ),),
+                              Text("To",  style: GoogleFonts.laila(fontSize: 18, color: Colors.deepPurpleAccent, fontWeight: FontWeight.bold ),),
                               Padding(
                                 padding: EdgeInsets.fromLTRB(20,0,20,0),
                                 child: DropdownSearch<String>(
@@ -132,6 +133,17 @@ class _ChooseBookingState extends State<ChooseBooking> {
                     ),  Padding(
                       padding: EdgeInsets.fromLTRB(20,10,20,10),
                       child: TextFormField(
+                        decoration: new InputDecoration(
+                          labelText: "Departure Date",
+                          focusedBorder: OutlineInputBorder(
+                            borderSide: BorderSide(color: Colors.deepPurpleAccent, width: 2.0),
+                          ),
+                          enabledBorder: OutlineInputBorder(
+                            borderSide: BorderSide(color: Colors.black12, width: 2.0),
+                          ),
+
+                        ),
+
                         onTap: (){
 
                           DatePicker.showDatePicker(context,
@@ -146,10 +158,7 @@ class _ChooseBookingState extends State<ChooseBooking> {
                         controller: _departure_dateController,
                         keyboardType: TextInputType.text,
                         validator: (value) => value.isEmpty ? 'Date is required' : null,
-                        decoration: InputDecoration(
-                            labelText: "Departure Date",
 
-                        ),
                       ),
 
                     ),
@@ -170,6 +179,8 @@ class _ChooseBookingState extends State<ChooseBooking> {
                           selectedItem: selectedday),
                     ),
                     RaisedButton(
+
+
 
 
                       onPressed: (){
@@ -200,7 +211,7 @@ class _ChooseBookingState extends State<ChooseBooking> {
                               backgroundColor: Colors.red[600],
                               flushbarPosition: FlushbarPosition.TOP,
                               flushbarStyle: FlushbarStyle.FLOATING,
-                              title: "Dayuuuu Required",
+                              title: "Day Required",
                               message: "Please select your date",
                               duration: Duration(seconds: 2),
                               margin: EdgeInsets.all(8),
@@ -291,7 +302,7 @@ class _ChooseBookingState extends State<ChooseBooking> {
 
 
 
-                      child: Text("Search"),
+                      child: Text("Search", style: TextStyle(color: Colors.white),),
 
                     )
                   ],

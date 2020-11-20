@@ -1,3 +1,4 @@
+import 'dart:html';
 import 'dart:ui';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:e_counter/Book.dart';
@@ -10,6 +11,7 @@ import 'package:e_counter/UserAuthentication/registerpage.dart';
 import 'package:e_counter/seatgui.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flushbar/flushbar.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 //import 'package:garageinc/core/services/database.dart';
@@ -76,6 +78,7 @@ class _LogInPageState extends State<LogInPage> with TickerProviderStateMixin {
   String password = '';
   String error = '';
   String b = "";
+  Color purcolor = Colors.deepPurpleAccent;
 
   @override
   Widget build(BuildContext context) {
@@ -86,24 +89,29 @@ class _LogInPageState extends State<LogInPage> with TickerProviderStateMixin {
           children: <Widget>[
             SlideTransition(
               position: _backgroundOffset,
-              child: Container(
-                width: double.infinity,
-                height: size.height * 0.3,
-                decoration: BoxDecoration(
-                    image: DecorationImage(
-                        image: AssetImage("images/login_background.png"),
-                        fit: BoxFit.fill)),
-//                  child: Image(
-//                    image: AssetImage("images/login_background.png"),fit: BoxFit.contain,
-//                  ),
+              child: Padding(
+                padding:  EdgeInsets.fromLTRB(0, 15, 0, 15),
+                child: Container(
+
+                  height: size.height * 0.2,
+                  decoration: BoxDecoration(
+                      image: DecorationImage(
+                          image: NetworkImage("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRDe4nlATrSg_eYenOjdxWcYWQFRzbMh0a9hg&usqp=CAU"),
+                          ),
+
+                  ),
+                ),
               ),
+
             ),
+
             SlideTransition(
               position: _contentOffset,
               child: SingleChildScrollView(
                 child: Padding(
                   padding: EdgeInsets.fromLTRB(size.width * 0.06, 0,
                       size.width * 0.06, size.height * 0.04),
+
                   child: Container(
                     width: size.width,
                     height: size.height,
@@ -122,14 +130,15 @@ class _LogInPageState extends State<LogInPage> with TickerProviderStateMixin {
                               decoration: InputDecoration(
                                   prefixIcon: Icon(
                                     Icons.person,
-                                    color: Colors.black26,
+                                    color: purcolor,
                                   ),
                                   hintText: "Email",
                                   hintStyle: TextStyle(
-                                      color: Colors.black26, fontSize: 20),
+                                      color: Colors.black.withOpacity(0.6),),
                                   fillColor: Colors.white,
+
                                   enabledBorder: UnderlineInputBorder(
-                                    borderSide: BorderSide(color: Colors.blue),
+                                    borderSide: BorderSide(color: purcolor),
                                   ),
                                   focusedBorder: UnderlineInputBorder(
                                     borderSide: BorderSide(color: Colors.black),
@@ -146,16 +155,17 @@ class _LogInPageState extends State<LogInPage> with TickerProviderStateMixin {
                             child: TextFormField(
                               decoration: InputDecoration(
                                   prefixIcon: Icon(
+
                                     Icons.lock,
-                                    color: Colors.black26,
+                                    color: purcolor,
                                   ),
                                   hintText: "Password",
                                   hintStyle: TextStyle(
-                                    color: Colors.black26,
+
                                   ),
                                   fillColor: Colors.white,
                                   enabledBorder: UnderlineInputBorder(
-                                    borderSide: BorderSide(color: Colors.blue),
+                                    borderSide: BorderSide(color: purcolor),
                                   ),
                                   focusedBorder: UnderlineInputBorder(
                                     borderSide: BorderSide(color: Colors.black),
@@ -177,7 +187,7 @@ class _LogInPageState extends State<LogInPage> with TickerProviderStateMixin {
                                 child: AutoSizeText(
                                   'Forgot Password?',
                                   style: TextStyle(
-                                    color: Colors.blue,
+                                    color: purcolor,
                                     fontWeight: FontWeight.bold,
                                     fontFamily: 'OpenSans',
                                     fontSize: size.height * 0.018,
@@ -194,7 +204,7 @@ class _LogInPageState extends State<LogInPage> with TickerProviderStateMixin {
                             child: Container(
                               width: double.infinity,
                               child: RaisedButton(
-                                color: Colors.blue,
+                                color: purcolor,
                                 onPressed: () async {
                                   if (_formKey.currentState.validate()) {
                                     dynamic result =
@@ -355,7 +365,7 @@ class _LogInPageState extends State<LogInPage> with TickerProviderStateMixin {
                                   child: AutoSizeText(
                                     "Register",
                                     style: TextStyle(
-                                        color: Colors.blue,
+                                        color: purcolor,
                                         fontWeight: FontWeight.bold,
                                         fontSize: ResponsiveFlutter.of(context)
                                             .fontSize(1.7)),

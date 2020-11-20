@@ -1,3 +1,4 @@
+import 'dart:html';
 import 'dart:ui';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:e_counter/Homepage/Homepage.dart';
@@ -32,6 +33,7 @@ class _RegisterPageState extends State<RegisterPage>
   AuthService authService = new AuthService();
   String url = 'https://assets9.lottiefiles.com/packages/lf20_SmywXC.json';
   FocusNode myFocusNode = new FocusNode();
+  Color purcolor = Colors.deepPurpleAccent;
   bool confirmedit = true;
   //Label text defining
   String name = "Full Name";
@@ -107,14 +109,14 @@ class _RegisterPageState extends State<RegisterPage>
                         text: TextSpan(
                             text: 'Create New Account',
                             style: GoogleFonts.laila(
-                                textStyle: TextStyle(color: Colors.blue),
+                                textStyle: TextStyle(color: purcolor),
                                 fontSize: size.height * 0.03,
                                 fontWeight: FontWeight.bold),
                             children: [
                               TextSpan(
                                   text: "\n Please fill the input below ",
                                   style: GoogleFonts.laila(
-                                      textStyle: TextStyle(color: Colors.blue),
+                                      textStyle: TextStyle(color: purcolor),
                                       fontSize: size.height * 0.02))
                             ]),
                       ),
@@ -343,7 +345,7 @@ class _RegisterPageState extends State<RegisterPage>
                     flex: 1,
                     child: Container(
                       decoration: BoxDecoration(
-                          color: Colors.blue,
+                          color: purcolor,
                           borderRadius: BorderRadius.circular(5)),
                       width: double.infinity,
                       child: FlatButton(
@@ -414,7 +416,7 @@ class _RegisterPageState extends State<RegisterPage>
                             child: AutoSizeText(
                               'LOGIN',
                               style: TextStyle(
-                                  color: Colors.blue,
+                                  color: purcolor,
                                   fontWeight: FontWeight.bold,
                                   fontSize: ResponsiveFlutter.of(context)
                                       .fontSize(1.7)),

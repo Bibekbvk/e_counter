@@ -36,7 +36,7 @@ class _e_counterState extends State<e_counter> {
 
   final FirebaseMessaging _messaging = FirebaseMessaging();
   @override
-  List<Widget> services= [Text("Offer1", style: TextStyle(color: Colors.black),) ,Text("offers"),
+  List<Widget> services= [Text("Offer1", style: TextStyle(color: Colors.black),),Image.network("https://image.shutterstock.com/image-vector/special-offer-grunge-style-red-260nw-447876844.jpg"), Image.network("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRkA2oqKp97WtWw43byQ3zPs4TRIXENnlvdSQ&usqp=CAU"),Image.network("https://t4.ftcdn.net/jpg/01/07/15/61/240_F_107156108_6WCPmmwbA07J5yUAnGqT5XgiODvtfrJb.jpg"),
     FlatButton(onPressed: (){
       print("Text Okayy");},child: Text("Offering"),)   ];
 

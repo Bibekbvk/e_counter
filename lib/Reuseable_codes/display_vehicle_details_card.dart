@@ -1,5 +1,6 @@
 import 'package:e_counter/Reuseable_codes/constants.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:responsive_flutter/responsive_flutter.dart';
 import 'constants.dart';
 class VechicleCard extends StatefulWidget {
@@ -50,10 +51,8 @@ class _VechicleCardState extends State<VechicleCard> {
     text.add(Padding(
       padding: const EdgeInsets.all(8.0),
       child: RaisedButton(
-        shape: RoundedRectangleBorder(
-            borderRadius:
-            BorderRadius.all(Radius.circular(40.0))),
-        onPressed: widget.btn1onPressed, child: Text("${widget.btn1title}",style: TextStyle(color: Colors.black,fontSize: ResponsiveFlutter.of(context).fontSize(2)),),),
+
+        onPressed: widget.btn1onPressed, child: Text("${widget.btn1title}",style: TextStyle(color: Colors.white,fontSize: ResponsiveFlutter.of(context).fontSize(1.8)),),),
     ));
 
     return Padding(
@@ -83,7 +82,7 @@ class _VechicleCardState extends State<VechicleCard> {
 
   }
   Text uppertextstyle(String name){
-    return Text("$name",style: TextStyle(
+    return Text("$name",style: GoogleFonts.balooBhai(
       fontSize: 15,
       fontWeight: FontWeight.bold,
       color: kPrimaryLightColor,
@@ -91,7 +90,7 @@ class _VechicleCardState extends State<VechicleCard> {
     ));
   }
   Text lowertextstyle(String text){
-    return  Text("$text",style: TextStyle(
+    return  Text("$text",style: GoogleFonts.balooBhai(
       fontSize: 15,
       fontWeight: FontWeight.bold,
       color:kPrimaryColor ,
@@ -103,7 +102,7 @@ class _VechicleCardState extends State<VechicleCard> {
         Expanded(
           child: Column(
             children: [
-              uppertextstyle("$uppertext1"),
+              uppertextstyle("$uppertext1",),
               Expanded(child: lowertextstyle("$lowertext1")),
             ],
           ),
