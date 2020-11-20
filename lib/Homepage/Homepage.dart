@@ -30,6 +30,7 @@ class e_counter extends StatefulWidget {
 }
 
 class _e_counterState extends State<e_counter> {
+  static final String customAppThemeId = 'custom_theme';
 
 
   ScrollController _scrollController = new ScrollController();
@@ -309,12 +310,30 @@ class _e_counterState extends State<e_counter> {
                             0.1,
                       )),
                 ),
-                Text(
-                  "E-counter Nepal",
-                  style: TextStyle(
-                      fontSize: 20,
+                InkWell(
+                  onTap: (){
 
-                      color: Colors.black54),
+
+
+                      kPrimaryColor=colorlist[cindex];
+                      if(cindex<colorlist.length-1){
+                      cindex=cindex+1;}
+                      else {
+                        cindex=0;
+                      }
+                      runApp(
+
+
+                          MyApp());
+
+                  },
+                  child: Text(
+                    "E-counter Nepal",
+                    style: TextStyle(
+                        fontSize: 20,
+
+                        color: Colors.black54),
+                  ),
                 ),
                 Expanded(
                   child: new Container(
