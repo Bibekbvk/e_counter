@@ -34,19 +34,17 @@ class MyApp extends StatelessWidget {
         } else {
           Brightness platformBrightness =
               SchedulerBinding.instance.window.platformBrightness;
-          if (platformBrightness == Brightness.dark) {
-            controller.addTheme(customAppTheme());
+          controller.addTheme(customAppTheme());
+
             controller.setTheme('custom_theme');
-          } else {
-            controller.setTheme('light');
-          }
-          controller.forgetSavedTheme();
+
+
         }
       },
       themes: <AppTheme>[
         AppTheme.light(id: 'light'),
         AppTheme.dark(id: 'dark'),
-        AppTheme.purple(id:'purple'),
+
       ],
       child: ThemeConsumer(
         child: Builder(
