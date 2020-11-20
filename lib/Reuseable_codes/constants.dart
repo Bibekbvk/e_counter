@@ -1,8 +1,8 @@
 import 'package:e_counter/Reuseable_codes/sizeconfig.dart';
 import 'package:flutter/material.dart';
-Color AppColor = Colors.blue[900];
-Color kPrimaryColor =Colors.blue[900];
-const kPrimaryLightColor = Color(0xFFFFECDF);
+Color AppColor = Colors.deepPurple;
+Color kPrimaryColor =Colors.purple[700];
+Color kPrimaryLightColor = Colors.purple[400];
 const kPrimaryGradientColor = LinearGradient(
   begin: Alignment.topLeft,
   end: Alignment.bottomRight,

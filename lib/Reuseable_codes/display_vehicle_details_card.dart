@@ -60,10 +60,12 @@ class _VechicleCardState extends State<VechicleCard> {
       padding:  EdgeInsets.fromLTRB(30,20,30,20),
       child: Container(
         height: MediaQuery.of(context).size.height*cardheight,
-        decoration: BoxDecoration(
+        decoration: BoxDecoration( color: Colors.white,
           borderRadius: BorderRadius.circular(20),
 
-          gradient: kPrimaryGradientColor,
+
+          border:
+          Border.all(width: 1.3,color: Colors.purple[900]),
           boxShadow: [
             BoxShadow(
               color: Colors.grey.withOpacity(0.5),
@@ -84,7 +86,7 @@ class _VechicleCardState extends State<VechicleCard> {
     return Text("$name",style: TextStyle(
       fontSize: 15,
       fontWeight: FontWeight.bold,
-      color: Colors.black,
+      color: kPrimaryLightColor,
       height: 1.5,
     ));
   }
@@ -92,7 +94,7 @@ class _VechicleCardState extends State<VechicleCard> {
     return  Text("$text",style: TextStyle(
       fontSize: 15,
       fontWeight: FontWeight.bold,
-      color: Colors.black,
+      color:kPrimaryColor ,
       height: 1.5,
     ));}
   Row textColumn(String uppertext1, String lowertext1 , String uppertext2, String lowertext2){

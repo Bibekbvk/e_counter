@@ -19,8 +19,9 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:share/share.dart';
-import '../main.dart';
 
+
+import '../main.dart';
 //import 'package:cloud_firestore/cloud_firestore.dart';
 Color ticketcolor =AppColor;
 class e_counter extends StatefulWidget {
@@ -64,117 +65,60 @@ class _e_counterState extends State<e_counter> {
       ),
           )),
       body: SafeArea(
-        child: Column(
-          children: [
+        child: Container(
+          color: Colors.grey[300].withOpacity(0.3),
+          child: Column(
+            children: [
 
 
-            Expanded(
-              flex: 6,
-              child: Padding(
-                padding: EdgeInsets.fromLTRB(
-                    MediaQuery.of(context).size.width * 0.115,
-                    0,
-                    MediaQuery.of(context).size.width * 0.115,
-                    MediaQuery.of(context).size.width * 0.04),
-                child: Column(
-                  children: [
-                    Expanded(
-                      child: Padding(
-                        padding: EdgeInsets.fromLTRB(
-                            0,
-                            MediaQuery.of(context).size.height * 0.02,
-                            0,
-                            MediaQuery.of(context).size.height * 0.02),
-                        child: Row(
-                          children: [
-                            Expanded(
-                              child: InkWell(
-                                  child: Container(
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(5),
-                                      border:
-                                          Border.all(width: 2,color: AppColor),
-
-                                    ),
-                                    child: Column(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      children: [
-                                        Icon(FontAwesomeIcons.bus,
-                                            color: AppColor, size: 44),
-                                        Text(
-                                          'Book Ticket',
-                                          style: TextStyle(
-                                              color:AppColor,
-                                              fontWeight: FontWeight.bold),
-                                        )
-                                      ],
-                                    ),
-                                  ),
-                                  onTap: () {
-                                    Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                            builder: (context) => ChooseBooking()));
-                                  }),
-                            ),
-                            SizedBox(
-                              width: MediaQuery.of(context).size.width * 0.02,
-                            ),
-                            Expanded(
-                              child: InkWell(
-                                  child: Container(
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(5),
-                                      border:
-                                          Border.all(width: 2,color: AppColor),
-                                    ),
-                                    child: Column(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      children: [
-                                        Icon(FontAwesomeIcons.car,
-                                            color: AppColor, size: 44),
-                                        Text(
-                                          'Reserve',
-                                          style: TextStyle(
-                                              color: AppColor,
-                                              fontWeight: FontWeight.bold),
-                                        )
-                                      ],
-                                    ),
-                                  ),
-                                  onTap: () {
-                                    Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                            builder: (context) => ReserveList()));
-                                  }),
-                            ),
-                            SizedBox(
-                              width: MediaQuery.of(context).size.width * 0.02,
-                            ),
-                            Expanded(
-                              child: Container(
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(5),
-                                  border: Border.all(width: 2,color: AppColor),
-                                ),
+              Expanded(
+                flex: 6,
+                child: Padding(
+                  padding: EdgeInsets.fromLTRB(
+                      MediaQuery.of(context).size.width * 0.115,
+                      0,
+                      MediaQuery.of(context).size.width * 0.115,
+                      MediaQuery.of(context).size.width * 0.04),
+                  child: Column(
+                    children: [
+                      Expanded(
+                        child: Padding(
+                          padding: EdgeInsets.fromLTRB(
+                              0,
+                              MediaQuery.of(context).size.height * 0.02,
+                              0,
+                              MediaQuery.of(context).size.height * 0.02),
+                          child: Row(
+                            children: [
+                              Expanded(
                                 child: InkWell(
-                                    child: Column(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      children: [
-                                        Icon(Icons.contact_phone_outlined,
-                                            color: AppColor, size: 44),
-                                        Text(
-                                          'Contact us',
-                                          style: TextStyle(
-                                              color: AppColor,
-                                              fontWeight: FontWeight.bold),
-                                        )
-                                      ],
-                                    ),
+                                    child: containers(FontAwesomeIcons.bus,'Book Ticket'),
+                                    onTap: () {
+                                      Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) => ChooseBooking()));
+                                    }),
+                              ),
+                              SizedBox(
+                                width: MediaQuery.of(context).size.width * 0.02,
+                              ),
+                              Expanded(
+                                child: InkWell(
+                                    child: containers(FontAwesomeIcons.car,'Reserve'),
+                                    onTap: () {
+                                      Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) => ReserveList()));
+                                    }),
+                              ),
+                              SizedBox(
+                                width: MediaQuery.of(context).size.width * 0.02,
+                              ),
+                              Expanded(
+                                child: InkWell(
+                                    child:containers(Icons.contact_phone_outlined,'Contact us'),
                                     onTap: () {
                                       Navigator.push(
                                           context,
@@ -182,355 +126,253 @@ class _e_counterState extends State<e_counter> {
                                               builder: (context) => ContactUs()));
                                     }),
                               ),
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
                       ),
-                    ),
-                    Expanded(
-                      child: Padding(
-                        padding: EdgeInsets.fromLTRB(
-                            0,
-                            MediaQuery.of(context).size.height * 0.02,
-                            0,
-                            MediaQuery.of(context).size.height * 0.02),
-                        child: Row(
-                          children: [
-                            Expanded(
-                              child: InkWell(
-                                  child: Container(
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(5),
-                                      border:
-                                          Border.all(width: 2,color: AppColor),
-                                    ),
-                                    child: Column(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      children: [
-                                        Icon(Icons.app_registration,
-                                            color: AppColor, size: 44),
-                                        Text(
-                                          'Register',
-                                          style: TextStyle(
-                                              color: AppColor,
-                                              fontWeight: FontWeight.bold),
-                                        )
-                                      ],
-                                    ),
-                                  ),
-                                  onTap: () {
-                                    Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                            builder: (context) => Register()));
-                                  }),
-                            ),
-                            SizedBox(
-                              width: MediaQuery.of(context).size.width * 0.02,
-                            ),
-                            Expanded(
-                              child: InkWell(
-                                  child: Container(
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(5),
-                                      border:
-                                          Border.all(width: 2,color: AppColor),
-                                    ),
-                                    child: Column(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      children: [
-                                        Icon(Icons.money_off_outlined,
-                                            color: AppColor, size: 44),
-                                        Text(
-                                          'Faire',
-                                          style: TextStyle(
-                                              color: AppColor,
-                                              fontWeight: FontWeight.bold),
-                                        )
-                                      ],
-                                    ),
-                                  ),
-                                  onTap: () {
-                                    Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                            builder: (context) => Calculate()));
-                                  }),
-                            ),
-                            SizedBox(
-                              width: MediaQuery.of(context).size.width * 0.02,
-                            ),
-                            Expanded(
-                              child: InkWell(
-                                  child: Container(
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(5),
-                                      border:
-                                          Border.all(width: 2,color: AppColor),
-                                    ),
-                                    child: Column(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      children: [
-                                        Icon(Icons.celebration,
-                                            color: AppColor, size: 44),
-                                        Text(
-                                          'Offer',
-                                          style: TextStyle(
-                                              color: AppColor,
-                                              fontWeight: FontWeight.bold),
-                                        )
-                                      ],
-                                    ),
-                                  ),
-                                  onTap: () {
-                                    Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                            builder: (context) => offers()));
-                                  }),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                    Expanded(
-                      child: Padding(
-                        padding: EdgeInsets.fromLTRB(
-                            0,
-                            MediaQuery.of(context).size.height * 0.02,
-                            0,
-                            MediaQuery.of(context).size.height * 0.02),
-                        child: Row(
-                          children: [
-                            Expanded(
-                              child: InkWell(
-                                onTap: (){
-                                  Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) => MoversList()));
-                                },
-                                child: Container(
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(5),
-                                    border: Border.all(width: 2,color: AppColor),
-                                  ),
-                                  child: Column(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      Icon(FontAwesomeIcons.truckLoading,
-                                          color: AppColor, size: 44),
-                                      Text(
-                                        'Mover',
-                                        style: TextStyle(
-                                            color: AppColor,
-                                            fontWeight: FontWeight.bold),
-                                      )
-                                    ],
-                                  ),
-                                ),
-                              ),
-                            ),
-                            SizedBox(
-                              width: MediaQuery.of(context).size.width * 0.02,
-                            ),
-                            Expanded(
-                              child: InkWell(
-                                  child: Container(
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(5),
-                                      border:
-                                          Border.all(width: 2,color: AppColor),
-                                    ),
-                                    child: Column(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      children: [
-                                        Icon(FontAwesomeIcons.info,
-                                            color: AppColor, size: 44),
-                                        SizedBox(height: 20),
-                                        Text(
-                                          'About Us',
-                                          style: TextStyle(
-                                              color: AppColor,
-                                              fontWeight: FontWeight.bold),
-                                        )
-                                      ],
-                                    ),
-                                  ),
-                                  onTap: () {
-                                    Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                            builder: (context) => Aboutpage()));
-                                  }),
-                            ),
-                            SizedBox(
-                              width: MediaQuery.of(context).size.width * 0.02,),
-                            Expanded(
-                              child: InkWell(
-                                onTap: (){
-                                  getid() async{
-                                    SharedPreferences prefs = await SharedPreferences.getInstance();
-                                    //Return String
-                                    id = prefs.getStringList('listid');
-
-                                    if(id == null){
-
-
-
-
-                                        Flushbar(
-                                          backgroundColor: Colors.red[600],
-                                          flushbarPosition: FlushbarPosition.TOP,
-                                          flushbarStyle: FlushbarStyle.FLOATING,
-                                          title: "Booking Required",
-                                          message: "Ticket is not available ",
-                                          duration: Duration(seconds: 2),
-                                          margin: EdgeInsets.all(8),
-                                          borderRadius: 8,
-                                          blockBackgroundInteraction: true,
-                                          dismissDirection:
-                                          FlushbarDismissDirection.VERTICAL,
-                                        )..show(context);
-                                        return;
-
-                                      }
-
-                                    else{
-
-
+                      Expanded(
+                        child: Padding(
+                          padding: EdgeInsets.fromLTRB(
+                              0,
+                              MediaQuery.of(context).size.height * 0.02,
+                              0,
+                              MediaQuery.of(context).size.height * 0.02),
+                          child: Row(
+                            children: [
+                              Expanded(
+                                child: InkWell(
+                                    child:containers(Icons.app_registration,'Register'),
+                                    onTap: () {
                                       Navigator.push(
                                           context,
                                           MaterialPageRoute(
-                                              builder: (context) => Ticket()));}}
-                                  getid();
-
-                                },
-                                child: Container(
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(5),
-                                    border: Border.all(width: 2,color: ticketcolor),
-                                  ),
-                                  child: Column(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      Icon(Icons.feedback,
-                                          color: ticketcolor, size: 44),
-                                      Text(
-                                        'My Tickets',
-                                        style: TextStyle(
-                                            color: ticketcolor,
-                                            fontWeight: FontWeight.bold),
-                                      )
-                                    ],
-                                  ),
-                                ),
+                                              builder: (context) => Register()));
+                                    }),
                               ),
-                            ),
-                          ],
+                              SizedBox(
+                                width: MediaQuery.of(context).size.width * 0.02,
+                              ),
+                              Expanded(
+                                child: InkWell(
+                                    child:containers(Icons.money_off_outlined,'Faire'),
+                                    onTap: () {
+                                      Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) => Calculate()));
+                                    }),
+                              ),
+                              SizedBox(
+                                width: MediaQuery.of(context).size.width * 0.02,
+                              ),
+                              Expanded(
+                                child: InkWell(
+                                    child:containers(Icons.celebration,'Offer'),
+                                    onTap: () {
+                                      Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) => offers()));
+                                    }),
+                              ),
+                            ],
+                          ),
                         ),
                       ),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-            Expanded(
-              flex: 2,
-              child: Padding(
-                padding: const EdgeInsets.fromLTRB(0,10,0,0),
-                child: Container(
-                  height: MediaQuery.of(context).size.height*0.2,
-                  width: MediaQuery.of(context).size.width*1,
-                  child: ListView.builder(
-                      controller: _scrollController,
-                      itemCount: services.length,
-                      scrollDirection: Axis.horizontal,
-                      itemBuilder: (context, index){
-                        print(index);
-                        return Padding(
-                            padding:  EdgeInsets.fromLTRB(50, 10, 50, 10),
+                      Expanded(
+                        child: Padding(
+                          padding: EdgeInsets.fromLTRB(
+                              0,
+                              MediaQuery.of(context).size.height * 0.02,
+                              0,
+                              MediaQuery.of(context).size.height * 0.02),
+                          child: Row(
+                            children: [
+                              Expanded(
+                                child: InkWell(
+                                  onTap: (){
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) => MoversList()));
+                                  },
+                                  child:containers(FontAwesomeIcons.truckLoading,'Mover'),
+                                ),
+                              ),
+                              SizedBox(
+                                width: MediaQuery.of(context).size.width * 0.02,
+                              ),
+                              Expanded(
+                                child: InkWell(
+                                    child: containers(FontAwesomeIcons.info,'About Us'),
+                                    onTap: () {
+                                      Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) => Aboutpage()));
+                                    }),
+                              ),
+                              SizedBox(
+                                width: MediaQuery.of(context).size.width * 0.02,),
+                              Expanded(
+                                child: InkWell(
+                                  onTap: (){
+                                    getid() async{
+                                      SharedPreferences prefs = await SharedPreferences.getInstance();
+                                      //Return String
+                                      id = prefs.getStringList('listid');
 
-                            child: Center(
-                              child: Container(
-                                  height: MediaQuery.of(context).size.height*0.2,
-                                  width: MediaQuery.of(context).size.width*0.5,
-
-                                  decoration: BoxDecoration(gradient: kPrimaryGradientColor,borderRadius: BorderRadius.circular(20),),
-                                  child: Center(child: services[index])),
-                            )
-                        );
+                                      if(id == null){
 
 
 
-                      }
 
-                    /**children: [
+                                          Flushbar(
+                                            backgroundColor: Colors.red[600],
+                                            flushbarPosition: FlushbarPosition.TOP,
+                                            flushbarStyle: FlushbarStyle.FLOATING,
+                                            title: "Booking Required",
+                                            message: "Ticket is not available ",
+                                            duration: Duration(seconds: 2),
+                                            margin: EdgeInsets.all(8),
+                                            borderRadius: 8,
+                                            blockBackgroundInteraction: true,
+                                            dismissDirection:
+                                            FlushbarDismissDirection.VERTICAL,
+                                          )..show(context);
+                                          return;
+
+                                        }
+
+                                      else{
 
 
+                                        Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                                builder: (context) => Ticket()));}}
+                                    getid();
 
-                        /  SizedBox(width: MediaQuery.of(context).size.width*0.5,),
-                        Container(decoration: BoxDecoration(color: Colors.blue,borderRadius: BorderRadius.circular(20)),  height: MediaQuery.of(context).size.height*0.2,
-                        width: MediaQuery.of(context).size.width*0.5,child: Center(child: Text("fzs")),),
-                        SizedBox(width: MediaQuery.of(context).size.width*0.5,),
-                        Container(decoration: BoxDecoration(color: Colors.blue,borderRadius: BorderRadius.circular(20)),   height: MediaQuery.of(context).size.height*0.2,
-                        width: MediaQuery.of(context).size.width*0.5,child: Center(child: Text("R1")),),
-                        SizedBox(width: MediaQuery.of(context).size.width*0.5,),
-                        Container(decoration: BoxDecoration(color: Colors.blue,borderRadius: BorderRadius.circular(20)), height: MediaQuery.of(context).size.height*0.2,
-                        width: MediaQuery.of(context).size.width*0.5,child: Center(child: Text("Ducati")),),
-                        SizedBox(width: MediaQuery.of(context).size.width*0.5,),
-                        Container(decoration: BoxDecoration(color: Colors.blue,borderRadius: BorderRadius.circular(20)),height: MediaQuery.of(context).size.height*0.2,
-                        width: MediaQuery.of(context).size.width*0.5,child: Center(child: Text("Harley")),),
-                        ]**/
+                                  },
+                                  child:
+                                  containers(Icons.feedback,'My Tickets')
+
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
                 ),
               ),
-            ),
-            Row(children: <Widget>[
               Expanded(
-                child: new Container(
-                    margin: const EdgeInsets.only(
-                        left: 10.0, right: 10.0),
-                    child: Divider(
-                      thickness:
-                      MediaQuery.of(context).size.height *
-                          0.001,
-                      color: Colors.black54,
-                      height:
-                      MediaQuery.of(context).size.height *
-                          0.1,
-                    )),
-              ),
-              Text(
-                "E-counter Nepal",
-                style: TextStyle(
-                    fontSize: 20,
+                flex: 2,
+                child: Padding(
+                  padding: const EdgeInsets.fromLTRB(0,10,0,0),
+                  child: Container(
+                    height: MediaQuery.of(context).size.height*0.2,
+                    width: MediaQuery.of(context).size.width*1,
+                    child: ListView.builder(
+                        controller: _scrollController,
+                        itemCount: services.length,
+                        scrollDirection: Axis.horizontal,
+                        itemBuilder: (context, index){
+                          print(index);
+                          return Padding(
+                              padding:  EdgeInsets.fromLTRB(50, 10, 50, 10),
 
-                    color: Colors.black54),
-              ),
-              Expanded(
-                child: new Container(
-                    margin: EdgeInsets.only(
-                        left: 10.0, right: 10.0),
-                    child: Divider(
-                      color: Colors.black54,
-                      thickness:
-                      MediaQuery.of(context).size.height *
-                          0.001,
-                      height: 20,
-                    )),
-              ),
-            ]),
+                              child: Center(
+                                child: Container(
+
+                                    height: MediaQuery.of(context).size.height*0.2,
+                                    width: MediaQuery.of(context).size.width*0.5,
+
+                                    decoration: containerDecoration(),
+                                    child: Center(child: services[index])),
+                              )
+                          );
 
 
-          ],
+
+                        }
+
+                    ),
+                  ),
+                ),
+              ),
+              Row(children: <Widget>[
+                Expanded(
+                  child: new Container(
+                      margin: const EdgeInsets.only(
+                          left: 10.0, right: 10.0),
+                      child: Divider(
+                        thickness:
+                        MediaQuery.of(context).size.height *
+                            0.001,
+                        color: Colors.black54,
+                        height:
+                        MediaQuery.of(context).size.height *
+                            0.1,
+                      )),
+                ),
+                Text(
+                  "E-counter Nepal",
+                  style: TextStyle(
+                      fontSize: 20,
+
+                      color: Colors.black54),
+                ),
+                Expanded(
+                  child: new Container(
+                      margin: EdgeInsets.only(
+                          left: 10.0, right: 10.0),
+                      child: Divider(
+                        color: Colors.black54,
+                        thickness:
+                        MediaQuery.of(context).size.height *
+                            0.001,
+                        height: 20,
+                      )),
+                ),
+              ]),
+
+
+            ],
+          ),
         ),
       ),
     );
+  }
+  BoxDecoration containerDecoration(){
+    return BoxDecoration(color: Colors.white,
+
+      borderRadius: BorderRadius.circular(5),
+      border:
+      Border.all(width: 1.3,color: Colors.purple[900]),
+
+    );
+  }
+  Container containers(IconData icons,String text){
+    return Container(
+      decoration: containerDecoration(),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Icon(icons,
+              color: ticketcolor, size: 44),
+          Text(
+            text,
+            style: TextStyle(
+                color: ticketcolor,
+                fontWeight: FontWeight.bold),
+          )
+        ],
+      ),
+    );
+
+
   }
 
 }
