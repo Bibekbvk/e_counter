@@ -21,6 +21,7 @@ import 'package:indexed_list_view/indexed_list_view.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:share/share.dart';
 
+
 import '../main.dart';
 
 //import 'package:cloud_firestore/cloud_firestore.dart';
@@ -55,7 +56,9 @@ class _e_counterState extends State<e_counter> {
     );
 
     return Scaffold(
+
       appBar: AppBar(
+        backgroundColor: Colors.orange.withOpacity(0.8),
           title: Text(
         "E-counter Nepal",
       )),

@@ -10,5 +10,5 @@ void main() async{
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   runApp(new MaterialApp(
-      home: LogInPage(),
+      home: e_counter(),
     ));}
