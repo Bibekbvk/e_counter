@@ -29,6 +29,7 @@ class _BookState extends State<Book> {
 
   String dropdownValue = 'Hiace';
   String dayNight = 'Day';
+  Color color_ = Colors.blue.withOpacity(0.8);
 
   String zone;
   String firebasecollectionname;
@@ -102,6 +103,7 @@ class _BookState extends State<Book> {
                   validator: (val) =>
                   val.isEmpty ? "Please enter your name" : null,
                   decoration: InputDecoration(
+                      prefixIcon: Icon(Icons.person, color: color_,),
                       labelText: "Enter your full Name",
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(16),
@@ -114,6 +116,7 @@ class _BookState extends State<Book> {
                   validator: (val) =>
                   val.isEmpty ? "Please enter phone number" : null,
                   decoration: InputDecoration(
+                      prefixIcon: Icon(Icons.phone_enabled, color: color_,),
                       labelText: "Enter Contact Number",
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(16),
@@ -123,8 +126,9 @@ class _BookState extends State<Book> {
                 TextFormField(
                   controller: _serviceController,
                   validator: (val) =>
-                  val.isEmpty ? "Please enter  price" : null,
+                  val.isEmpty ? "Please select services" : null,
                   decoration: InputDecoration(
+                      prefixIcon: Icon(Icons.design_services, color: color_,),
                       labelText: "Service Selected",
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(16),
@@ -136,6 +140,7 @@ class _BookState extends State<Book> {
                   validator: (val) =>
                   val.isEmpty ? "Please enter your name" : null,
                   decoration: InputDecoration(
+                      prefixIcon: Icon(Icons.money, color: color_,),
                       labelText: "Pricing",
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(16),
@@ -148,6 +153,7 @@ class _BookState extends State<Book> {
                   validator: (val) =>
                   val.isEmpty ? "Please enter Location" : null,
                   decoration: InputDecoration(
+                      prefixIcon: Icon(Icons.location_city, color: color_,),
                       labelText: "To Location",
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(16),
@@ -160,6 +166,7 @@ class _BookState extends State<Book> {
                   validator: (val) =>
                   val.isEmpty ? "Please enter Location" : null,
                   decoration: InputDecoration(
+                      prefixIcon: Icon(Icons.location_city,color: color_,),
                       labelText: "From Location",
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(16),
@@ -179,6 +186,7 @@ class _BookState extends State<Book> {
                   controller: _dateController,
 
                   decoration: InputDecoration(
+                      prefixIcon: Icon(Icons.date_range,color: color_,),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(16),
                       ),

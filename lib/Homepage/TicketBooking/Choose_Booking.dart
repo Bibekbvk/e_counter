@@ -71,7 +71,7 @@ class _ChooseBookingState extends State<ChooseBooking> {
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              Text("From"),
+                              Text("From", style: TextStyle(fontSize: 15,color: Colors.black ,  fontWeight: FontWeight.bold),),
                               Padding(
                                 padding: EdgeInsets.fromLTRB(20,0,20,0),
                                 child: DropdownSearch<String>(
@@ -95,7 +95,7 @@ class _ChooseBookingState extends State<ChooseBooking> {
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              Text("To"),
+                              Text("To",  style: TextStyle(fontSize: 15, color: Colors.black, fontWeight: FontWeight.bold ),),
                               Padding(
                                 padding: EdgeInsets.fromLTRB(20,0,20,0),
                                 child: DropdownSearch<String>(

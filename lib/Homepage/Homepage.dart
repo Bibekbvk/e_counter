@@ -57,8 +57,6 @@ class _e_counterState extends State<e_counter> {
 
       appBar: AppBar(
 
-
-
           title: Center(
             child: Text(
         "E-counter Nepal",
