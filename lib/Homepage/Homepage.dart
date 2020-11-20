@@ -36,9 +36,8 @@ class _e_counterState extends State<e_counter> {
 
   final FirebaseMessaging _messaging = FirebaseMessaging();
   @override
-  List<Widget> services= [Text("Offer1", style: TextStyle(color: Colors.black),) ,Text("offers"),
-    FlatButton(onPressed: (){
-      print("Text Okayy");},child: Text("Offering"),)   ];
+  List<Widget> services= [Image.network("https://sites.google.com/site/busticketbookingofKfers/_/rsrc/1489062843285/home/online-bus-ticket-booking.gif"), Image.network("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRqJMqbFacvHMv1_tqVjGVcZ1DxEo7uQf1Q-g&usqp=CAU"),
+  Image.network("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQdUpin4uY98l5G_XN_zztinOEZLPQlpI8cog&usqp=CAU"), Image.network("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRqJMqbFacvHMv1_tqVjGVcZ1DxEo7uQf1Q-g&usqp=CAU") ];
 
   Widget build(BuildContext context) {
     Timer(
@@ -276,16 +275,15 @@ class _e_counterState extends State<e_counter> {
                         itemBuilder: (context, index){
                           print(index);
                           return Padding(
-                              padding:  EdgeInsets.fromLTRB(50, 10, 50, 10),
+                              padding:  EdgeInsets.fromLTRB(MediaQuery.of(context).size.width*0.3, 10, MediaQuery.of(context).size.width*0.3, 10),
 
                               child: Center(
                                 child: Container(
 
-                                    height: MediaQuery.of(context).size.height*0.2,
-                                    width: MediaQuery.of(context).size.width*0.5,
+
 
                                     decoration: containerDecoration(),
-                                    child: Center(child: services[index])),
+                                    child: services[index]),
                               )
                           );
 
