@@ -10,11 +10,13 @@ class VechicleCard extends StatefulWidget {
   final List<String> lower;
   final btn1onPressed;
   final String btn1title;
+  final btn2onPressed;
+  final String btn2title;
   final String title;
   final String imageurl;
 
 
-  const VechicleCard({Key key, this.upper, this.lower, this.btn1onPressed, this.btn1title, this.title, this.imageurl}) : super(key: key);
+  const VechicleCard({Key key, this.upper, this.lower, this.btn1onPressed, this.btn1title, this.title, this.imageurl, this.btn2onPressed, this.btn2title}) : super(key: key);
   _VechicleCardState createState() => _VechicleCardState();
 }
 
@@ -48,12 +50,37 @@ class _VechicleCardState extends State<VechicleCard> {
             flex: 2,
             child: textColumn(widget.upper[i],widget.lower[i],widget.upper[i+1],widget.lower[i+1])));
     }
-    text.add(Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: RaisedButton(
+    if(widget.btn2title!=null){
+      text.add(Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: RaisedButton(
 
-        onPressed: widget.btn1onPressed, child: Text("${widget.btn1title}",style: TextStyle(color: Colors.white,fontSize: ResponsiveFlutter.of(context).fontSize(1.8)),),),
-    ));
+              onPressed: widget.btn2onPressed, child: Text("${widget.btn2title}",style: TextStyle(color: Colors.white,fontSize: ResponsiveFlutter.of(context).fontSize(1.8)),),),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: RaisedButton(
+
+              onPressed: widget.btn1onPressed, child: Text("${widget.btn1title}",style: TextStyle(color: Colors.white,fontSize: ResponsiveFlutter.of(context).fontSize(1.8)),),),
+          ),
+        ],
+      ));
+    }
+    else{
+      text.add(Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: RaisedButton(
+
+          onPressed: widget.btn1onPressed, child: Text("${widget.btn1title}",style: TextStyle(color: Colors.white,fontSize: ResponsiveFlutter.of(context).fontSize(1.8)),),),
+      ));
+
+
+
+    }
+
 
     return Padding(
       padding:  EdgeInsets.fromLTRB(30,20,30,20),

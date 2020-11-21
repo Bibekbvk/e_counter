@@ -22,8 +22,9 @@ class BookModel {
   final String departure_date;
   final String vehicle_name;
   final String img_url;
+  final List seat_num;
 
-  BookModel({this.destination, this.price, this.startlocation, this.type, this.shift, this.breakfast, this.driverexp, this.lunch, this.offer, this.pickuploc, this.route, this.seat, this.subdriver, this.vehiclenumber, this.charger, this.tvmusicac, this.wifi,this.vehicle_id,this.departure_date,this.vehicle_name,this.img_url});
+  BookModel({this.destination, this.price, this.startlocation, this.type, this.shift, this.breakfast, this.driverexp, this.lunch, this.offer, this.pickuploc, this.route, this.seat, this.subdriver, this.vehiclenumber, this.charger, this.tvmusicac, this.wifi,this.vehicle_id,this.departure_date,this.vehicle_name,this.img_url,this.seat_num, });
 
 
 
@@ -51,7 +52,9 @@ class BookModel {
         vehicle_id:data['vehicle_id'],
         departure_date: data['departure_date'],
         vehicle_name:data['vehicle_name'],
-        img_url: data['img_url']);
+        img_url: data['img_url'],
+    seat_num: data['seat_number']);
+
 
 
   }

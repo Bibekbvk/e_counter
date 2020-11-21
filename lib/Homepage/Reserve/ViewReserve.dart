@@ -1,4 +1,5 @@
 import 'package:e_counter/Book.dart';
+import 'package:e_counter/Homepage/Fair.dart';
 import 'package:e_counter/Models/ReserveModel.dart';
 import 'package:e_counter/Reuseable_codes/display_vehicle_details_card.dart';
 import 'package:e_counter/database.dart';
@@ -45,6 +46,12 @@ class _ReserveListState extends State<ReserveList> {
                   context,
                   MaterialPageRoute(
                       builder: (context) => Book(reservemodel:reserveModel)));
+            },btn2title: "Price List",btn2onPressed: (){
+
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => Calculate()));
             },
             );
           });

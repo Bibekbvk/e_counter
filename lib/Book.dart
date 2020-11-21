@@ -52,7 +52,7 @@ class _BookState extends State<Book> {
   TextEditingController _from = TextEditingController();
   TextEditingController _to = TextEditingController();
   bool editable=true;
-
+  List seat;
   String dates;
   String vehicle_number;
   TextEditingController _To = TextEditingController();
@@ -61,6 +61,7 @@ class _BookState extends State<Book> {
   final _formKey = GlobalKey<FormState>();
   String vehicle_id;
   Widget build(BuildContext context) {
+    print(widget.usermodel.vehicle_id);
     if(widget.usermodel!=null){
       _serviceController.text="Booking Vehicle";
       _pricing.text=("${widget.usermodel.price}");
@@ -69,6 +70,7 @@ class _BookState extends State<Book> {
       _to.text=widget.usermodel.destination;
       _dateController.text=widget.usermodel.departure_date;
       vehicle_number=widget.usermodel.vehiclenumber;
+     seat =  widget.usermodel.seat_num;
       firebasecollectionname="User Booking";
 
       editable=true;
@@ -227,6 +229,14 @@ class _BookState extends State<Book> {
                   onPressed: () async{
                     if (_formKey.currentState.validate()) {
                       if(firebasecollectionname=='User Booking'){
+                        for(var each in widget.seatnumber){
+                          if(seat==null){
+                            seat=[widget.seatnumber];
+                          }
+                          else{
+                            seat.add(each);
+                          }
+                        }
                       if(id==null){
                         id=['${time.millisecond}${time.second}'];
                       }
@@ -235,6 +245,9 @@ class _BookState extends State<Book> {
                       }
                       SharedPreferences prefs = await SharedPreferences.getInstance();
                       prefs.setStringList('listid', id);
+                      FirebaseFirestore.instance.collection("booking").doc('${widget.usermodel.vehicle_id}').update({
+                        "seat_number":seat,
+                      });
                       FirebaseFirestore.instance.collection("${firebasecollectionname}").doc('${time.millisecond}${time.second}').set({
                         "contact": _ContactNo.text,
                         "full_name": _FullName.text,
@@ -243,7 +256,7 @@ class _BookState extends State<Book> {
                         "vehicle_id": vehicle_id,
                         "vehicle_number":vehicle_number,
                         "transaction_id":'${time.millisecond}${time.second}',
-                        "seat_number":'${widget.seatnumber}',
+                        "seat_number":widget.seatnumber,
                         'status':'pending',
                         'link':"https://scontent.xx.fbcdn.net/v/t1.15752-0/p280x280/125465745_3611747162218459_8121577149771972212_n.png?_nc_cat=110&ccb=2&_nc_sid=ae9488&_nc_ohc=HMallbbkjFsAX_kLAR-&_nc_ad=z-m&_nc_cid=0&_nc_ht=scontent.xx&oh=f6d8104a464cfc8d6aee9efe4ade7938&oe=5FDAD458",
 
@@ -271,7 +284,7 @@ class _BookState extends State<Book> {
                           "vehicle_id": vehicle_id,
                           "vehicle_number":vehicle_number,
                           "transaction_id":'${time.millisecond}${time.second}',
-                          "seat_number":'${widget.seatnumber}',
+                          "seat_number":widget.seatnumber,
                           'status':'pending',
 
                         }).then((response) {

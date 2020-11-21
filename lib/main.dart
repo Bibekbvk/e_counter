@@ -5,35 +5,29 @@ import 'package:e_counter/Reuseable_codes/constants.dart';
 import 'package:e_counter/Reuseable_codes/theme.dart';
 import 'package:e_counter/UserAuthentication/login.dart';
 import 'package:e_counter/UserAuthentication/seatBus.dart';
+import 'package:e_counter/UserAuthentication/seatHiace.dart';
 
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:theme_provider/theme_provider.dart';
 
 Widget checkwidget = LogInPage();
 void main() async{
-
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   SharedPreferences prefs = await SharedPreferences.getInstance();
-
   String check = prefs.getString('login');
   if(check=="yes"){
-
     checkwidget= e_counter();
   }
   else{
-    checkwidget=LogInPage();
+    checkwidget=e_counter();
   }
   print(check);
-
-
-  runApp(
-
-
-    MyApp());}
+  runApp(MyApp());}
 
 class MyApp extends StatelessWidget {
 
@@ -84,8 +78,10 @@ class MyApp extends StatelessWidget {
         scaffoldBackgroundColor: Colors.white,
         buttonColor: kPrimaryColor,
         dialogBackgroundColor: kPrimaryColor,
-      ),
-    );
+       textTheme: GoogleFonts.cherryCreamSodaTextTheme(
+
+       ),
+    ),);
   }
 
 }
