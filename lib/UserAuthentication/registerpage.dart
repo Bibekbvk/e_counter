@@ -266,7 +266,7 @@ class _RegisterPageState extends State<RegisterPage>
                         }
                       },
 
-                      obscureText: false,
+                      obscureText: true,
                       style: TextStyle(
                         color: Colors.black,
                       ),
@@ -284,6 +284,7 @@ class _RegisterPageState extends State<RegisterPage>
                                   ? Colors.blue
                                   : passwordcolor),
                           hintText: password,
+
                           prefixIcon: Icon(
                             FontAwesome.lock,
                             color: passwordcolor,

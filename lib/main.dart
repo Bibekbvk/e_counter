@@ -54,7 +54,7 @@ class MyApp extends StatelessWidget {
           builder: (themeContext) => MaterialApp(
             theme: ThemeProvider.themeOf(themeContext).data,
 
-            home: e_counter(),
+            home: LogInPage(),
           ),
         ),
       ),
