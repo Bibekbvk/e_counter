@@ -61,7 +61,6 @@ class _BookState extends State<Book> {
   final _formKey = GlobalKey<FormState>();
   String vehicle_id;
   Widget build(BuildContext context) {
-    print(widget.usermodel.vehicle_id);
     if(widget.usermodel!=null){
       _serviceController.text="Booking Vehicle";
       _pricing.text=("${widget.usermodel.price}");
@@ -245,6 +244,7 @@ class _BookState extends State<Book> {
                       }
                       SharedPreferences prefs = await SharedPreferences.getInstance();
                       prefs.setStringList('listid', id);
+
                       FirebaseFirestore.instance.collection("booking").doc('${widget.usermodel.vehicle_id}').update({
                         "seat_number":seat,
                       });
