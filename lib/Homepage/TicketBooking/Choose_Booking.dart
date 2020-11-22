@@ -1,5 +1,6 @@
 import 'package:dropdown_search/dropdown_search.dart';
 import 'package:e_counter/Homepage/TicketBooking/showvehicles.dart';
+import 'package:e_counter/Reuseable_codes/constants.dart';
 import 'package:e_counter/database.dart';
 import 'package:flushbar/flushbar.dart';
 
@@ -7,6 +8,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:responsive_flutter/responsive_flutter.dart';
 
 class ChooseBooking extends StatefulWidget {
   @override
@@ -72,7 +74,7 @@ class _ChooseBookingState extends State<ChooseBooking> {
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              Text("From", style:GoogleFonts.laila(fontSize: 18,color: Colors.deepPurpleAccent ,  fontWeight: FontWeight.bold),),
+                              Text("From", style:GoogleFonts.laila(fontSize: ResponsiveFlutter.of(context).fontSize(1.8),color: kPrimaryColor ,  fontWeight: FontWeight.bold),),
                               Padding(
                                 padding: EdgeInsets.fromLTRB(20,0,20,0),
                                 child: DropdownSearch<String>(
@@ -96,7 +98,7 @@ class _ChooseBookingState extends State<ChooseBooking> {
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              Text("To",  style: GoogleFonts.laila(fontSize: 18, color: Colors.deepPurpleAccent, fontWeight: FontWeight.bold ),),
+                              Text("To",  style: GoogleFonts.laila(fontSize:ResponsiveFlutter.of(context).fontSize(1.8),color: kPrimaryColor , fontWeight: FontWeight.bold ),),
                               Padding(
                                 padding: EdgeInsets.fromLTRB(20,0,20,0),
                                 child: DropdownSearch<String>(

@@ -1,5 +1,6 @@
 
 import 'package:e_counter/Homepage/Homepage.dart';
+import 'package:e_counter/Reuseable_codes/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 
@@ -38,7 +39,7 @@ class _ConfirmedPurchaseState extends State<ConfirmedPurchase> {
                           borderRadius: BorderRadius.circular(18.0),
                           side: BorderSide(color: Colors.red)
                       ),
-                      color: Colors.red,
+                      color: kPrimaryColor,
 
                       child: Padding(
                         padding: const EdgeInsets.all(8.0),

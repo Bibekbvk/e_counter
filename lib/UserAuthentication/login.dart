@@ -245,20 +245,7 @@ class _LogInPageState extends State<LogInPage> with TickerProviderStateMixin {
                                   if (result != null) {
 
                                     if (result is AuthModel){
-                                      Flushbar(
-                                        backgroundColor: Colors.green[600],
-                                        flushbarPosition:
-                                            FlushbarPosition.TOP,
-                                        flushbarStyle: FlushbarStyle.FLOATING,
-                                        message: "User Logged In",
-                                        duration: Duration(seconds: 2),
-                                        margin: EdgeInsets.all(8),
-                                        borderRadius: 8,
-                                        blockBackgroundInteraction: true,
-                                        dismissDirection:
-                                            FlushbarDismissDirection.VERTICAL,
-                                      )..show(context);
-                                      print(result.fullName);
+
 
                                       Navigator.push(
                                           context,

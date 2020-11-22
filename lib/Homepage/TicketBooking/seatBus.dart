@@ -17,16 +17,28 @@ class seatBus extends StatefulWidget {
 class _seatBusState extends State<seatBus> {
   Color color = Colors.red;
   List<Color> busColor;
-  var ticketListBus = ["Bus_ticket"];
+  List ticketss;
+  List seatnum = [" a","B1","B2","A1","A2","B3","B4","A3","A4","B5","B6","A5","A6","B7","B8","A7","A8","B9","B10","A9","A10","B11","B12","A11","A12","B13","B14","A13","A14","B15","B16","A15","A16","B17","B18","A","B"];
   @override
   void init(){
-    for(var l=0;l<37;l++){
+
+    for(var l=0;l<39;l++){
+
       if(busColor==null){
         busColor=[Colors.grey];
       }
       else{
         busColor.add(Colors.grey);}
     }
+    for(var each in seatnum){
+      if(widget.usermodel.seat_num!=null){
+      for(var seatn in widget.usermodel.seat_num){
+    if(each==seatn){
+      busColor[seatnum.indexOf(each)]=Colors.red;
+
+    }}
+
+    }}
 
   }
   Widget build(BuildContext context) {
@@ -51,9 +63,9 @@ class _seatBusState extends State<seatBus> {
                     Expanded(
                       child: Row(
                         children: [
-                          seatUi("A",35),
+                          seatUi(35),
                           SizedBox(width: 35),
-                          seatUi("B",36),
+                          seatUi(36),
                           SizedBox(width: 35),
                           Container(
                               decoration: BoxDecoration(
@@ -83,37 +95,37 @@ class _seatBusState extends State<seatBus> {
                           " Door Way    ",
                           style: TextStyle(fontSize: 24,     color: kPrimaryColor,),
                         ),
-                        seatUi("B1",1),
+                        seatUi(1),
                         SizedBox(width: 15),
-                        seatUi("B2",2),
+                        seatUi(2),
                       ]),
                     ),
                     SizedBox(
                       width: 2,
                       child: Container(height: 1, color: Colors.black54),
                     ),
-                    seatRow("A1",3,"A2",4,"B3",5,"B4",6),
+                    seatRow(3,4,5,6),
                     SizedBox(height: 10),
-                    seatRow("A3",7,"A4",8,"B5",9,"B6",10),
+                    seatRow(7,8,9,10),
                     SizedBox(height: 10),
-                    seatRow("A5",11,"A6",12,"B7",13,"B8",14),
+                    seatRow(11,12,13,14),
                     SizedBox(height: 10),
-                    seatRow("A7",15,"A8",16,"B9",17,"B10",18),
+                    seatRow(15,16,17,18),
                     SizedBox(height: 10),
-                    seatRow("A9",19,"A10",20,"B11",21,"B12",22),
+                    seatRow(19,20,21,22),
                     SizedBox(height: 10),
-                    seatRow("A11",23,"A12",24,"B13",25,"B14",26),
+                    seatRow(23,24,25,26),
                     SizedBox(height: 10),
-                    seatRow("A13",27,"A14",28,"B15",29,"B16",30),
+                    seatRow(27,28,29,30),
                     SizedBox(height: 10),
-                    seatRow("A15",31,"A16",32,"B17",33,"B18",34),
+                    seatRow(31,32,33,34),
                     SizedBox(height: 10),
                     Expanded(
                       child: RaisedButton(onPressed: (){
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => Book(usermodel: widget.usermodel,moversmodel: widget.moversmodel,reservemodel: widget.reservemodel,seatnumber: ticketListBus,)));
+                                builder: (context) => Book(usermodel: widget.usermodel,moversmodel: widget.moversmodel,reservemodel: widget.reservemodel,seatnumber: ticketss,)));
                         },child: Text("Select"),),
                     ),
                   ],
@@ -123,20 +135,29 @@ class _seatBusState extends State<seatBus> {
           ),
         ));
   }
-  Widget seatUi(String seat,int index) {
+  Widget seatUi(int index) {
     return Expanded(
       child: InkWell(
         onTap: (){
           setState(() {
+
             if(busColor[index]==Colors.grey){
               busColor[index] = Colors.green;
-              ticketListBus.add(seat);
-              print(ticketListBus);
+              if(ticketss==null){
+                ticketss=[seatnum[index]];
+              }
+              else{
+                ticketss.add(seatnum[index]);
+                print(ticketss);
+              }
+
             }
-            else{
+            else if(busColor[index]==Colors.green){
               busColor[index]=Colors.grey;
-              ticketListBus.remove(seat);
-            print(ticketListBus);
+
+              ticketss.remove(seatnum[index]);
+              print(ticketss);
+
             }
           });
         },
@@ -146,7 +167,7 @@ class _seatBusState extends State<seatBus> {
           width: 55,
           child: Center(
             child: Text(
-              "$seat",
+              "${seatnum[index]}",
               style: TextStyle(
                 fontSize: 20,
                 color: kPrimaryColor,
@@ -157,18 +178,18 @@ class _seatBusState extends State<seatBus> {
       ),
     );
   }
-  Widget seatRow(String left,int leftnum, String leftmid, int leftmidnum,String rightmid,int rightmidnum, String right,int rightnum){
+  Widget seatRow(int leftnum,int leftmidnum,int rightmidnum,int rightnum){
     return   Expanded(
       child: Row(children: [
-        seatUi(left,leftnum),
+        seatUi(leftnum),
         SizedBox(width: 5),
-        seatUi(leftmid,leftmidnum),
+        seatUi(leftmidnum),
         SizedBox(
           width: 35,
         ),
-        seatUi(rightmid ,rightmidnum),
+        seatUi(rightmidnum),
         SizedBox(width: 5),
-        seatUi(right,rightnum),
+        seatUi(rightnum),
       ]),
     );
   }
