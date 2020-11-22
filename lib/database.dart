@@ -33,11 +33,9 @@ class Database{
   Stream<List<UserModel>> getuserticketfirebase(String tickets) {
     var ref = FirebaseFirestore.instance.collection('User Booking').where('transaction_id',isEqualTo: id[int.parse(tickets)]);
     return ref.snapshots().map((val) => val.docs.map((docs) => UserModel.fromFireStore(docs)).toList());
-
-
-
-
-
-
+  }
+  Stream<List<MoversModel>> getReservepricelist() {
+    var ref = FirebaseFirestore.instance.collection('Movers');
+    return ref.snapshots().map((val) => val.docs.map((docs) => MoversModel.fromFireStore(docs)).toList());
   }
 }

@@ -110,7 +110,7 @@ class _VechicleCardState extends State<VechicleCard> {
   }
   Text uppertextstyle(String name){
     return Text("$name",style: GoogleFonts.balooBhai(
-      fontSize: 15,
+    fontSize: ResponsiveFlutter.of(context).fontSize(1.8),
       fontWeight: FontWeight.bold,
       color: kPrimaryLightColor,
       height: 1.5,
@@ -118,8 +118,7 @@ class _VechicleCardState extends State<VechicleCard> {
   }
   Text lowertextstyle(String text){
     return  Text("$text",style: GoogleFonts.balooBhai(
-      fontSize: 15,
-      fontWeight: FontWeight.bold,
+    fontSize: ResponsiveFlutter.of(context).fontSize(1.7)  ,    fontWeight: FontWeight.bold,
       color:kPrimaryColor ,
       height: 1.5,
     ));}

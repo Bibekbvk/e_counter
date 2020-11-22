@@ -23,6 +23,7 @@ class _seatHiaceState extends State<seatHiace> {
   List<Color> sumoColor;
   List<Color> busColor;
   var ticketListHiace = ["Hiace_ticket"];
+  List seatnum = ["a","A","B","1","2","3","4","5","6","7","8","9","10","11","12","13"];
 
   @override
 
@@ -34,6 +35,15 @@ class _seatHiaceState extends State<seatHiace> {
       else{
         hiaceColor.add(Colors.grey);}
     }
+    for(var each in seatnum){
+      if(widget.usermodel.seat_num!=null){
+        for(var seatn in widget.usermodel.seat_num){
+          if(each==seatn){
+            hiaceColor[seatnum.indexOf(each)]=Colors.red;
+
+          }}
+
+      }}
 
 
 
@@ -153,13 +163,10 @@ class _seatHiaceState extends State<seatHiace> {
               ticketListHiace.add(seat);
               print(ticketListHiace);
               hiaceColor[index] = Colors.green;}
-            else{
+            else if(hiaceColor[index]==Colors.green){
                  ticketListHiace.remove(seat);
                  print(ticketListHiace);
               hiaceColor[index]=Colors.grey;
-
-
-
             }
           });
         },

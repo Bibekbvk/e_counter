@@ -14,6 +14,7 @@ import 'package:e_counter/UserAuthentication/login.dart';
 import 'package:flushbar/flushbar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:responsive_flutter/responsive_flutter.dart';
 import 'About.dart';
 import '../Book.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -324,7 +325,7 @@ class _e_counterState extends State<e_counter> {
                   },
                   child: Text(
                     "E-counter Nepal",
-                    style: TextStyle(fontSize: 20, color: Colors.black54),
+                    style: TextStyle(color: Colors.black54,fontSize:ResponsiveFlutter.of(context).fontSize(3.5)),
                   ),
                 ),
                 Expanded(
@@ -361,7 +362,7 @@ class _e_counterState extends State<e_counter> {
           Icon(icons, color: kPrimaryColor, size: 44),
           Text(
             text,
-            style: TextStyle(color: kPrimaryColor, fontWeight: FontWeight.bold),
+            style: TextStyle(color: kPrimaryColor, fontWeight: FontWeight.bold,fontSize:ResponsiveFlutter.of(context).fontSize(1.8)),
           )
         ],
       ),

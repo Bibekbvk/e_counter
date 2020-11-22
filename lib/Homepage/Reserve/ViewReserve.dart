@@ -1,5 +1,6 @@
 import 'package:e_counter/Book.dart';
 import 'package:e_counter/Homepage/Fair.dart';
+import 'package:e_counter/Homepage/Reserve/reserve_price_list.dart';
 import 'package:e_counter/Models/ReserveModel.dart';
 import 'package:e_counter/Reuseable_codes/display_vehicle_details_card.dart';
 import 'package:e_counter/database.dart';
@@ -37,7 +38,8 @@ class _ReserveListState extends State<ReserveList> {
             String currentlocation=snapshot.data[index].currentlocation;
             String type=snapshot.data[index].type;
             String vehicle_id=snapshot.data[index].vehicle_id;
-            ReserveModel reserveModel = ReserveModel(availability: availability,chargingwifiac: chargingwifiac,driver: driver,driverexperience: driverexperience,price: price,seatcapacity: seatcapacity,currentlocation: currentlocation,type: type,vehicle_id: vehicle_id);
+            List price_list=snapshot.data[index].price_list;
+            ReserveModel reserveModel = ReserveModel(availability: availability,chargingwifiac: chargingwifiac,driver: driver,driverexperience: driverexperience,price: price,seatcapacity: seatcapacity,currentlocation: currentlocation,type: type,vehicle_id: vehicle_id,price_list: price_list);
 
             print("$availability +$chargingwifiac,$currentlocation,$driverexperience,$price,$seatcapacity");
             return VechicleCard(upper: ["Availability","Charging/Wifi/AC","Driver","Driver Experience","Price","Seat Capacity","Current Location","Type"],lower: ["$availability","$chargingwifiac","$driver","$driverexperience","$price","$seatcapacity","$currentlocation","$type"],btn1title: "Book",title: "Reserve",imageurl: "car.png",btn1onPressed:(){
@@ -51,7 +53,7 @@ class _ReserveListState extends State<ReserveList> {
               Navigator.push(
                   context,
                   MaterialPageRoute(
-                      builder: (context) => Calculate()));
+                      builder: (context) => ReservePriceList(model:reserveModel)));
             },
             );
           });
