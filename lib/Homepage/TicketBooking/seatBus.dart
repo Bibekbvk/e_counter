@@ -3,6 +3,7 @@ import 'package:e_counter/Models/ReserveModel.dart';
 import 'package:e_counter/Models/book_model.dart';
 import 'package:e_counter/Models/movers_model.dart';
 import 'package:e_counter/Reuseable_codes/constants.dart';
+import 'package:flushbar/flushbar.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -122,10 +123,36 @@ class _seatBusState extends State<seatBus> {
                     SizedBox(height: 10),
                     Expanded(
                       child: RaisedButton(onPressed: (){
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => Book(usermodel: widget.usermodel,moversmodel: widget.moversmodel,reservemodel: widget.reservemodel,seatnumber: ticketss,)));
+                        if(ticketss.length<=1){
+                          Flushbar(
+                            backgroundColor: Colors.red[600],
+                            flushbarPosition:
+                            FlushbarPosition.TOP,
+                            flushbarStyle:
+                            FlushbarStyle.FLOATING,
+                            title: "Booking Required",
+                            message: "Ticket is not available ",
+                            duration: Duration(seconds: 2),
+                            margin: EdgeInsets.all(8),
+                            borderRadius: 8,
+                            blockBackgroundInteraction: true,
+                            dismissDirection:
+                            FlushbarDismissDirection
+                                .VERTICAL,
+                          )
+                            ..show(context);
+                          return;
+                        }
+                        else {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) =>
+                                      Book(usermodel: widget.usermodel,
+                                        moversmodel: widget.moversmodel,
+                                        reservemodel: widget.reservemodel,
+                                        seatnumber: ticketss,)));
+                        }
                         },child: Text("Select"),),
                     ),
                   ],
@@ -141,25 +168,25 @@ class _seatBusState extends State<seatBus> {
         onTap: (){
           setState(() {
 
-            if(busColor[index]==Colors.grey){
-              busColor[index] = Colors.green;
-              if(ticketss==null){
-                ticketss=[seatnum[index]];
+
+              if (busColor[index] == Colors.grey) {
+                busColor[index] = Colors.green;
+                if (ticketss == null) {
+                  ticketss = [seatnum[index]];
+                }
+                else {
+                  ticketss.add(seatnum[index]);
+                  print(ticketss);
+                }
               }
-              else{
-                ticketss.add(seatnum[index]);
+              else if (busColor[index] == Colors.green) {
+                busColor[index] = Colors.grey;
+
+                ticketss.remove(seatnum[index]);
                 print(ticketss);
               }
-
             }
-            else if(busColor[index]==Colors.green){
-              busColor[index]=Colors.grey;
-
-              ticketss.remove(seatnum[index]);
-              print(ticketss);
-
-            }
-          });
+          );
         },
         child: Container(
           decoration: BoxDecoration(border: Border.all(color: busColor[index], width: 3),borderRadius: BorderRadius.circular(10)),

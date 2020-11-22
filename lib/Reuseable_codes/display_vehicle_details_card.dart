@@ -30,12 +30,11 @@ class _VechicleCardState extends State<VechicleCard> {
         child: Text("${widget.title}",style: TextStyle(color: Colors.black.withOpacity(0.6),fontWeight: FontWeight.bold,fontSize: ResponsiveFlutter.of(context).fontSize(2)),),
       ),
     ),
-      Expanded(
-        flex: 3,
-        child: Padding(
-          padding: EdgeInsets.fromLTRB(20,0,20,0),
-          child: ClipRRect(borderRadius: BorderRadius.circular(8.0),   child: Image.network("${widget.imageurl}")),
-        ),
+      Padding(
+        padding: EdgeInsets.fromLTRB(20,0,20,0),
+        child: Container(height: MediaQuery.of(context).size.height*0.2,
+          width: MediaQuery.of(context).size.width*0.7,
+          child: ClipRRect(borderRadius: BorderRadius.circular(20), child: Image.network("${widget.imageurl}", fit: BoxFit.fill,)), ),
       ),
       ] ;
 

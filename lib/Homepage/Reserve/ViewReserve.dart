@@ -38,11 +38,12 @@ class _ReserveListState extends State<ReserveList> {
             String currentlocation=snapshot.data[index].currentlocation;
             String type=snapshot.data[index].type;
             String vehicle_id=snapshot.data[index].vehicle_id;
+            String img_url=snapshot.data[index].image;
             List price_list=snapshot.data[index].price_list;
-            ReserveModel reserveModel = ReserveModel(availability: availability,chargingwifiac: chargingwifiac,driver: driver,driverexperience: driverexperience,price: price,seatcapacity: seatcapacity,currentlocation: currentlocation,type: type,vehicle_id: vehicle_id,price_list: price_list);
+            ReserveModel reserveModel = ReserveModel(availability: availability,chargingwifiac: chargingwifiac,driver: driver,driverexperience: driverexperience,price: price,seatcapacity: seatcapacity,currentlocation: currentlocation,type: type,vehicle_id: vehicle_id,price_list: price_list, image: img_url);
 
             print("$availability +$chargingwifiac,$currentlocation,$driverexperience,$price,$seatcapacity");
-            return VechicleCard(upper: ["Availability","Charging/Wifi/AC","Driver","Driver Experience","Price","Seat Capacity","Current Location","Type"],lower: ["$availability","$chargingwifiac","$driver","$driverexperience","$price","$seatcapacity","$currentlocation","$type"],btn1title: "Book",title: "Reserve",imageurl: "car.png",btn1onPressed:(){
+            return VechicleCard(upper: ["Availability","Charging/Wifi/AC","Driver","Driver Experience","Price","Seat Capacity","Current Location","Type"],lower: ["$availability","$chargingwifiac","$driver","$driverexperience","$price","$seatcapacity","$currentlocation","$type"],btn1title: "Book",title: "Reserve",imageurl: "$img_url",btn1onPressed:(){
 
               Navigator.push(
                   context,

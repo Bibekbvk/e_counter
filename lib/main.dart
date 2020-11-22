@@ -10,7 +10,6 @@ import 'package:flutter/scheduler.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:theme_provider/theme_provider.dart';
-
 Widget checkwidget = LogInPage();
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
