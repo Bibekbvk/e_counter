@@ -32,7 +32,7 @@ class _VechicleCardState extends State<VechicleCard> {
         flex: 3,
         child: Padding(
           padding: EdgeInsets.fromLTRB(20,0,20,0),
-          child: ClipRRect(borderRadius: BorderRadius.circular(8.0),   child: Image.network("${widget.imageurl}")),
+          child: ClipRRect(borderRadius: BorderRadius.circular(8.0),   child: Image.network("${widget.imageurl}", fit: BoxFit.fill,), ),
         ),
       ),
       ] ;
