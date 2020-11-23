@@ -1,9 +1,10 @@
 import 'package:e_counter/Book.dart';
+import 'package:e_counter/Homepage/TicketBooking/seatBus.dart';
+import 'package:e_counter/Homepage/TicketBooking/seatHiace.dart';
+import 'package:e_counter/Homepage/TicketBooking/seatSumo.dart';
 import 'package:e_counter/Models/book_model.dart';
 import 'package:e_counter/Reuseable_codes/display_vehicle_details_card.dart';
-import 'package:e_counter/UserAuthentication/seatBus.dart';
-import 'package:e_counter/UserAuthentication/seatHiace.dart';
-import 'package:e_counter/UserAuthentication/seatSumo.dart';
+
 
 import 'package:flutter/material.dart';
 

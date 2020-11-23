@@ -2,12 +2,11 @@ import 'package:flutter/material.dart';
 List<Color> colorlist = [
   Colors.red,
   Colors.pink,
-  Colors.deepOrangeAccent,
   Colors.indigo,
   Colors.teal,
-  Colors.green,
   Colors.deepOrange,
   Colors.deepPurple,
+  Colors.tealAccent
 
 ];
 int cindex = 0;

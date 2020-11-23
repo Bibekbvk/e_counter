@@ -6,7 +6,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'package:firebase_image/firebase_image.dart';
 
 class Register extends StatefulWidget {
   @override
@@ -21,7 +20,7 @@ class _RegisterState extends State<Register> {
   TextEditingController _ServiceLocation = TextEditingController();
   TextEditingController _SeactCapacity = TextEditingController();
   Color color_ = Colors.deepPurple.withOpacity(0.8);
-  var firestoreDb = Firestore.instance.collection("app").snapshots();
+  var firestoreDb = FirebaseFirestore.instance.collection("app").snapshots();
   final _formKey = GlobalKey<FormState>();
   Widget build(BuildContext context) {
     return Scaffold(
