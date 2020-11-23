@@ -28,7 +28,9 @@ class _seatHiaceState extends State<seatHiace> {
   @override
 
   void init(){
-    for(var i=0;i<16;i++){
+    print("${widget.usermodel.seat_num}seaatt");
+
+    for(var i=0;i<20;i++){
       if(hiaceColor==null){
         hiaceColor=[Colors.grey];
       }
@@ -39,7 +41,7 @@ class _seatHiaceState extends State<seatHiace> {
       if(widget.usermodel.seat_num!=null){
         for(var seatn in widget.usermodel.seat_num){
           if(each==seatn){
-            hiaceColor[seatnum.indexOf(each)]=Colors.red;
+            hiaceColor[seatnum.indexOf(each)+1]=Colors.red;
 
           }}
 

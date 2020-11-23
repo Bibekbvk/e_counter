@@ -125,7 +125,7 @@ class _ChooseBookingState extends State<ChooseBooking> {
 
                           Expanded(
                             child: Padding(
-                              padding: EdgeInsets.fromLTRB(20,10,20,10),
+                              padding: EdgeInsets.fromLTRB(20,10,20,5),
                               child: DropdownSearch<String>(
                                   mode: Mode.MENU,
                                   label: "Vehicle Type",
@@ -141,7 +141,7 @@ class _ChooseBookingState extends State<ChooseBooking> {
                           ),
                           Expanded(
                             child: Padding(
-                              padding: EdgeInsets.fromLTRB(20,10,20,10),
+                              padding: EdgeInsets.fromLTRB(20,0,20,0),
                               child: TextFormField(
                                 decoration: new InputDecoration(
                                   labelText: "Departure Date",
