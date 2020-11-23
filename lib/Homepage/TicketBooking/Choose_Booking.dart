@@ -39,279 +39,296 @@ class _ChooseBookingState extends State<ChooseBooking> {
 
   Widget build(BuildContext context) {
     return Scaffold(
+
       appBar: AppBar(
         title: Center(child: Text("Book Ticket"))
       ),
 
-      body: StreamBuilder(
-          stream:db.getdistrict(),
-          builder: (context, snapshot){
-            if(snapshot.hasData){
-              for(var each in snapshot.data[0].district){
-                if(district!=null){
-                  district.add(each.toString());}
-                else{
-                  district=[each.toString()];
-                }
-              }
-              for(var each in snapshot.data[0].vehicles){
-                if(vehicletype!=null){
-                  vehicletype.add(each.toString());}
-                else{
-                  vehicletype=[each.toString()];
-                }
-              }
+
+      body: Stack(
+
+        children: [
+          Container(
+      child: Positioned(
+      bottom: MediaQuery.of(context).size.width*(0.01),
+        left: 0,
+        right: 0,
+        child: Image.network("https://github.com/abuanwar072/Flutter-Day-and-Night-Mood-Animation/blob/master/assets/images/land_tree_dark.png?raw=true", fit: BoxFit.fill,)),
+    ),
 
 
-              return Form(
-                key: _formKey,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Row(
+
+          StreamBuilder(
+              stream:db.getdistrict(),
+              builder: (context, snapshot){
+                if(snapshot.hasData){
+                  for(var each in snapshot.data[0].district){
+                    if(district!=null){
+                      district.add(each.toString());}
+                    else{
+                      district=[each.toString()];
+                    }
+                  }
+                  for(var each in snapshot.data[0].vehicles){
+                    if(vehicletype!=null){
+                      vehicletype.add(each.toString());}
+                    else{
+                      vehicletype=[each.toString()];
+                    }
+                  }
+
+
+                  return Form(
+                    key: _formKey,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Expanded(
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Text("From", style:GoogleFonts.laila(fontSize: ResponsiveFlutter.of(context).fontSize(1.8),color: kPrimaryColor ,  fontWeight: FontWeight.bold),),
-                              Padding(
-                                padding: EdgeInsets.fromLTRB(20,0,20,0),
-                                child: DropdownSearch<String>(
-                                    mode: Mode.MENU,
-                                    showSelectedItem: true,
-                                    items:  district,
-                                    validator: (val) =>
-                                    val.isEmpty ? "Please  select the Vehicletype " : null,
+                        Row(
+                          children: [
+                            Expanded(
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Text("From", style:GoogleFonts.laila(fontSize: ResponsiveFlutter.of(context).fontSize(1.8),color: kPrimaryColor ,  fontWeight: FontWeight.bold),),
+                                  Padding(
+                                    padding: EdgeInsets.fromLTRB(20,0,20,0),
+                                    child: DropdownSearch<String>(
+                                        mode: Mode.MENU,
+                                        showSelectedItem: true,
+                                        items:  district,
+                                        validator: (val) =>
+                                        val.isEmpty ? "Please  select the Vehicletype " : null,
 
 
 
-                                    onChanged: (val){
-                                      selecteddistrict = val;
+                                        onChanged: (val){
+                                          selecteddistrict = val;
 
-                                    },
+                                        },
 
-                                    selectedItem: selecteddistrict),
-                              ),],),
+                                        selectedItem: selecteddistrict),
+                                  ),],),
+                            ),
+                            Expanded(
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Text("To",  style: GoogleFonts.laila(fontSize:ResponsiveFlutter.of(context).fontSize(1.8),color: kPrimaryColor , fontWeight: FontWeight.bold ),),
+                                  Padding(
+                                    padding: EdgeInsets.fromLTRB(20,0,20,0),
+                                    child: DropdownSearch<String>(
+                                        mode: Mode.MENU,
+                                        showSelectedItem: true,
+                                        items:district,
+                                        validator: (val) =>
+                                        val.isEmpty ? "Please  select the Vehicletype " : null,
+
+                                        onChanged: (val){
+                                          selecteddistrictdes = val;
+                                        },
+                                        selectedItem: selecteddistrictdes),
+                                  ),
+                                ],)
+                              ,
+                            ),
+                          ],
                         ),
-                        Expanded(
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Text("To",  style: GoogleFonts.laila(fontSize:ResponsiveFlutter.of(context).fontSize(1.8),color: kPrimaryColor , fontWeight: FontWeight.bold ),),
-                              Padding(
-                                padding: EdgeInsets.fromLTRB(20,0,20,0),
-                                child: DropdownSearch<String>(
-                                    mode: Mode.MENU,
-                                    showSelectedItem: true,
-                                    items:district,
-                                    validator: (val) =>
-                                    val.isEmpty ? "Please  select the Vehicletype " : null,
 
-                                    onChanged: (val){
-                                      selecteddistrictdes = val;
-                                    },
-                                    selectedItem: selecteddistrictdes),
+                        Padding(
+                          padding: EdgeInsets.fromLTRB(20,10,20,10),
+                          child: DropdownSearch<String>(
+                              mode: Mode.MENU,
+                              label: "Vehicle Type",
+                              validator: (val) =>
+                              val.isEmpty ? "Please  select the Vehicletype " : null,
+                              showSelectedItem: true,
+                              items:vehicletype,
+                              onChanged: (val){
+                                selectedvehicletype = val;
+                              },
+                              selectedItem: selectedvehicletype),
+                        ),  Padding(
+                          padding: EdgeInsets.fromLTRB(20,10,20,10),
+                          child: TextFormField(
+                            decoration: new InputDecoration(
+                              labelText: "Departure Date",
+                              focusedBorder: OutlineInputBorder(
+                                borderSide: BorderSide(color: Colors.deepPurpleAccent, width: 2.0),
                               ),
-                            ],)
-                          ,
+                              enabledBorder: OutlineInputBorder(
+                                borderSide: BorderSide(color: Colors.black12, width: 2.0),
+                              ),
+
+                            ),
+
+                            onTap: (){
+
+                              DatePicker.showDatePicker(context,
+                                  showTitleActions: true,
+                                  onChanged: (date) {}, onConfirm: (date) {
+
+                                    String dates =  "${date.year}/${date.month}/${date.day}";
+                                    _departure_dateController.text=dates
+                                    ;
+                                  });
+                            },
+                            controller: _departure_dateController,
+                            keyboardType: TextInputType.text,
+                            validator: (value) => value.isEmpty ? 'Date is required' : null,
+
+                          ),
+
                         ),
+                        Padding(
+                          padding: EdgeInsets.fromLTRB(20,0,20,0),
+                          child: DropdownSearch<String>(
+                            label: "Shift",
+                              mode: Mode.MENU,
+                              showSelectedItem: true,
+                              items: _day,
+
+                              validator: (val) =>
+                              val.isEmpty ? "Please  select the Time " : null,
+
+                              onChanged: (val){
+                                selectedday = val;
+                              },
+                              selectedItem: selectedday),
+                        ),
+                        RaisedButton(
+
+
+
+
+                          onPressed: (){
+
+
+
+                              if  (selectedvehicletype=="") {
+
+
+                                Flushbar(
+                                  backgroundColor: Colors.red[600],
+                                  flushbarPosition: FlushbarPosition.TOP,
+                                  flushbarStyle: FlushbarStyle.FLOATING,
+                                  title: "VehicleType Required",
+                                  message: "Please select VehicleType",
+                                  duration: Duration(seconds: 2),
+                                  margin: EdgeInsets.all(8),
+                                  borderRadius: 8,
+                                  blockBackgroundInteraction: true,
+                                  dismissDirection:
+                                  FlushbarDismissDirection.VERTICAL,
+                                )..show(context);
+                                return;
+
+                              }
+                              else if (selectedday==""){
+                                Flushbar(
+                                  backgroundColor: Colors.red[600],
+                                  flushbarPosition: FlushbarPosition.TOP,
+                                  flushbarStyle: FlushbarStyle.FLOATING,
+                                  title: "Day Required",
+                                  message: "Please select your date",
+                                  duration: Duration(seconds: 2),
+                                  margin: EdgeInsets.all(8),
+                                  borderRadius: 8,
+                                  blockBackgroundInteraction: true,
+                                  dismissDirection:
+                                  FlushbarDismissDirection.VERTICAL,
+                                )..show(context);
+                                return;
+
+
+                              }
+                              else if (_day==""){
+                                Flushbar(
+                                  backgroundColor: Colors.red[600],
+                                  flushbarPosition: FlushbarPosition.TOP,
+                                  flushbarStyle: FlushbarStyle.FLOATING,
+                                  title: "Shift Required",
+                                  message: "Please select your shift",
+                                  duration: Duration(seconds: 2),
+                                  margin: EdgeInsets.all(8),
+                                  borderRadius: 8,
+                                  blockBackgroundInteraction: true,
+                                  dismissDirection:
+                                  FlushbarDismissDirection.VERTICAL,
+                                )..show(context);
+                                return;
+
+
+                              }
+
+                              else if (selecteddistrict==""){
+                                Flushbar(
+                                  backgroundColor: Colors.red[600],
+                                  flushbarPosition: FlushbarPosition.TOP,
+                                  flushbarStyle: FlushbarStyle.FLOATING,
+                                  title: "District Required",
+                                  message: "Please enter your location",
+                                  duration: Duration(seconds: 2),
+                                  margin: EdgeInsets.all(8),
+                                  borderRadius: 8,
+                                  blockBackgroundInteraction: true,
+                                  dismissDirection:
+                                  FlushbarDismissDirection.VERTICAL,
+                                )..show(context);
+                                return;
+
+
+                              }
+                              else if (selecteddistrictdes==""){
+                                Flushbar(
+                                  backgroundColor: Colors.red[600],
+                                  flushbarPosition: FlushbarPosition.TOP,
+                                  flushbarStyle: FlushbarStyle.FLOATING,
+                                  title: "Destination Required",
+                                  message: "Please select your destination",
+                                  duration: Duration(seconds: 2),
+                                  margin: EdgeInsets.all(8),
+                                  borderRadius: 8,
+                                  blockBackgroundInteraction: true,
+                                  dismissDirection:
+                                  FlushbarDismissDirection.VERTICAL,
+                                )..show(context);
+                                return;
+
+
+                              }
+                              else  Navigator.push(
+                                  context,
+                                  MaterialPageRoute(builder: (context) => ShowVehicles(destination: selecteddistrictdes,startlocation: selecteddistrict,vehicletype:selectedvehicletype,departure_date: _departure_dateController.text,)),
+                                );
+
+
+
+
+
+                          },
+
+
+
+
+
+
+
+
+
+
+
+
+
+                          child: Text("Search", style: TextStyle(color: Colors.white),),
+
+                        )
                       ],
-                    ),
-
-                    Padding(
-                      padding: EdgeInsets.fromLTRB(20,10,20,10),
-                      child: DropdownSearch<String>(
-                          mode: Mode.MENU,
-                          label: "Vehicle Type",
-                          validator: (val) =>
-                          val.isEmpty ? "Please  select the Vehicletype " : null,
-                          showSelectedItem: true,
-                          items:vehicletype,
-                          onChanged: (val){
-                            selectedvehicletype = val;
-                          },
-                          selectedItem: selectedvehicletype),
-                    ),  Padding(
-                      padding: EdgeInsets.fromLTRB(20,10,20,10),
-                      child: TextFormField(
-                        decoration: new InputDecoration(
-                          labelText: "Departure Date",
-                          focusedBorder: OutlineInputBorder(
-                            borderSide: BorderSide(color: Colors.deepPurpleAccent, width: 2.0),
-                          ),
-                          enabledBorder: OutlineInputBorder(
-                            borderSide: BorderSide(color: Colors.black12, width: 2.0),
-                          ),
-
-                        ),
-
-                        onTap: (){
-
-                          DatePicker.showDatePicker(context,
-                              showTitleActions: true,
-                              onChanged: (date) {}, onConfirm: (date) {
-
-                                String dates =  "${date.year}/${date.month}/${date.day}";
-                                _departure_dateController.text=dates
-                                ;
-                              });
-                        },
-                        controller: _departure_dateController,
-                        keyboardType: TextInputType.text,
-                        validator: (value) => value.isEmpty ? 'Date is required' : null,
-
-                      ),
 
                     ),
-                    Padding(
-                      padding: EdgeInsets.fromLTRB(20,0,20,0),
-                      child: DropdownSearch<String>(
-                        label: "Shift",
-                          mode: Mode.MENU,
-                          showSelectedItem: true,
-                          items: _day,
-
-                          validator: (val) =>
-                          val.isEmpty ? "Please  select the Time " : null,
-
-                          onChanged: (val){
-                            selectedday = val;
-                          },
-                          selectedItem: selectedday),
-                    ),
-                    RaisedButton(
-
-
-
-
-                      onPressed: (){
-
-
-
-                          if  (selectedvehicletype=="") {
-
-
-                            Flushbar(
-                              backgroundColor: Colors.red[600],
-                              flushbarPosition: FlushbarPosition.TOP,
-                              flushbarStyle: FlushbarStyle.FLOATING,
-                              title: "VehicleType Required",
-                              message: "Please select VehicleType",
-                              duration: Duration(seconds: 2),
-                              margin: EdgeInsets.all(8),
-                              borderRadius: 8,
-                              blockBackgroundInteraction: true,
-                              dismissDirection:
-                              FlushbarDismissDirection.VERTICAL,
-                            )..show(context);
-                            return;
-
-                          }
-                          else if (selectedday==""){
-                            Flushbar(
-                              backgroundColor: Colors.red[600],
-                              flushbarPosition: FlushbarPosition.TOP,
-                              flushbarStyle: FlushbarStyle.FLOATING,
-                              title: "Day Required",
-                              message: "Please select your date",
-                              duration: Duration(seconds: 2),
-                              margin: EdgeInsets.all(8),
-                              borderRadius: 8,
-                              blockBackgroundInteraction: true,
-                              dismissDirection:
-                              FlushbarDismissDirection.VERTICAL,
-                            )..show(context);
-                            return;
-
-
-                          }
-                          else if (_day==""){
-                            Flushbar(
-                              backgroundColor: Colors.red[600],
-                              flushbarPosition: FlushbarPosition.TOP,
-                              flushbarStyle: FlushbarStyle.FLOATING,
-                              title: "Shift Required",
-                              message: "Please select your shift",
-                              duration: Duration(seconds: 2),
-                              margin: EdgeInsets.all(8),
-                              borderRadius: 8,
-                              blockBackgroundInteraction: true,
-                              dismissDirection:
-                              FlushbarDismissDirection.VERTICAL,
-                            )..show(context);
-                            return;
-
-
-                          }
-
-                          else if (selecteddistrict==""){
-                            Flushbar(
-                              backgroundColor: Colors.red[600],
-                              flushbarPosition: FlushbarPosition.TOP,
-                              flushbarStyle: FlushbarStyle.FLOATING,
-                              title: "District Required",
-                              message: "Please enter your location",
-                              duration: Duration(seconds: 2),
-                              margin: EdgeInsets.all(8),
-                              borderRadius: 8,
-                              blockBackgroundInteraction: true,
-                              dismissDirection:
-                              FlushbarDismissDirection.VERTICAL,
-                            )..show(context);
-                            return;
-
-
-                          }
-                          else if (selecteddistrictdes==""){
-                            Flushbar(
-                              backgroundColor: Colors.red[600],
-                              flushbarPosition: FlushbarPosition.TOP,
-                              flushbarStyle: FlushbarStyle.FLOATING,
-                              title: "Destination Required",
-                              message: "Please select your destination",
-                              duration: Duration(seconds: 2),
-                              margin: EdgeInsets.all(8),
-                              borderRadius: 8,
-                              blockBackgroundInteraction: true,
-                              dismissDirection:
-                              FlushbarDismissDirection.VERTICAL,
-                            )..show(context);
-                            return;
-
-
-                          }
-                          else  Navigator.push(
-                              context,
-                              MaterialPageRoute(builder: (context) => ShowVehicles(destination: selecteddistrictdes,startlocation: selecteddistrict,vehicletype:selectedvehicletype,departure_date: _departure_dateController.text,)),
-                            );
-
-
-
-
-
-                      },
-
-
-
-
-
-
-
-
-
-
-
-
-
-                      child: Text("Search", style: TextStyle(color: Colors.white),),
-
-                    )
-                  ],
-
-                ),
-              )
-              ;}else{return CircularProgressIndicator();}}
+                  )
+                  ;}else{return CircularProgressIndicator();}}
+          ),
+        ],
       ),
     );
   }

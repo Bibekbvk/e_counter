@@ -10,7 +10,6 @@ import 'package:e_counter/Models/movers_model.dart';
 
 class Database{
 
-
   Stream<List<BookModel>> getfirebase(String destination,String startlocation,String vehicletype,String departure_date) {
     print("$destination and $startlocation and $vehicletype and ${departure_date}");
     var ref = FirebaseFirestore.instance.collection('booking').where("destination",isEqualTo: "$destination").where("type",isEqualTo: "$vehicletype").where("departure_date",isEqualTo: "$departure_date").where("startlocation",isEqualTo: "$startlocation");
