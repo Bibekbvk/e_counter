@@ -294,7 +294,7 @@ class _ChooseBookingState extends State<ChooseBooking> {
                                 }
                                 else  Navigator.push(
                                     context,
-                                    MaterialPageRoute(builder: (context) => ShowVehicles(destination: selecteddistrictdes,startlocation: selecteddistrict,vehicletype:selectedvehicletype,departure_date: _departure_dateController.text,)),
+                                    MaterialPageRoute(builder: (context) => ShowVehicles(destination: selecteddistrictdes,startlocation: selecteddistrict,vehicletype:selectedvehicletype,departure_date: _departure_dateController.text,shift:selectedday)),
                                   );
 
 

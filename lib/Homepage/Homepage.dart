@@ -9,6 +9,7 @@ import 'package:e_counter/Homepage/Reserve/ViewReserve.dart';
 import 'package:e_counter/Homepage/TicketBooking/Choose_Booking.dart';
 import 'package:e_counter/Homepage/my_tickets.dart';
 import 'package:e_counter/Homepage/offers.dart';
+import 'package:e_counter/Homepage/rent.dart';
 import 'package:e_counter/Reuseable_codes/constants.dart';
 import 'package:e_counter/UserAuthentication/login.dart';
 import 'package:flushbar/flushbar.dart';
@@ -37,20 +38,57 @@ class _e_counterState extends State<e_counter> {
 
 
   }
-  List<Widget> services = [
-    Image.network(
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRqJMqbFacvHMv1_tqVjGVcZ1DxEo7uQf1Q-g&usqp=CAU"),
-    Image.network(
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQdUpin4uY98l5G_XN_zztinOEZLPQlpI8cog&usqp=CAU"),
-    Image.network(
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRqJMqbFacvHMv1_tqVjGVcZ1DxEo7uQf1Q-g&usqp=CAU")
-  ];
+
   Widget build(BuildContext context) {
+
     init();
+    List<Widget> services = [
+      InkWell(
+        onTap: (){
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) =>
+                      offers()));
+        },
+        child: Image.network(
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRqJMqbFacvHMv1_tqVjGVcZ1DxEo7uQf1Q-g&usqp=CAU"),
+      ),
+      InkWell(
+        onTap: (){
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) =>
+                      offers()));
+        },
+        child: Image.network(
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQdUpin4uY98l5G_XN_zztinOEZLPQlpI8cog&usqp=CAU"),
+      ),
+      InkWell(
+        onTap: (){
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) =>
+                      offers()));
+        },
+        child: Image.network(
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRqJMqbFacvHMv1_tqVjGVcZ1DxEo7uQf1Q-g&usqp=CAU"),
+      )
+    ];
     Timer(
       Duration(seconds: 2),
       () => _scrollController.animateTo(
         _scrollController.position.maxScrollExtent,
+        duration: Duration(seconds: 25),
+        curve: Curves.fastOutSlowIn,
+      ),
+    );
+    Timer(
+      Duration(seconds: 29),
+          () => _scrollController.animateTo(
+        _scrollController.position.minScrollExtent,
         duration: Duration(seconds: 25),
         curve: Curves.fastOutSlowIn,
       ),
@@ -64,296 +102,283 @@ class _e_counterState extends State<e_counter> {
         ),
       )),
       body: SafeArea(
-        child: Stack(
-
-          children: [
-            Container(
-
-              child: Positioned(
-                 bottom: MediaQuery.of(context).size.width*(0.4),
-                  left: 0,
-                  right: 0,
-                  child: Image.network("https://github.com/abuanwar072/Flutter-Day-and-Night-Mood-Animation/blob/master/assets/images/land_tree_dark.png?raw=true", fit: BoxFit.fill,)),
-            ),
-            Container(
-              color: Colors.grey[300].withOpacity(0.3),
-              child: Column(
-                children: [
-                  Expanded(
-                    flex: 6,
-                    child: Padding(
-                      padding: EdgeInsets.fromLTRB(
-                          MediaQuery.of(context).size.width * 0.115,
-                          0,
-                          MediaQuery.of(context).size.width * 0.115,
-                          MediaQuery.of(context).size.width * 0.04),
-                      child: Column(
-                        children: [
-                          Expanded(
-                            child: Padding(
-                              padding: EdgeInsets.fromLTRB(
-                                  0,
-                                  MediaQuery.of(context).size.height * 0.02,
-                                  0,
-                                  MediaQuery.of(context).size.height * 0.02),
-                              child: Row(
-                                children: [
-                                  Expanded(
-                                    child: InkWell(
-                                        child: containers(
-                                            FontAwesomeIcons.bus, 'Book Ticket'),
-                                        onTap: () {
-                                          Navigator.push(
-                                              context,
-                                              MaterialPageRoute(
-                                                  builder: (context) =>
-                                                      ChooseBooking()));
-                                        }),
-                                  ),
-                                  SizedBox(
-                                    width: MediaQuery.of(context).size.width * 0.02,
-                                  ),
-                                  Expanded(
-                                    child: InkWell(
-                                        child: containers(
-                                            FontAwesomeIcons.car, 'Reserve'),
-                                        onTap: () {
-                                          Navigator.push(
-                                              context,
-                                              MaterialPageRoute(
-                                                  builder: (context) =>
-                                                      ReserveList()));
-                                        }),
-                                  ),
-                                  SizedBox(
-                                    width: MediaQuery.of(context).size.width * 0.02,
-                                  ),
-                                  Expanded(
-                                    child: InkWell(
-                                        child: containers(
-                                            Icons.contact_phone_outlined,
-                                            'Contact us'),
-                                        onTap: () {
-                                          Navigator.push(
-                                              context,
-                                              MaterialPageRoute(
-                                                  builder: (context) =>
-                                                      ContactUs()));
-                                        }),
-                                  ),
-                                ],
+        child: Container(
+          color: Colors.grey[300].withOpacity(0.3),
+          child: Column(
+            children: [
+              Expanded(
+                flex: 6,
+                child: Padding(
+                  padding: EdgeInsets.fromLTRB(
+                      MediaQuery.of(context).size.width * 0.115,
+                      0,
+                      MediaQuery.of(context).size.width * 0.115,
+                      MediaQuery.of(context).size.width * 0.04),
+                  child: Column(
+                    children: [
+                      Expanded(
+                        child: Padding(
+                          padding: EdgeInsets.fromLTRB(
+                              0,
+                              MediaQuery.of(context).size.height * 0.02,
+                              0,
+                              MediaQuery.of(context).size.height * 0.02),
+                          child: Row(
+                            children: [
+                              Expanded(
+                                child: InkWell(
+                                    child: containers(
+                                        FontAwesomeIcons.bus, 'Book Ticket'),
+                                    onTap: () {
+                                      Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) =>
+                                                  ChooseBooking()));
+                                    }),
                               ),
-                            ),
-                          ),
-                          Expanded(
-                            child: Padding(
-                              padding: EdgeInsets.fromLTRB(
-                                  0,
-                                  MediaQuery.of(context).size.height * 0.02,
-                                  0,
-                                  MediaQuery.of(context).size.height * 0.02),
-                              child: Row(
-                                children: [
-                                  Expanded(
-                                    child: InkWell(
-                                        child: containers(
-                                            Icons.app_registration, 'Register'),
-                                        onTap: () {
-                                          Navigator.push(
-                                              context,
-                                              MaterialPageRoute(
-                                                  builder: (context) =>
-                                                      Register()));
-                                        }),
-                                  ),
-                                  SizedBox(
-                                    width: MediaQuery.of(context).size.width * 0.02,
-                                  ),
-                                  Expanded(
-                                    child: InkWell(
-                                        child: containers(
-                                            Icons.money_off_outlined, 'Faire'),
-                                        onTap: () {
-                                          Navigator.push(
-                                              context,
-                                              MaterialPageRoute(
-                                                  builder: (context) =>
-                                                      Calculate()));
-                                        }),
-                                  ),
-                                  SizedBox(
-                                    width: MediaQuery.of(context).size.width * 0.02,
-                                  ),
-                                  Expanded(
-                                    child: InkWell(
-                                        child: containers(
-                                            Icons.supervised_user_circle, 'Logout'),
-                                        onTap: () async {
-                                          SharedPreferences prefs =
-                                              await SharedPreferences.getInstance();
-                                          prefs.setString('login', "no");
-                                          Navigator.push(
-                                              context,
-                                              MaterialPageRoute(
-                                                  builder: (context) =>
-                                                      LogInPage()));
-                                        }),
-                                  ),
-                                ],
+                              SizedBox(
+                                width: MediaQuery.of(context).size.width * 0.02,
                               ),
-                            ),
-                          ),
-                          Expanded(
-                            child: Padding(
-                              padding: EdgeInsets.fromLTRB(
-                                  0,
-                                  MediaQuery.of(context).size.height * 0.02,
-                                  0,
-                                  MediaQuery.of(context).size.height * 0.02),
-                              child: Row(
-                                children: [
-                                  Expanded(
-                                    child: InkWell(
-                                      onTap: () {
-                                        Navigator.push(
-                                            context,
-                                            MaterialPageRoute(
-                                                builder: (context) =>
-                                                    MoversList()));
-                                      },
-                                      child: containers(
-                                          FontAwesomeIcons.truckLoading, 'Mover'),
-                                    ),
-                                  ),
-                                  SizedBox(
-                                    width: MediaQuery.of(context).size.width * 0.02,
-                                  ),
-                                  Expanded(
-                                    child: InkWell(
-                                        child: containers(
-                                            FontAwesomeIcons.info, 'About Us'),
-                                        onTap: () {
-                                          Navigator.push(
-                                              context,
-                                              MaterialPageRoute(
-                                                  builder: (context) =>
-                                                      Aboutpage()));
-                                        }),
-                                  ),
-                                  SizedBox(
-                                    width: MediaQuery.of(context).size.width * 0.02,
-                                  ),
-                                  Expanded(
-                                    child: InkWell(
-                                        onTap: () {
-                                          getid() async {
-                                            SharedPreferences prefs =
-                                                await SharedPreferences
-                                                    .getInstance();
-                                            //Return String
-                                            id = prefs.getStringList('listid');
-                                            if (id == null) {
-                                              Flushbar(
-                                                backgroundColor: Colors.red[600],
-                                                flushbarPosition:
-                                                    FlushbarPosition.TOP,
-                                                flushbarStyle:
-                                                    FlushbarStyle.FLOATING,
-                                                title: "Booking Required",
-                                                message: "Ticket is not available ",
-                                                duration: Duration(seconds: 2),
-                                                margin: EdgeInsets.all(8),
-                                                borderRadius: 8,
-                                                blockBackgroundInteraction: true,
-                                                dismissDirection:
-                                                    FlushbarDismissDirection
-                                                        .VERTICAL,
-                                              )..show(context);
-                                              return;
-                                            } else {
-                                              Navigator.push(
-                                                  context,
-                                                  MaterialPageRoute(
-                                                      builder: (context) =>
-                                                          Ticket()));
-                                            }
-                                          }
-
-                                          getid();
-                                        },
-                                        child: containers(
-                                            Icons.feedback, 'My Tickets')),
-                                  ),
-                                ],
+                              Expanded(
+                                child: InkWell(
+                                    child: containers(
+                                        FontAwesomeIcons.car, 'Reserve'),
+                                    onTap: () {
+                                      Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) =>
+                                                  ReserveList()));
+                                    }),
                               ),
-                            ),
+                              SizedBox(
+                                width: MediaQuery.of(context).size.width * 0.02,
+                              ),
+                              Expanded(
+                                child: InkWell(
+                                    child: containers(
+                                        Icons.contact_phone_outlined,
+                                        'Contact us'),
+                                    onTap: () {
+                                      Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) =>
+                                                  ContactUs()));
+                                    }),
+                              ),
+                            ],
                           ),
-                        ],
+                        ),
                       ),
-                    ),
+                      Expanded(
+                        child: Padding(
+                          padding: EdgeInsets.fromLTRB(
+                              0,
+                              MediaQuery.of(context).size.height * 0.02,
+                              0,
+                              MediaQuery.of(context).size.height * 0.02),
+                          child: Row(
+                            children: [
+                              Expanded(
+                                child: InkWell(
+                                    child: containers(
+                                        Icons.app_registration, 'Register'),
+                                    onTap: () {
+                                      Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) =>
+                                                  Register()));
+                                    }),
+                              ),
+                              SizedBox(
+                                width: MediaQuery.of(context).size.width * 0.02,
+                              ),
+                              Expanded(
+                                child: InkWell(
+                                    child: containers(
+                                        Icons.car_rental, 'Rent'),
+                                    onTap: () {
+                                      Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) =>
+                                                  RentList()));
+                                    }),
+                              ),
+                              SizedBox(
+                                width: MediaQuery.of(context).size.width * 0.02,
+                              ),
+                              Expanded(
+                                child: InkWell(
+                                    child: containers(
+                                        Icons.supervised_user_circle, 'Logout'),
+                                    onTap: () async {
+                                      SharedPreferences prefs =
+                                          await SharedPreferences.getInstance();
+                                      prefs.setString('login', "no");
+                                      Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) =>
+                                                  LogInPage()));
+                                    }),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                      Expanded(
+                        child: Padding(
+                          padding: EdgeInsets.fromLTRB(
+                              0,
+                              MediaQuery.of(context).size.height * 0.02,
+                              0,
+                              MediaQuery.of(context).size.height * 0.02),
+                          child: Row(
+                            children: [
+                              Expanded(
+                                child: InkWell(
+                                  onTap: () {
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                MoversList()));
+                                  },
+                                  child: containers(
+                                      FontAwesomeIcons.truckLoading, 'Mover'),
+                                ),
+                              ),
+                              SizedBox(
+                                width: MediaQuery.of(context).size.width * 0.02,
+                              ),
+                              Expanded(
+                                child: InkWell(
+                                    child: containers(
+                                        FontAwesomeIcons.info, 'About Us'),
+                                    onTap: () {
+                                      Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) =>
+                                                  Aboutpage()));
+                                    }),
+                              ),
+                              SizedBox(
+                                width: MediaQuery.of(context).size.width * 0.02,
+                              ),
+                              Expanded(
+                                child: InkWell(
+                                    onTap: () {
+                                      getid() async {
+                                        SharedPreferences prefs =
+                                            await SharedPreferences
+                                                .getInstance();
+                                        //Return String
+                                        id = prefs.getStringList('listid');
+                                        if (id == null) {
+                                          Flushbar(
+                                            backgroundColor: Colors.red[600],
+                                            flushbarPosition:
+                                                FlushbarPosition.TOP,
+                                            flushbarStyle:
+                                                FlushbarStyle.FLOATING,
+                                            title: "Booking Required",
+                                            message: "Ticket is not available ",
+                                            duration: Duration(seconds: 2),
+                                            margin: EdgeInsets.all(8),
+                                            borderRadius: 8,
+                                            blockBackgroundInteraction: true,
+                                            dismissDirection:
+                                                FlushbarDismissDirection
+                                                    .VERTICAL,
+                                          )..show(context);
+                                          return;
+                                        } else {
+                                          Navigator.push(
+                                              context,
+                                              MaterialPageRoute(
+                                                  builder: (context) =>
+                                                      Ticket()));
+                                        }
+                                      }
+
+                                      getid();
+                                    },
+                                    child: containers(
+                                        Icons.feedback, 'My Tickets')),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
-                  Expanded(
-                    flex: 2,
-                    child: Padding(
-                      padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
-                      child: Container(
-                        height: MediaQuery.of(context).size.height * 0.2,
-                        width: MediaQuery.of(context).size.width * 1,
-                        child: ListView.builder(
-                            controller: _scrollController,
-                            itemCount: services.length,
-                            scrollDirection: Axis.horizontal,
-                            itemBuilder: (context, index) {
-                              return Padding(padding: EdgeInsets.fromLTRB(MediaQuery.of(context).size.width * 0.3,10,MediaQuery.of(context).size.width * 0.3,
-                                      10),
-                                  child: Center(
-                                    child: Container(
-                                        decoration: containerDecoration(),
-                                        child: services[index]),
-                                  ));
-                            }),
-                      ),
-                    ),
-                  ),
-                  Row(children: <Widget>[
-                    Expanded(
-                      child: new Container(
-                          margin: const EdgeInsets.only(left: 10.0, right: 10.0),
-                          child: Divider(
-                            thickness: MediaQuery.of(context).size.height * 0.001,
-                            color: Colors.black54,
-                            height: MediaQuery.of(context).size.height * 0.1,
-                          )),
-                    ),
-                    InkWell(
-                      onTap: () {
-                        kPrimaryColor = colorlist[cindex];
-                        if (cindex < colorlist.length - 1) {
-                          cindex = cindex + 1;
-                        } else {
-                          cindex = 0;
-                        }
-                        runApp(MyApp());
-                      },
-                      child: Text(
-                        "E-counter Nepal",
-                        style: TextStyle(color: Colors.black54,fontSize:ResponsiveFlutter.of(context).fontSize(3.5)),
-                      ),
-                    ),
-                    Expanded(
-                      child: new Container(
-                          margin: EdgeInsets.only(left: 10.0, right: 10.0),
-                          child: Divider(
-                            color: Colors.black54,
-                            thickness: MediaQuery.of(context).size.height * 0.001,
-                            height: 20,
-                          )),
-                    ),
-                  ]),
-                ],
+                ),
               ),
-            ),
-          ],
+              Expanded(
+                flex: 2,
+                child: Padding(
+                  padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
+                  child: Container(
+                    height: MediaQuery.of(context).size.height * 0.2,
+                    width: MediaQuery.of(context).size.width * 1,
+                    child: ListView.builder(
+                        controller: _scrollController,
+                        itemCount: services.length,
+                        scrollDirection: Axis.horizontal,
+                        itemBuilder: (context, index) {
+                          return Padding(padding: EdgeInsets.fromLTRB(MediaQuery.of(context).size.width * 0.3,10,MediaQuery.of(context).size.width * 0.3,
+                                  10),
+                              child: Center(
+                                child: Container(
+                                    decoration: containerDecoration(),
+                                    child: services[index]),
+                              ));
+                        }),
+                  ),
+                ),
+              ),
+              Row(children: <Widget>[
+                Expanded(
+                  child: new Container(
+                      margin: const EdgeInsets.only(left: 10.0, right: 10.0),
+                      child: Divider(
+                        thickness: MediaQuery.of(context).size.height * 0.001,
+                        color: Colors.black54,
+                        height: MediaQuery.of(context).size.height * 0.1,
+                      )),
+                ),
+                InkWell(
+                  onTap: () {
+                    kPrimaryColor = colorlist[cindex];
+                    if (cindex < colorlist.length - 1) {
+                      cindex = cindex + 1;
+                    } else {
+                      cindex = 0;
+                    }
+                    runApp(MyApp());
+                  },
+                  child: Text(
+                    "E-counter Nepal",
+                    style: TextStyle(color: Colors.black54,fontSize:ResponsiveFlutter.of(context).fontSize(3.5)),
+                  ),
+                ),
+                Expanded(
+                  child: new Container(
+                      margin: EdgeInsets.only(left: 10.0, right: 10.0),
+                      child: Divider(
+                        color: Colors.black54,
+                        thickness: MediaQuery.of(context).size.height * 0.001,
+                        height: 20,
+                      )),
+                ),
+              ]),
+            ],
+          ),
         ),
       ),
     );
