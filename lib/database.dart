@@ -7,6 +7,8 @@ import 'package:e_counter/Models/UserModel.dart';
 import 'package:e_counter/Models/book_model.dart';
 import 'package:e_counter/Models/movers_model.dart';
 
+import 'Models/OfferValuesModel.dart';
+
 
 
 class Database{
@@ -39,5 +41,11 @@ class Database{
   Stream<List<RentModel>> getrental() {
     var ref = FirebaseFirestore.instance.collection('Rental');
     return ref.snapshots().map((val) => val.docs.map((docs) => RentModel.fromFireStore(docs)).toList());
+  }
+
+  Stream<List<OfferValueModel>> getoffers() {
+    var ref = FirebaseFirestore.instance.collection('Offer Values');
+    var ans = ref.snapshots().map((val) => val.docs.map((docs) => OfferValueModel.fromFireStore(docs)).toList());
+    return ans;
   }
 }

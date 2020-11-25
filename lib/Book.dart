@@ -101,9 +101,9 @@ class _BookState extends State<Book> {
       _serviceController.text="Rent Vehicle";
     }
     return Scaffold(
+        resizeToAvoidBottomPadding: false,
         appBar: AppBar(title: Text("Book Ticket")),
         body: Container(
-          margin: EdgeInsets.all(12),
           child: SingleChildScrollView(
             child: Form(
               key: _formKey,
