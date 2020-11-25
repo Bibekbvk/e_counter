@@ -52,22 +52,6 @@ class _e_counterState extends State<e_counter> {
 
 
 
-    Timer(
-      Duration(seconds: 2),
-      () => _scrollController.animateTo(
-        _scrollController.position.maxScrollExtent,
-        duration: Duration(seconds: 25),
-        curve: Curves.fastOutSlowIn,
-      ),
-    );
-    Timer(
-      Duration(seconds: 29),
-          () => _scrollController.animateTo(
-        _scrollController.position.minScrollExtent,
-        duration: Duration(seconds: 25),
-        curve: Curves.fastOutSlowIn,
-      ),
-    );
     return  StreamBuilder(
         stream:db.getoffers(),
     builder: (context, snapshot){
@@ -88,6 +72,23 @@ class _e_counterState extends State<e_counter> {
                 "${snapshot.data[i].offer}"),
           ),
         );}
+
+        Timer(
+          Duration(seconds: 2),
+              () => _scrollController.animateTo(
+            _scrollController.position.maxScrollExtent,
+            duration: Duration(seconds: 25),
+            curve: Curves.fastOutSlowIn,
+          ),
+        );
+        Timer(
+          Duration(seconds: 29),
+              () => _scrollController.animateTo(
+            _scrollController.position.minScrollExtent,
+            duration: Duration(seconds: 25),
+            curve: Curves.fastOutSlowIn,
+          ),
+        );
 
 
 
@@ -388,10 +389,10 @@ class _e_counterState extends State<e_counter> {
                                   padding: EdgeInsets.fromLTRB(MediaQuery
                                       .of(context)
                                       .size
-                                      .width * 0.3, 10, MediaQuery
+                                      .width * 0.2, 10, MediaQuery
                                       .of(context)
                                       .size
-                                      .width * 0.3,
+                                      .width * 0.15,
                                       10),
                                   child: Center(
                                     child: Container(
