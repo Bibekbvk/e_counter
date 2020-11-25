@@ -94,8 +94,7 @@ class _BookState extends State<Book> {
       _serviceController.text="Movers Vehicle";
     }
     else if(widget.rentmodel!=null){
-      _pricing.text=("${widget.moversmodel.pricing}");
-      vehicle_id=widget.moversmodel.vehicle_id;
+      vehicle_id=widget.rentmodel.vehicle_id;
       editable=false;
 
       firebasecollectionname="User Rental";
@@ -152,7 +151,7 @@ class _BookState extends State<Book> {
                 TextFormField(
                   controller: _pricing,
                   validator: (val) =>
-                  val.isEmpty ? "Please enter your name" : null,
+                  val.isEmpty ? "Please enter price" : null,
                   decoration: InputDecoration(
                       prefixIcon: Icon(Icons.money, color: color_,),
                       labelText: "Pricing",
@@ -299,6 +298,7 @@ class _BookState extends State<Book> {
                           "transaction_id":'${time.millisecond}${time.second}',
                           "seat_number":widget.seatnumber,
                           'status':'pending',
+
 
                         }).then((response) {
 

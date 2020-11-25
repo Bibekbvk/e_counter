@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:e_counter/Book.dart';
 import 'package:e_counter/Models/DistrictModel.dart';
+import 'package:e_counter/Models/RentModel.dart';
 import 'package:e_counter/Models/ReserveModel.dart';
 import 'package:e_counter/Models/UserModel.dart';
 import 'package:e_counter/Models/book_model.dart';
@@ -34,8 +35,9 @@ class Database{
     return ref.snapshots().map((val) => val.docs.map((docs) => UserModel.fromFireStore(docs)).toList());
   }
 
-  Stream<List<ReserveModel>> getrental() {
+
+  Stream<List<RentModel>> getrental() {
     var ref = FirebaseFirestore.instance.collection('Rental');
-    return ref.snapshots().map((val) => val.docs.map((docs) => ReserveModel.fromFireStore(docs)).toList());
+    return ref.snapshots().map((val) => val.docs.map((docs) => RentModel.fromFireStore(docs)).toList());
   }
 }

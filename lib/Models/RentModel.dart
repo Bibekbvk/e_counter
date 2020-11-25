@@ -10,8 +10,9 @@ class RentModel {
   final String vehicleused;
   final String vehicle_id;
   final List price_list;
+  final String vehicle_name;
 
-  RentModel({this.availability, this.capacity, this.currentlocation, this.insurance, this.noofhelpers, this.pricing, this.vehicleused,this.vehicle_id,this.price_list});
+  RentModel({this.availability, this.capacity, this.currentlocation, this.insurance, this.noofhelpers, this.pricing, this.vehicleused,this.vehicle_id,this.price_list, this.vehicle_name});
 
 
 
@@ -27,5 +28,6 @@ class RentModel {
       pricing: data['pricing'],
       vehicleused: data['vehicle_used'],
       vehicle_id:data['vehicle_id'],
-      price_list: data['price_list'],);}
+      price_list: data['price_list'],
+    vehicle_name: data['vehiclename']);}
 }

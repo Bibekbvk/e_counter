@@ -33,10 +33,11 @@ class _RentListState extends State<RentList> {
             String vehicleused=snapshot.data[index].vehicleused;
             String vehicle_id=snapshot.data[index].vehicle_id;
             List price_list=snapshot.data[index].price_list;
+            String vehicle_name= snapshot.data[index].vehicle_name;
 
-            RentModel rentmodel = RentModel(availability: availability,capacity: capacity,currentlocation: currentlocation,insurance: insurance,noofhelpers: noofhelpers,pricing: pricing,vehicleused: vehicleused,vehicle_id: vehicle_id,price_list:price_list);
+            RentModel rentmodel = RentModel(availability: availability,capacity: capacity,currentlocation: currentlocation,insurance: insurance,noofhelpers: noofhelpers,pricing: pricing,vehicleused: vehicleused,vehicle_id: vehicle_id,price_list:price_list, vehicle_name: vehicle_name);
 
-            return VechicleCard(upper: ["Availability","Capacity","vehicleused","Insurance","Number of Helpers","Pricing","Vehicle Used"],lower: ["$availability","$capacity","$vehicleused","$insurance","$noofhelpers","$pricing","$vehicleused"],btn1title: "Book",title: "Movers",imageurl: "sumo.png",btn1onPressed: (){
+            return VechicleCard(upper: ["Availability","Capacity","vehicleused","Insurance","Number of Helpers","Pricing","Vehicle Used", ],lower: ["$availability","$capacity","$vehicleused","$insurance","$noofhelpers","$pricing","$vehicleused"],btn1title: "Book",title: "${vehicle_name})",imageurl: "sumo.png",btn1onPressed: (){
               Navigator.push(
                   context,
                   MaterialPageRoute(
