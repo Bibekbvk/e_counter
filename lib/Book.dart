@@ -1,5 +1,6 @@
 
 import 'package:e_counter/Homepage/Homepage.dart';
+import 'package:e_counter/Models/RentModel.dart';
 import 'package:e_counter/Models/ReserveModel.dart';
 import 'package:e_counter/Models/book_model.dart';
 import 'package:e_counter/Models/movers_model.dart';
@@ -19,9 +20,10 @@ class Book extends StatefulWidget {
  final BookModel usermodel;
   final ReserveModel reservemodel;
   final MoversModel moversmodel;
+  final RentModel rentmodel;
   final List seatnumber;
 
-  const Book({Key key, this.usermodel, this.reservemodel, this.moversmodel, this.seatnumber, }) : super(key: key);
+  const Book({Key key, this.usermodel, this.reservemodel, this.moversmodel, this.seatnumber, this.rentmodel, }) : super(key: key);
   _BookState createState() => _BookState();
 }
 DateTime time = DateTime.now();
@@ -90,6 +92,14 @@ class _BookState extends State<Book> {
 
       firebasecollectionname="User Movers";
       _serviceController.text="Movers Vehicle";
+    }
+    else if(widget.rentmodel!=null){
+      _pricing.text=("${widget.moversmodel.pricing}");
+      vehicle_id=widget.moversmodel.vehicle_id;
+      editable=false;
+
+      firebasecollectionname="User Rental";
+      _serviceController.text="Rent Vehicle";
     }
     return Scaffold(
         appBar: AppBar(title: Text("Book Ticket")),
