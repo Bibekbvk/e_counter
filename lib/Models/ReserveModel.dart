@@ -34,10 +34,5 @@ class ReserveModel {
     vehicle_id: data['vehicle_id'],
       price_list: data['price_list'],
       image: data['img_url'],
-    );
-
-
-
-
-  }
+    );}
 }

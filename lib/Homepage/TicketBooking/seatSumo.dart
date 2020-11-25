@@ -21,13 +21,13 @@ class _seatSumoState extends State<seatSumo> {
   List<Color> sumoColor;
 
   var ticketListSumo = ["Sumo_ticket"];
-  List seatnum = ["a","1","2","3","4","5","6","7","8","9"];
+  List seatnum = ["1","2","3","4","5","6","7","8","9"];
 
   @override
 
   void init(){
 
-    for(var k=0;k<9;k++){
+    for(var k=0;k<13;k++){
       if(sumoColor==null){
         sumoColor=[Colors.grey];
       }
@@ -35,9 +35,12 @@ class _seatSumoState extends State<seatSumo> {
         sumoColor.add(Colors.grey);}
     }
     for(var each in seatnum){
+      print('${widget.usermodel.seat_num}//seatnumberrrrr');
       if(widget.usermodel.seat_num!=null){
         for(var seatn in widget.usermodel.seat_num){
           if(each==seatn){
+            print(each);
+            print(seatn);
             sumoColor[seatnum.indexOf(each)]=Colors.red;
 
           }}

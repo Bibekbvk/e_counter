@@ -13,7 +13,8 @@ class ShowVehicles extends StatefulWidget {
   final String startlocation;
   final String vehicletype;
   final String departure_date;
-  const ShowVehicles({Key key, this.destination, this.startlocation, this.vehicletype, this.departure_date}) : super(key: key);
+  final String shift;
+  const ShowVehicles({Key key, this.destination, this.startlocation, this.vehicletype, this.departure_date, this.shift}) : super(key: key);
   _ShowVehiclesState createState() => _ShowVehiclesState();
 }
 
@@ -25,7 +26,7 @@ class _ShowVehiclesState extends State<ShowVehicles> {
     double widthquery = MediaQuery.of(context).size.width;
     return Scaffold(
       appBar: AppBar(title: Center(child: Text("${widget.startlocation} -  ${widget.destination}")),),
-      body: StreamBuilder(stream:db.getfirebase("${widget.destination}","${widget.startlocation}","${widget.vehicletype}","${widget.departure_date}") , builder: (context, snapshot){
+      body: StreamBuilder(stream:db.getfirebase("${widget.destination}","${widget.startlocation}","${widget.vehicletype}","${widget.departure_date}","${widget.shift}") , builder: (context, snapshot){
         if(snapshot.hasData){
           return ListView.builder(itemCount: snapshot.data.length,itemBuilder: (BuildContext context,int index){
              String destination = snapshot.data[index].destination;

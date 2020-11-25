@@ -9,6 +9,7 @@ import 'package:e_counter/Homepage/Reserve/ViewReserve.dart';
 import 'package:e_counter/Homepage/TicketBooking/Choose_Booking.dart';
 import 'package:e_counter/Homepage/my_tickets.dart';
 import 'package:e_counter/Homepage/offers.dart';
+import 'package:e_counter/Homepage/rent.dart';
 import 'package:e_counter/Reuseable_codes/constants.dart';
 import 'package:e_counter/UserAuthentication/login.dart';
 import 'package:flushbar/flushbar.dart';
@@ -37,20 +38,57 @@ class _e_counterState extends State<e_counter> {
 
 
   }
-  List<Widget> services = [
-    Image.network(
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRqJMqbFacvHMv1_tqVjGVcZ1DxEo7uQf1Q-g&usqp=CAU"),
-    Image.network(
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQdUpin4uY98l5G_XN_zztinOEZLPQlpI8cog&usqp=CAU"),
-    Image.network(
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRqJMqbFacvHMv1_tqVjGVcZ1DxEo7uQf1Q-g&usqp=CAU")
-  ];
+
   Widget build(BuildContext context) {
+
     init();
+    List<Widget> services = [
+      InkWell(
+        onTap: (){
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) =>
+                      offers()));
+        },
+        child: Image.network(
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRqJMqbFacvHMv1_tqVjGVcZ1DxEo7uQf1Q-g&usqp=CAU"),
+      ),
+      InkWell(
+        onTap: (){
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) =>
+                      offers()));
+        },
+        child: Image.network(
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQdUpin4uY98l5G_XN_zztinOEZLPQlpI8cog&usqp=CAU"),
+      ),
+      InkWell(
+        onTap: (){
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) =>
+                      offers()));
+        },
+        child: Image.network(
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRqJMqbFacvHMv1_tqVjGVcZ1DxEo7uQf1Q-g&usqp=CAU"),
+      )
+    ];
     Timer(
       Duration(seconds: 2),
       () => _scrollController.animateTo(
         _scrollController.position.maxScrollExtent,
+        duration: Duration(seconds: 25),
+        curve: Curves.fastOutSlowIn,
+      ),
+    );
+    Timer(
+      Duration(seconds: 29),
+          () => _scrollController.animateTo(
+        _scrollController.position.minScrollExtent,
         duration: Duration(seconds: 25),
         curve: Curves.fastOutSlowIn,
       ),
@@ -68,12 +106,9 @@ class _e_counterState extends State<e_counter> {
 
           children: [
             Container(
-
-              child: Positioned(
-                 bottom: MediaQuery.of(context).size.width*(0.4),
-                  left: 0,
-                  right: 0,
-                  child: Image.network("https://github.com/abuanwar072/Flutter-Day-and-Night-Mood-Animation/blob/master/assets/images/land_tree_dark.png?raw=true", fit: BoxFit.fill,)),
+              height: MediaQuery.of(context).size.height*1,
+              width: MediaQuery.of(context).size.width*1,
+              color: Colors.purple[100],
             ),
             Container(
               color: Colors.grey[300].withOpacity(0.3),
@@ -172,13 +207,13 @@ class _e_counterState extends State<e_counter> {
                                   Expanded(
                                     child: InkWell(
                                         child: containers(
-                                            Icons.money_off_outlined, 'Faire'),
+                                            Icons.car_rental, 'Rent'),
                                         onTap: () {
                                           Navigator.push(
                                               context,
                                               MaterialPageRoute(
                                                   builder: (context) =>
-                                                      Calculate()));
+                                                      RentList()));
                                         }),
                                   ),
                                   SizedBox(
