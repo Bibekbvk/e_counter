@@ -40,7 +40,22 @@ class _e_counterState extends State<e_counter> {
   }
 
   Widget build(BuildContext context) {
+    drawer:Drawer(
+      elevation:33,
+      child:ListView(
+        children:[
 
+
+
+
+
+        ]
+
+
+
+      )
+
+    );
     init();
     List<Widget> services = [
       InkWell(
@@ -100,7 +115,76 @@ class _e_counterState extends State<e_counter> {
         child: Text(
           "E-counter Nepal",
         ),
-      )),
+
+
+
+
+      )
+
+
+      ),
+
+      drawer: Drawer(
+        child:ListView(
+          children:[
+
+
+            ListTile(
+              leading: Icon(Icons.feedback_outlined, size:33, color:Colors.deepPurpleAccent),
+              title:Text("Feedback"),
+              onTap: (){
+                //Navigator.push(context, MaterialPageRoute(builder: (context)=> ));
+              },
+            ),
+            ListTile(
+              leading: Icon(Icons.share,size:33,color:Colors.deepPurpleAccent),
+              title:Text("Share"),
+              onTap: (){
+                //Navigator.push(context, MaterialPageRoute(builder: (context)=> ));
+              },
+            ),
+
+            ListTile(
+              leading: Icon(Icons.star,size:33,color:Colors.deepPurpleAccent),
+              title:Text("Rate"),
+              onTap: (){
+                //Navigator.push(context, MaterialPageRoute(builder: (context)=> ));
+              },
+            ),
+
+            ListTile(
+              leading: Icon(Icons.call, size:33,color:Colors.deepPurpleAccent),
+              title:Text("Call us"),
+              onTap: (){
+                //Navigator.push(context, MaterialPageRoute(builder: (context)=> ));
+              },
+            ),
+
+            ListTile(
+              leading: Icon(Icons.logout, size:33,color:Colors.deepPurpleAccent),
+              title:Text("Log-out"),
+
+                onTap: () async {
+                  SharedPreferences prefs =
+                  await SharedPreferences.getInstance();
+                  prefs.setString('login', "no");
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) =>
+                              LogInPage()));
+
+
+              },
+            ),
+
+          ]
+
+
+        )
+
+
+      ),
       body: SafeArea(
         child: Container(
           color: Colors.grey[300].withOpacity(0.3),
@@ -408,3 +492,5 @@ class _e_counterState extends State<e_counter> {
     );
   }
 }
+
+
