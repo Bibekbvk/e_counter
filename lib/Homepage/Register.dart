@@ -57,7 +57,7 @@ class _RegisterState extends State<Register> {
                   decoration: InputDecoration(
                       prefixIcon: Icon(Icons.phone_enabled, color: color_,),
                       labelText: "Enter Contact Number",
-                      hintText: "9868187674",
+                      hintText: "9841-XXXXXX",
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(6),
                       )),

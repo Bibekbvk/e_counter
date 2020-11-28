@@ -3,6 +3,7 @@ import 'package:e_counter/Models/ReserveModel.dart';
 import 'package:e_counter/Models/book_model.dart';
 import 'package:e_counter/Models/movers_model.dart';
 import 'package:e_counter/Reuseable_codes/constants.dart';
+import 'package:flushbar/flushbar.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -55,11 +56,35 @@ class _seatSumoState extends State<seatSumo> {
     return Scaffold(
       appBar: AppBar(title: Text("Tap To Select"),),
         floatingActionButton: RaisedButton(onPressed: (){
-          Navigator.push(
-              context,
-              MaterialPageRoute(
-                  builder: (context) => Book(usermodel: widget.usermodel,moversmodel: widget.moversmodel,reservemodel: widget.reservemodel,seatnumber: ticketListSumo,)));
-
+          if(ticketListSumo.length<=1){
+            Flushbar(
+              backgroundColor: Colors.red[600],
+              flushbarPosition:
+              FlushbarPosition.TOP,
+              flushbarStyle:
+              FlushbarStyle.FLOATING,
+              title: "Seat Not Selected",
+              message: "Tap to Select ",
+              duration: Duration(seconds: 2),
+              margin: EdgeInsets.all(8),
+              borderRadius: 8,
+              blockBackgroundInteraction: true,
+              dismissDirection:
+              FlushbarDismissDirection
+                  .VERTICAL,
+            )
+              ..show(context);
+            return;
+          }else {
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) =>
+                        Book(usermodel: widget.usermodel,
+                          moversmodel: widget.moversmodel,
+                          reservemodel: widget.reservemodel,
+                          seatnumber: ticketListSumo,)));
+          }
 
 
         },child: Text("Select"),),

@@ -4,6 +4,7 @@ import 'package:e_counter/Models/book_model.dart';
 import 'package:e_counter/Reuseable_codes/display_vehicle_details_card.dart';
 import 'package:e_counter/database.dart';
 import 'package:flutter/material.dart';
+import 'package:responsive_flutter/responsive_flutter.dart';
 
 
 class ShowVehicles extends StatefulWidget {
@@ -28,6 +29,10 @@ class _ShowVehiclesState extends State<ShowVehicles> {
       appBar: AppBar(title: Center(child: Text("${widget.startlocation} -  ${widget.destination}")),),
       body: StreamBuilder(stream:db.getfirebase("${widget.destination}","${widget.startlocation}","${widget.vehicletype}","${widget.departure_date}","${widget.shift}") , builder: (context, snapshot){
         if(snapshot.hasData){
+          if(snapshot.data.length<1){
+            return Center(child: Text("No Vehicles Available",style: TextStyle(fontSize: ResponsiveFlutter.of(context).fontSize(2)),));
+          }
+          else{
           return ListView.builder(itemCount: snapshot.data.length,itemBuilder: (BuildContext context,int index){
              String destination = snapshot.data[index].destination;
              String price= snapshot.data[index].price;
@@ -63,7 +68,7 @@ class _ShowVehiclesState extends State<ShowVehicles> {
             },
             );
           });
-        }
+        }}
         else{
           return CircularProgressIndicator();
         }

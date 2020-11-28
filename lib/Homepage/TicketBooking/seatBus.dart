@@ -123,15 +123,15 @@ class _seatBusState extends State<seatBus> {
                     SizedBox(height: 10),
                     Expanded(
                       child: RaisedButton(onPressed: (){
-                        if(ticketss.length<=1){
+                        if(ticketss.length<1){
                           Flushbar(
                             backgroundColor: Colors.red[600],
                             flushbarPosition:
                             FlushbarPosition.TOP,
                             flushbarStyle:
                             FlushbarStyle.FLOATING,
-                            title: "Booking Required",
-                            message: "Ticket is not available ",
+                            title: "Seat Not Selected",
+                            message: "Tap to Select ",
                             duration: Duration(seconds: 2),
                             margin: EdgeInsets.all(8),
                             borderRadius: 8,

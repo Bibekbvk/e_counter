@@ -3,6 +3,7 @@ import 'package:e_counter/Models/ReserveModel.dart';
 import 'package:e_counter/Models/book_model.dart';
 import 'package:e_counter/Models/movers_model.dart';
 import 'package:e_counter/Reuseable_codes/constants.dart';
+import 'package:flushbar/flushbar.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -38,6 +39,7 @@ class _seatHiaceState extends State<seatHiace> {
         hiaceColor.add(Colors.grey);}
     }
     for(var each in seatnum){
+
       if(widget.usermodel.seat_num!=null){
         for(var seatn in widget.usermodel.seat_num){
           if(each==seatn){
@@ -56,11 +58,35 @@ class _seatHiaceState extends State<seatHiace> {
     return Scaffold(
       appBar: AppBar(title: Text("Tap to Select Seat")),
         floatingActionButton: RaisedButton(onPressed: (){
-          Navigator.push(
-              context,
-              MaterialPageRoute(
-                  builder: (context) => Book(usermodel: widget.usermodel,moversmodel: widget.moversmodel,reservemodel: widget.reservemodel,seatnumber: ticketListHiace,)));
-
+          if(ticketListHiace.length<=1){
+            Flushbar(
+              backgroundColor: Colors.red[600],
+              flushbarPosition:
+              FlushbarPosition.TOP,
+              flushbarStyle:
+              FlushbarStyle.FLOATING,
+              title: "Seat Not Selected",
+              message: "Tap to Select ",
+              duration: Duration(seconds: 2),
+              margin: EdgeInsets.all(8),
+              borderRadius: 8,
+              blockBackgroundInteraction: true,
+              dismissDirection:
+              FlushbarDismissDirection
+                  .VERTICAL,
+            )
+              ..show(context);
+            return;
+          }else {
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) =>
+                        Book(usermodel: widget.usermodel,
+                          moversmodel: widget.moversmodel,
+                          reservemodel: widget.reservemodel,
+                          seatnumber: ticketListHiace,)));
+          }
 
 
         },child: Text("Select"),),

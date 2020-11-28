@@ -19,6 +19,7 @@ import '../Book.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../main.dart';
+import 'Reserve/choose_reserve.dart';
 class e_counter extends StatefulWidget {
   @override
   _e_counterState createState() => _e_counterState();
@@ -162,7 +163,7 @@ class _e_counterState extends State<e_counter> {
                                               context,
                                               MaterialPageRoute(
                                                   builder: (context) =>
-                                                      ReserveList()));
+                                                      ChooseReserve()));
                                         }),
                                   ),
                                   SizedBox(
