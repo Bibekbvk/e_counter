@@ -30,7 +30,6 @@ class _e_counterState extends State<e_counter> {
   ScrollController _scrollController = new ScrollController();
   @override
   void init() async {
-
     SharedPreferences prefs = await SharedPreferences.getInstance();
     prefs.setString('login', "yes");
   }
@@ -89,9 +88,6 @@ class _e_counterState extends State<e_counter> {
             curve: Curves.fastOutSlowIn,
           ),
         );
-
-
-
         return Scaffold(
           appBar: AppBar(
               title: Center(
