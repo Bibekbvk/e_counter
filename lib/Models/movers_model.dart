@@ -7,11 +7,13 @@ class MoversModel {
   final String insurance;
   final String noofhelpers;
   final String pricing;
+
   final String vehicleused;
   final String vehicle_id;
   final List price_list;
+  final String img_url;
 
-  MoversModel({this.availability, this.capacity, this.currentlocation, this.insurance, this.noofhelpers, this.pricing, this.vehicleused,this.vehicle_id,this.price_list});
+  MoversModel({this.availability, this.capacity, this.currentlocation, this.insurance, this.noofhelpers, this.pricing, this.vehicleused,this.vehicle_id,this.price_list,this.img_url});
 
 
 
@@ -28,6 +30,7 @@ class MoversModel {
         vehicleused: data['vehicle_used'],
     vehicle_id:data['vehicle_id'],
       price_list: data['price_list'],
+      img_url: data['img_url'],
 
 
 

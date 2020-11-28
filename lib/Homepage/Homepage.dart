@@ -2,7 +2,6 @@ import 'dart:async';
 import 'package:e_counter/Contactus.dart';
 import 'package:e_counter/Homepage/Movers.dart';
 import 'package:e_counter/Homepage/Register.dart';
-import 'package:e_counter/Homepage/Reserve/ViewReserve.dart';
 import 'package:e_counter/Homepage/TicketBooking/Choose_Booking.dart';
 import 'package:e_counter/Homepage/my_tickets.dart';
 import 'package:e_counter/Homepage/offers.dart';
@@ -52,6 +51,11 @@ class _e_counterState extends State<e_counter> {
 
 
 
+
+    return StreamBuilder(
+        stream:db.getContact(),
+        builder: (context, contactsnapshot){
+          if(contactsnapshot.hasData){
     return  StreamBuilder(
         stream:db.getoffers(),
     builder: (context, snapshot){
@@ -400,53 +404,23 @@ class _e_counterState extends State<e_counter> {
                       ),
                     ),
                   ),
-                  Row(children: <Widget>[
-                    Expanded(
-                      child: new Container(
-                          margin: const EdgeInsets.only(
-                              left: 10.0, right: 10.0),
-                          child: Divider(
-                            thickness: MediaQuery
-                                .of(context)
-                                .size
-                                .height * 0.001,
-                            color: Colors.black54,
-                            height: MediaQuery
-                                .of(context)
-                                .size
-                                .height * 0.1,
-                          )),
+                  InkWell(
+                    onTap: () {
+                      kPrimaryColor = colorlist[cindex];
+                      if (cindex < colorlist.length - 1) {
+                        cindex = cindex + 1;
+                      } else {
+                        cindex = 0;
+                      }
+                      runApp(MyApp());
+                    },
+                    child: Text(
+                      "Esewa/Khalti - ${contactsnapshot.data[0].esewa}",
+                      style: TextStyle(color: kPrimaryColor,
+                          fontSize: ResponsiveFlutter.of(context).fontSize(
+                              2)),
                     ),
-                    InkWell(
-                      onTap: () {
-                        kPrimaryColor = colorlist[cindex];
-                        if (cindex < colorlist.length - 1) {
-                          cindex = cindex + 1;
-                        } else {
-                          cindex = 0;
-                        }
-                        runApp(MyApp());
-                      },
-                      child: Text(
-                        "E-counter Nepal",
-                        style: TextStyle(color: Colors.black54,
-                            fontSize: ResponsiveFlutter.of(context).fontSize(
-                                3.5)),
-                      ),
-                    ),
-                    Expanded(
-                      child: new Container(
-                          margin: EdgeInsets.only(left: 10.0, right: 10.0),
-                          child: Divider(
-                            color: Colors.black54,
-                            thickness: MediaQuery
-                                .of(context)
-                                .size
-                                .height * 0.001,
-                            height: 20,
-                          )),
-                    ),
-                  ]),
+                  ),
                 ],
               ),
             ),
@@ -458,6 +432,11 @@ class _e_counterState extends State<e_counter> {
     }
 
 
+        });}
+        else{
+          return CircularProgressIndicator();
+
+          }
         });}
 
   BoxDecoration containerDecoration() {

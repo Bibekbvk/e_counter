@@ -9,6 +9,10 @@ import 'package:responsive_flutter/responsive_flutter.dart';
 
 
 class ConfirmedPurchase extends StatefulWidget {
+  final String title;
+  final String text;
+
+  const ConfirmedPurchase({Key key, this.title, this.text}) : super(key: key);
   @override
   _ConfirmedPurchaseState createState() => _ConfirmedPurchaseState();
 }
@@ -26,8 +30,8 @@ class _ConfirmedPurchaseState extends State<ConfirmedPurchase> {
               flex: 2,
               child: Container(child: Column(
                 children: [
-                  Text('Confirmed Booking!',style:TextStyle(fontSize: ResponsiveFlutter.of(context).fontSize(3.5),fontWeight: FontWeight.bold)),
-                  Text('Your Ticket is being Processed in the MyTickets Section Please Check After Few Hours!'),
+                  Text('${widget.title}',style:TextStyle(fontSize: ResponsiveFlutter.of(context).fontSize(3.5),fontWeight: FontWeight.bold)),
+                  Text('${widget.text}'),
                 ],
               ),),),
             Expanded(

@@ -6,11 +6,12 @@ class ContactModel {
   final String smartcell;
   final String facebook;
   final String website;
+  final String esewa;
 
 
 
 
-  ContactModel({this.ntc,this.ncell,this.smartcell,this.facebook,this.website});
+  ContactModel({this.ntc,this.ncell,this.smartcell,this.facebook,this.website,this.esewa});
 
 
 
@@ -23,6 +24,7 @@ class ContactModel {
       ntc: data['ntc'],
       smartcell: data['smartcell'],
       website: data['website'],
+      esewa: data['esewa'],
     )
 
 

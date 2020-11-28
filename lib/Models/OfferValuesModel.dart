@@ -2,11 +2,13 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
 class OfferValueModel {
   final String offer;
+  final String esewa;
+  final String khalti;
 
 
 
 
-  OfferValueModel({this.offer});
+  OfferValueModel({this.offer,this.esewa,this.khalti});
 
 
 
@@ -15,6 +17,8 @@ class OfferValueModel {
 
     return OfferValueModel(
         offer: data['offer'],
+      esewa: data['esewa'],
+      khalti: data['khalti']
        )
 
 

@@ -32,10 +32,11 @@ class _MoversListState extends State<MoversList> {
              String vehicleused=snapshot.data[index].vehicleused;
              String vehicle_id=snapshot.data[index].vehicle_id;
              List price_list=snapshot.data[index].price_list;
+             String img_url=snapshot.data[index].img_url;
 
              MoversModel moversmodel = MoversModel(availability: availability,capacity: capacity,currentlocation: currentlocation,insurance: insurance,noofhelpers: noofhelpers,pricing: pricing,vehicleused: vehicleused,vehicle_id: vehicle_id,price_list:price_list);
 
-            return VechicleCard(upper: ["Availability","Capacity","vehicleused","Insurance","Number of Helpers","Pricing","Vehicle Used"],lower: ["$availability","$capacity","$vehicleused","$insurance","$noofhelpers","$pricing","$vehicleused"],btn1title: "Book",title: "Movers",imageurl: "sumo.png",btn1onPressed: (){
+            return VechicleCard(upper: ["Availability","Capacity","vehicleused","Insurance","Number of Helpers","Pricing","Vehicle Used"],lower: ["$availability","$capacity","$vehicleused","$insurance","$noofhelpers","$pricing","$vehicleused"],btn1title: "Book",title: "Movers",imageurl: "$img_url",btn1onPressed: (){
               Navigator.push(
                   context,
                   MaterialPageRoute(

@@ -11,10 +11,11 @@ class RentModel {
   final String vehicle_no;
   final String vehicle_id;
   final List price_list;
+  final String img_url;
   final String vehicle_name;
   final String description;
 
-  RentModel({this.availability, this.capacity, this.currentlocation, this.insurance, this.rentedby, this.pricing, this.vehicle_no,this.vehicle_id,this.price_list, this.vehicle_name, this.description});
+  RentModel({this.availability, this.capacity, this.currentlocation, this.insurance, this.rentedby, this.pricing, this.vehicle_no,this.vehicle_id,this.price_list,this.img_url, this.vehicle_name, this.description});
 
 
 
@@ -31,6 +32,7 @@ class RentModel {
         vehicle_no: data['vehicle_no'],
       vehicle_id:data['vehicle_id'],
       price_list: data['price_list'],
+      img_url: data['img_url'],
       vehicle_name: data['vehiclename'],
       description: data['description']
        );}

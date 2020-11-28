@@ -1,4 +1,5 @@
 
+import 'package:e_counter/Contactus.dart';
 import 'package:e_counter/Homepage/Homepage.dart';
 import 'package:e_counter/Reuseable_codes/circle_image_button.dart';
 import 'package:flutter/material.dart';
@@ -159,19 +160,31 @@ class _RegisterState extends State<Register> {
                   children: [
                     InkWell(
                       onTap: (){
-                        launch('tel:9817931246');
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) =>
+                                    ContactUs()));
                       },
                       child: CircularImageButton("ntc.png"),
                     ),
                     InkWell(
                       onTap: (){
-                        launch('tel:9817931246');
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) =>
+                                    ContactUs()));
                       },
                       child: CircularImageButton("ncell.jpg"),
                     ),
                     InkWell(
                       onTap: (){
-                        launch('tel:9817931246');
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) =>
+                                    ContactUs()));
                       },
                       child: CircularImageButton("smartcell.png"),
                     ),

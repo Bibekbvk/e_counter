@@ -1,6 +1,8 @@
 import 'package:e_counter/Reuseable_codes/circle_image_button.dart';
+import 'package:e_counter/Reuseable_codes/constants.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:responsive_flutter/responsive_flutter.dart';
 import 'package:url_launcher/url_launcher.dart';
 class Aboutpage extends StatefulWidget {
   @override
@@ -21,78 +23,48 @@ class _AboutpageState extends State<Aboutpage> {
          width: MediaQuery.of(context).size.width*01,
          child: Center(child: Image.asset('assets/ecounter.png', height: 250, width: MediaQuery.of(context).size.width*01,))),
 
-     Center(
+
+     Padding(
+       padding: EdgeInsets.fromLTRB(10,0,10,0),
        child: Container(
-         width: MediaQuery.of(context).size.width*01,
-        padding:EdgeInsets.all(12) ,
-        child: Card(
-          elevation: 33,
-           child: Text("E-counter App is the solution of booking ticket without visitng counter", textAlign: TextAlign.justify, style: TextStyle(fontSize: 12,
-           fontStyle: FontStyle.italic),), )
+         decoration: BoxDecoration(
+           border: Border.all(color: kPrimaryColor),
+           borderRadius: BorderRadius.circular(20),
+         ),
+         child: Column(
+           children: [
+             Container(
+               child:Text("Our services",textAlign: TextAlign.center, style: TextStyle(
+                 fontSize: ResponsiveFlutter.of(context).fontSize(1.7), fontWeight: FontWeight.w800
+
+               ),)
+
+             ),
+             listitle('Ticket Booking', 'Choose the cheapest ticket and book instantly you will get call for confirmation'),
+             SizedBox(height: 8,),
+             listitle('Vehicle Reserve', 'Choose the cheapest Vehicle and book instantly you will get call for confirmation'),
+             SizedBox(height: 8,),
+             listitle('Rent Vehicle', 'Rent the cheapest vehicle you want and go where ever you want'),
+             SizedBox(height: 8,),
+             listitle('Movers / Shifter', 'Moving room or office? Do not worry you will get the cheapest here'),
+             SizedBox(height: 8,),
+             listitle('Send goods', 'Send any quantity of goods from one place to another by searching and selecting the vehicle')
+           ],
+         ),
        ),
      ),
-     Card(
-       elevation: 22,
-       child:Text("Our services",textAlign: TextAlign.center, style: TextStyle(
-         fontSize: 22, fontWeight: FontWeight.w800
-
-       ),)
-
-     ),
-      ListTile(
-
-        title: Text('Ticket Booking'),
-        tileColor: Colors.deepPurple[200],
-        subtitle: Text('Choose the cheapest ticket and book instantly you will get call for conformation')
-      ),
-
-         SizedBox(height: 8,),
-         ListTile(
-
-             title: Text('Vehicle Reserve'),
-             tileColor: Colors.deepPurple[200],
-             subtitle: Text('Choose the cheapest Vehicle and book instantly you will get call for conformation')
-         ),
-
-
-         SizedBox(height: 8,),
-         ListTile(
-
-             title: Text('Rent Vehicle'),
-             tileColor: Colors.deepPurple[200],
-             subtitle: Text('Rent the cheapest vehicle you want and go where ever you want')
-         ),
-
-         SizedBox(height: 8,),
-
-
-         ListTile(
-
-             title: Text('Movers / Shifter'),
-             tileColor: Colors.deepPurple[200],
-             subtitle: Text('Moving room or office? Do not worry you will get the cheapest here')
-         ),
-
-         SizedBox(height: 8,),
-
-
-         ListTile(
-
-             title: Text('Send goods'),
-             tileColor: Colors.deepPurple[200],
-             subtitle: Text('Send any quantity of goods from one place to another by searching and selecting the vehicle')
-         ),
-
 
        ]
-
-
-
       ),
+    );
+  }
+  Widget listitle(String title,String description){
+    return  Container(
 
-
-
-      
+      child: ListTile(
+          title: Text('$title'),
+          subtitle: Text('$description')
+      ),
     );
   }
 }

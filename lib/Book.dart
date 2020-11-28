@@ -1,4 +1,5 @@
 
+import 'package:e_counter/Contactus.dart';
 import 'package:e_counter/Homepage/Homepage.dart';
 import 'package:e_counter/Models/RentModel.dart';
 import 'package:e_counter/Models/ReserveModel.dart';
@@ -35,7 +36,7 @@ class _BookState extends State<Book> {
   String dropdownValue = 'Hiace';
   String dayNight = 'Day';
   Color color_ = kPrimaryColor;
-
+  String appBar = "";
   String zone;
   String firebasecollectionname;
   var time;
@@ -73,6 +74,7 @@ class _BookState extends State<Book> {
       vehicle_number=widget.usermodel.vehiclenumber;
      seat =  widget.usermodel.seat_num;
       firebasecollectionname="User Booking";
+      appBar="Book Ticket";
 
       editable=true;
     }
@@ -83,10 +85,12 @@ class _BookState extends State<Book> {
       vehicle_id=widget.reservemodel.vehicle_id;
       editable=false;
       _pricing.text=("${widget.reservemodel.price}");
+      appBar = "Reserve";
     }
     else if(widget.moversmodel!=null){
       _pricing.text=("${widget.moversmodel.pricing}");
       vehicle_id=widget.moversmodel.vehicle_id;
+      appBar="Movers";
       editable=false;
       firebasecollectionname="User Movers";
       _serviceController.text="Movers Vehicle";
@@ -94,13 +98,14 @@ class _BookState extends State<Book> {
     else if(widget.rentmodel!=null){
       vehicle_id=widget.rentmodel.vehicle_id;
       editable=false;
+      appBar="Rent";
       firebasecollectionname="User Rental";
       _serviceController.text="Rent Vehicle";
     }
     print(firebasecollectionname);
     return Scaffold(
         resizeToAvoidBottomPadding: false,
-        appBar: AppBar(title: Text("Book Ticket")),
+        appBar: AppBar(title: Text("$appBar")),
         body: Container(
           child: SingleChildScrollView(
             child: Form(
@@ -268,7 +273,7 @@ class _BookState extends State<Book> {
                             context,
                             MaterialPageRoute(
                                 builder: (context) =>
-                                    ConfirmedPurchase()));
+                                    ConfirmedPurchase(title: "Confirmed Booking",text: "Please Check MyTickets section after few minutes we will call you soon",)));
 
 
                       }).catchError((error) => print(error));
@@ -295,29 +300,15 @@ class _BookState extends State<Book> {
 
                         }).then((response) {
 
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) =>
+                                      ConfirmedPurchase(title: "Confirmed $firebasecollectionname",text: "We will call you as soon as possible",)));
 
 
-                          showDialog<String>(
-                            context: context,
-                            builder: (BuildContext context) => AlertDialog(
-                              title: Text("Book"),
-                              content: Text(
-                                  " Success!You will receive call, for more details"),
-                              actions: <Widget>[
-                                FlatButton(
-                                    onPressed: () {
 
-                                      Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                              builder: (context) =>
-                                                  e_counter()));
-                                      _FullName.clear();
-                                    },
-                                    child: Text("OK")),
-                              ],
-                            ),
-                          );
+
                         }).catchError((error) => print(error));
                       }
 
@@ -395,7 +386,11 @@ class _BookState extends State<Book> {
                                   Expanded(
                                     child: InkWell(
                                     onTap: (){
-                                      launch('tel:9817931246');
+                                      Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) =>
+                                                  ContactUs()));
                                     },
                                       child: CircularImageButton("ntc.png"),
                                     ),
@@ -403,7 +398,11 @@ class _BookState extends State<Book> {
                                   Expanded(
                                     child: InkWell(
                                       onTap: (){
-                                        launch('tel:9817931246');
+                                        Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                                builder: (context) =>
+                                                    ContactUs()));
                                       },
                                       child: CircularImageButton("ncell.jpg"),
                                     ),
@@ -411,7 +410,11 @@ class _BookState extends State<Book> {
                                   Expanded(
                                     child: InkWell(
                                       onTap: (){
-                                        launch('tel:9817931246');
+                                        Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                                builder: (context) =>
+                                                    ContactUs()));
                                       },
                                       child: CircularImageButton("smartcell.png"),
                                     ),

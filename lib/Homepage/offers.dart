@@ -1,3 +1,4 @@
+import 'package:e_counter/Homepage/useroffers.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
@@ -16,7 +17,7 @@ class _offersState extends State<offers> {
     return Scaffold
     (
     appBar: AppBar(
-      title:Text("Offers")
+      title:Text("Click On Offer To Book")
      
     ),  
 
@@ -34,7 +35,7 @@ class _offersState extends State<offers> {
 
 
       return Padding(
-        padding: const EdgeInsets.all(8.0),
+        padding:  EdgeInsets.fromLTRB(8.0,20,8,20),
         child: Container(
 
           height: MediaQuery.of(context).size.height*0.08,
@@ -53,10 +54,26 @@ class _offersState extends State<offers> {
               ),
             ],
           ),
-          child: Center(
-            child: Text(snapshot.data.documents[index]['Offer 2'], style: TextStyle(
-              fontSize:20
-            ), ),
+          child: Column(
+            children: [
+              Expanded(child: Text("Click Here")),
+              Expanded(
+                child: Center(
+                  child: InkWell(
+                    onTap: (){
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) =>
+                                  UserOffer(offer:snapshot.data.documents[index]['Offer 2'])));
+                    },
+                    child: Text(snapshot.data.documents[index]['Offer 2'], style: TextStyle(
+                      fontSize:20
+                    ), ),
+                  ),
+                ),
+              ),
+            ],
           ),
         ),
       );
