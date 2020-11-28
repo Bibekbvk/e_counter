@@ -23,6 +23,15 @@ class _RegisterState extends State<Register> {
   Color color_ = Colors.deepPurple.withOpacity(0.8);
   var firestoreDb = FirebaseFirestore.instance.collection("app").snapshots();
   final _formKey = GlobalKey<FormState>();
+  @override
+  void dispose() {
+    _FullName.dispose();
+    _ContactNo.dispose();
+    _VechileName.dispose();
+    _ServiceLocation.dispose();
+    _SeactCapacity.dispose();
+    super.dispose();
+  }
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(title: Center(child: Text("Register My Vehicle"))),

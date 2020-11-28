@@ -18,6 +18,7 @@ class ChooseBooking extends StatefulWidget {
 class _ChooseBookingState extends State<ChooseBooking> {
 
   @override
+
   List<String> district;
   List<String> vehicletype;
   String selected;
@@ -25,7 +26,6 @@ class _ChooseBookingState extends State<ChooseBooking> {
   String selecteddistrictdes="";
   String selectedvehicletype="";
   String selectedday="";
-
   String selecteddistrict="";
   List<String> hints ;
   double frombutton=0;
@@ -36,8 +36,16 @@ class _ChooseBookingState extends State<ChooseBooking> {
   TextEditingController _departure_dateController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
   List<String> _day = ["Day", "Night"];
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    _departure_dateController.dispose();
+    super.dispose();
+  }
+
 
   Widget build(BuildContext context) {
+
     return Scaffold(
       resizeToAvoidBottomPadding: false,
       appBar: AppBar(

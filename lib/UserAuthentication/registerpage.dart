@@ -65,6 +65,12 @@ class _RegisterPageState extends State<RegisterPage>
   void dispose() {
     // TODO: implement dispose
     _animationController.dispose();
+    emailController.dispose();
+    nameControlller.dispose();
+    confirmpassController.dispose();
+    phoneController.dispose();
+    passwordController.dispose();
+
     super.dispose();
   }
 

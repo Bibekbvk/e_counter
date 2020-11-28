@@ -31,41 +31,14 @@ class LogInPage extends StatefulWidget {
 class _LogInPageState extends State<LogInPage> with TickerProviderStateMixin {
   // DatabaseService total_products = DatabaseService();
   //final db = DatabaseService();
-  AnimationController _backgroundController;
-  AnimationController _contentController;
-  Animation<Offset> _backgroundOffset;
-  Animation<Offset> _contentOffset;
-  PageController pageController;
 
-  @override
-  void initState() {
-    super.initState();
-    pageController = PageController();
-    _backgroundController = AnimationController(
-      duration: Duration(seconds: 1),
-      vsync: this,
-    )..forward();
-    _contentController = AnimationController(
-      duration: Duration(seconds: 2),
-      vsync: this,
-    )..forward();
-    _backgroundOffset = Tween<Offset>(
-      begin: Offset(0, 4),
-      end: Offset(0.0, 0.0),
-    ).animate(CurvedAnimation(
-        parent: _backgroundController, curve: Curves.slowMiddle));
-    _contentOffset = Tween<Offset>(
-      begin: Offset(0, 1.1),
-      end: Offset(0.0, 0.0),
-    ).animate(
-        CurvedAnimation(parent: _contentController, curve: Curves.bounceInOut));
-  }
+
 
   @override
   void dispose() {
     // TODO: implement dispose
-    _backgroundController.dispose();
-    _contentController.dispose();
+    nameController.dispose();
+    passController.dispose();
     super.dispose();
   }
 

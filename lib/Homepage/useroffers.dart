@@ -16,7 +16,15 @@ class UserOffer extends StatefulWidget {
 }
 TextEditingController _FullName = TextEditingController();
 TextEditingController _ContactNo = TextEditingController();
+
+
 class _UserOfferState extends State<UserOffer> {
+  @override
+  void dispose() {
+    _FullName.dispose();
+    _ContactNo.dispose();
+
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(

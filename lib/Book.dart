@@ -58,11 +58,20 @@ class _BookState extends State<Book> {
   List seat;
   String dates;
   String vehicle_number;
-  TextEditingController _To = TextEditingController();
-  TextEditingController _Seat = TextEditingController();
   var firestoreDb = FirebaseFirestore.instance.collection("app").snapshots();
   final _formKey = GlobalKey<FormState>();
   String vehicle_id;
+  void dispose() {
+    // TODO: implement dispose
+    _FullName.dispose();
+    _ContactNo.dispose();
+    _dateController.dispose();
+    _serviceController.dispose();
+    _pricing.dispose();
+    _from.dispose();
+    _to.dispose();
+    super.dispose();
+  }
   Widget build(BuildContext context) {
     if(widget.usermodel!=null){
       _serviceController.text="Booking Vehicle";

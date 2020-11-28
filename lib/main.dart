@@ -23,7 +23,11 @@ void main() async{
     checkwidget=e_counter();
   }
   print(check);
-  runApp(MyApp());}
+  runApp(MaterialApp
+
+
+    (debugShowCheckedModeBanner: false,
+      home: MyApp()));}
 
 class MyApp extends StatelessWidget {
 
