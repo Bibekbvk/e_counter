@@ -1,4 +1,4 @@
-package com.example.e_counter
+package com.e_counter.np
 
 import androidx.annotation.NonNull;
 import io.flutter.embedding.android.FlutterActivity
