@@ -57,6 +57,7 @@ class _BookState extends State<Book> {
   List seat;
   String dates;
   String vehicle_number;
+  String appBar;
   TextEditingController _To = TextEditingController();
   TextEditingController _Seat = TextEditingController();
   var firestoreDb = FirebaseFirestore.instance.collection("app").snapshots();
@@ -73,7 +74,7 @@ class _BookState extends State<Book> {
       vehicle_number=widget.usermodel.vehiclenumber;
      seat =  widget.usermodel.seat_num;
       firebasecollectionname="User Booking";
-
+       appBar = "Book Ticket";
       editable=true;
     }
     else if(widget.reservemodel!=null){
@@ -82,28 +83,28 @@ class _BookState extends State<Book> {
       vehicle_number=widget.reservemodel.vehicle_number;
       vehicle_id=widget.reservemodel.vehicle_id;
       editable=false;
-
+      appBar="Reserve";
       _pricing.text=("${widget.reservemodel.price}");
     }
     else if(widget.moversmodel!=null){
       _pricing.text=("${widget.moversmodel.pricing}");
       vehicle_id=widget.moversmodel.vehicle_id;
       editable=false;
-
+      appBar="Book Movers";
       firebasecollectionname="User Movers";
       _serviceController.text="Movers Vehicle";
     }
     else if(widget.rentmodel!=null){
       vehicle_id=widget.rentmodel.vehicle_id;
       editable=false;
-
+      appBar="Rent Vehicle";
       firebasecollectionname="User Rental";
       _serviceController.text="Rent Vehicle";
     }
     return Scaffold(
-        appBar: AppBar(title: Text("Book Ticket")),
+        appBar: AppBar(title: Text("$appBar")),
         body: Container(
-          margin: EdgeInsets.all(12),
+
           child: SingleChildScrollView(
             child: Form(
               key: _formKey,

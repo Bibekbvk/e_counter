@@ -6,6 +6,7 @@ import 'package:e_counter/Reuseable_codes/constants.dart';
 import 'package:flushbar/flushbar.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:responsive_flutter/responsive_flutter.dart';
 
 class seatBus extends StatefulWidget {
   final BookModel usermodel;
@@ -93,9 +94,10 @@ class _seatBusState extends State<seatBus> {
                     Expanded(
                       child: Row(children: [
                         Text(
-                          " Door Way    ",
-                          style: TextStyle(fontSize: 24,     color: kPrimaryColor,),
+                          " Door Way  ",
+                          style: TextStyle(fontSize: ResponsiveFlutter.of(context).fontSize(1.9),     color: kPrimaryColor,),
                         ),
+                        SizedBox(width: 25),
                         seatUi(1),
                         SizedBox(width: 15),
                         seatUi(2),
@@ -196,7 +198,7 @@ class _seatBusState extends State<seatBus> {
             child: Text(
               "${seatnum[index]}",
               style: TextStyle(
-                fontSize: 20,
+                fontSize: ResponsiveFlutter.of(context).fontSize(1.2),
                 color: kPrimaryColor,
               ),
             ),

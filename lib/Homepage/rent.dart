@@ -28,16 +28,18 @@ class _RentListState extends State<RentList> {
             String capacity=snapshot.data[index].capacity;
             String currentlocation=snapshot.data[index].currentlocation;
             String insurance=snapshot.data[index].insurance;
-            String noofhelpers=snapshot.data[index].noofhelpers;
+            String rentedby=snapshot.data[index].rentedby;
             String pricing=snapshot.data[index].pricing;
-            String vehicleused=snapshot.data[index].vehicleused;
+            String vehicle_no=snapshot.data[index].vehicle_no;
             String vehicle_id=snapshot.data[index].vehicle_id;
             List price_list=snapshot.data[index].price_list;
             String vehicle_name= snapshot.data[index].vehicle_name;
+            String description= snapshot.data[index].description;
 
-            RentModel rentmodel = RentModel(availability: availability,capacity: capacity,currentlocation: currentlocation,insurance: insurance,noofhelpers: noofhelpers,pricing: pricing,vehicleused: vehicleused,vehicle_id: vehicle_id,price_list:price_list, vehicle_name: vehicle_name);
 
-            return VechicleCard(upper: ["Availability","Capacity","vehicleused","Insurance","Number of Helpers","Pricing","Vehicle Used", ],lower: ["$availability","$capacity","$vehicleused","$insurance","$noofhelpers","$pricing","$vehicleused"],btn1title: "Book",title: "${vehicle_name})",imageurl: "sumo.png",btn1onPressed: (){
+            RentModel rentmodel = RentModel(availability: availability,capacity: capacity,currentlocation: currentlocation,insurance: insurance,rentedby: rentedby,pricing: pricing,vehicle_no: vehicle_no,vehicle_id: vehicle_id,price_list:price_list, vehicle_name: vehicle_name, description: description);
+
+            return VechicleCard(upper: ["Availability","Capacity","vehicle used","Insurance","rented by","Pricing","Vehicle no","description"],lower: ["$availability","$capacity","$vehicle_name","$insurance","$rentedby","$pricing","$vehicle_no","$description"],btn1title: "Book",title: "${vehicle_name})",imageurl: "sumo.png",btn1onPressed: (){
               Navigator.push(
                   context,
                   MaterialPageRoute(

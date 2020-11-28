@@ -39,6 +39,7 @@ class _ChooseBookingState extends State<ChooseBooking> {
 
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomPadding: false,
       appBar: AppBar(
         title: Center(child: Text("Book Ticket"))
       ),
@@ -67,8 +68,11 @@ class _ChooseBookingState extends State<ChooseBooking> {
                 key: _formKey,
                 child: Column(
                   children: [
-                    Expanded(child: Image.asset("choosebooking.PNG")),
                     Expanded(
+                      flex: 1,
+                        child: Image.asset("assets/choosebooking.PNG")),
+                    Expanded(
+                      flex:2,
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
@@ -143,6 +147,7 @@ class _ChooseBookingState extends State<ChooseBooking> {
                             child: Padding(
                               padding: EdgeInsets.fromLTRB(20,0,20,0),
                               child: TextFormField(
+                                readOnly: true,
                                 decoration: new InputDecoration(
                                   labelText: "Departure Date",
                                   focusedBorder: OutlineInputBorder(
