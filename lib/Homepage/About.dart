@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 class Aboutpage extends StatefulWidget {
   @override
@@ -11,28 +12,22 @@ class _AboutpageState extends State<Aboutpage> {
       appBar: AppBar(
         title: Center(child: Text("About Us"))
       ),
-      body: Row(
+      body: ListView(
        children:<Widget>[
 
-     Column(
-       mainAxisAlignment: MainAxisAlignment.start,
-       crossAxisAlignment: CrossAxisAlignment.center,
-         children: [
-          Center(child: Image.asset('assets/ecounter.png', height: 200, width: 300,)),
+     Container(
+         width: MediaQuery.of(context).size.width*01,
+         child: Center(child: Image.asset('assets/ecounter.png', height: 250, width: MediaQuery.of(context).size.width*01,))),
 
-          Center(
-            child: Container(
-             child: Card(
-
-                child: Text("E-counter App is the solution\nof booking ticket without\nvisitng  ticket counter, We\nassure to you that we will try our best to\nprivide you cheapest ticket, without \ncompormising quality", textAlign: TextAlign.justify, style: TextStyle(fontSize: 22),), )
-            ),
-          )
-
-       
-
-         ],
-
-
+     Center(
+       child: Container(
+         width: MediaQuery.of(context).size.width*01,
+        padding:EdgeInsets.all(12) ,
+        child: Card(
+          elevation: 33,
+           child: Text("E-counter App is the solution of booking ticket without visitng  ticket counter, We assure to you that we will try our best to provide you cheapest ticket, without neglecting quality, from this app you can also reserve all types of vehicles", textAlign: TextAlign.justify, style: TextStyle(fontSize: 33,
+           fontStyle: FontStyle.italic),), )
+       ),
      )
 
 
