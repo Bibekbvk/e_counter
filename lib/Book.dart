@@ -82,24 +82,22 @@ class _BookState extends State<Book> {
       vehicle_number=widget.reservemodel.vehicle_number;
       vehicle_id=widget.reservemodel.vehicle_id;
       editable=false;
-
       _pricing.text=("${widget.reservemodel.price}");
     }
     else if(widget.moversmodel!=null){
       _pricing.text=("${widget.moversmodel.pricing}");
       vehicle_id=widget.moversmodel.vehicle_id;
       editable=false;
-
       firebasecollectionname="User Movers";
       _serviceController.text="Movers Vehicle";
     }
     else if(widget.rentmodel!=null){
       vehicle_id=widget.rentmodel.vehicle_id;
       editable=false;
-
       firebasecollectionname="User Rental";
       _serviceController.text="Rent Vehicle";
     }
+    print(firebasecollectionname);
     return Scaffold(
         resizeToAvoidBottomPadding: false,
         appBar: AppBar(title: Text("Book Ticket")),
@@ -290,13 +288,14 @@ class _BookState extends State<Book> {
                           "contact": _ContactNo.text,
                           "full_name": _FullName.text,
                           "timestamp": new DateTime.now(),
-                          "from": _from,
-                          "to":_to,
+                          "from": _from.text,
+                          "to":_to.text,
                           "ticket_for": _dateController.text,
                           "vehicle_id": vehicle_id,
                           "vehicle_number":vehicle_number,
                           "transaction_id":'${time.millisecond}${time.second}',
                           "seat_number":widget.seatnumber,
+                          'link':"https://scontent.xx.fbcdn.net/v/t1.15752-0/p280x280/125465745_3611747162218459_8121577149771972212_n.png?_nc_cat=110&ccb=2&_nc_sid=ae9488&_nc_ohc=HMallbbkjFsAX_kLAR-&_nc_ad=z-m&_nc_cid=0&_nc_ht=scontent.xx&oh=f6d8104a464cfc8d6aee9efe4ade7938&oe=5FDAD458",
                           'status':'pending',
 
 
