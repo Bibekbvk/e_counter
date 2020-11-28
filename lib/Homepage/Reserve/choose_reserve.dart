@@ -36,7 +36,7 @@ class _ChooseReserveState extends State<ChooseReserve> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-          title: Center(child: Text("Book Ticket"))
+          title: Center(child: Text("Choose Reserve"))
       ),
 
       body: StreamBuilder(
