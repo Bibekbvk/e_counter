@@ -27,7 +27,7 @@ void main() async{
 
 
     (debugShowCheckedModeBanner: false,
-      home: MyApp()));}
+      home: SafeArea(child: MyApp())));}
 
 class MyApp extends StatelessWidget {
 
