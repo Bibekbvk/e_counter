@@ -1,5 +1,4 @@
 import 'package:e_counter/Book.dart';
-import 'package:e_counter/Homepage/Fair.dart';
 import 'package:e_counter/Homepage/Reserve/reserve_price_list.dart';
 import 'package:e_counter/Models/ReserveModel.dart';
 import 'package:e_counter/Reuseable_codes/display_vehicle_details_card.dart';
@@ -68,7 +67,7 @@ class _ReserveListState extends State<ReserveList> {
 
         }
         else{
-          return CircularProgressIndicator();
+          return Center(child: CircularProgressIndicator());
         }
       }),
     );

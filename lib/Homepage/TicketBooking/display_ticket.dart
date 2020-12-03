@@ -31,7 +31,7 @@ class _MyticketState extends State<Myticket> {
             );
           }
           else{
-            return CircularProgressIndicator();
+            return Center(child: CircularProgressIndicator());
           }
       }),
     );

@@ -1,5 +1,5 @@
 import 'package:e_counter/Book.dart';
-import 'package:e_counter/Homepage/Fair.dart';
+import 'package:e_counter/Homepage/movers_price_list.dart';
 import 'package:e_counter/Models/movers_model.dart';
 import 'package:e_counter/Reuseable_codes/display_vehicle_details_card.dart';
 import 'package:e_counter/database.dart';
@@ -45,7 +45,7 @@ class _MoversListState extends State<MoversList> {
               Navigator.push(
                   context,
                   MaterialPageRoute(
-                      builder: (context) => MoversList()));
+                      builder: (context) => MoversPriceList()));
             },
             );
           });

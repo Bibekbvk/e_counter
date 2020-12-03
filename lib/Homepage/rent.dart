@@ -1,5 +1,5 @@
 import 'package:e_counter/Book.dart';
-import 'package:e_counter/Homepage/Fair.dart';
+import 'package:e_counter/Homepage/rent_price_list.dart';
 import 'package:e_counter/Models/RentModel.dart';
 import 'package:e_counter/Models/movers_model.dart';
 import 'package:e_counter/Reuseable_codes/display_vehicle_details_card.dart';
@@ -49,7 +49,7 @@ class _RentListState extends State<RentList> {
               Navigator.push(
                   context,
                   MaterialPageRoute(
-                      builder: (context) => RentList()));
+                      builder: (context) => RentPriceList()));
             },
             );
           });

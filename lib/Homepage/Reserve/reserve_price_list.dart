@@ -16,7 +16,7 @@ class _ReservePriceListState extends State<ReservePriceList> {
     return Scaffold(
       appBar: AppBar(),
       body: ListView.builder(itemCount: widget.model.price_list.length,itemBuilder: (BuildContext context, int index){
-        return Text("${widget.model.price_list[index]}");
+        return Center(child: Text("${widget.model.price_list[index]}"));
 
 
       }),

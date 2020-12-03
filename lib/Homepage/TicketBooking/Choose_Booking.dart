@@ -338,7 +338,7 @@ class _ChooseBookingState extends State<ChooseBooking> {
                   ],
                 ),
               )
-              ;}else{return CircularProgressIndicator();}}
+              ;}else{return Center(child: CircularProgressIndicator());}}
       ),
     );
   }

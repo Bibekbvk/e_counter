@@ -205,7 +205,7 @@ class _ChooseReserveState extends State<ChooseReserve> {
                   ],
                 ),
               )
-              ;}else{return CircularProgressIndicator();}}
+              ;}else{return Center(child: CircularProgressIndicator());}}
       ),
     );
   }

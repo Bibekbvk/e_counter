@@ -20,7 +20,7 @@ void main() async{
     checkwidget= e_counter();
   }
   else{
-    checkwidget=e_counter();
+    checkwidget=LogInPage();
   }
   print(check);
   runApp(MaterialApp
@@ -81,6 +81,9 @@ class MyApp extends StatelessWidget {
        textTheme: GoogleFonts.cherryCreamSodaTextTheme(
 
        ),
+        appBarTheme: AppBarTheme( textTheme: TextTheme(
+          headline6: GoogleFonts.cherryCreamSoda(fontSize: 20,color: Colors.white),
+        ),)
     ),);
   }
 

@@ -70,7 +70,7 @@ class _ShowVehiclesState extends State<ShowVehicles> {
           });
         }}
         else{
-          return CircularProgressIndicator();
+          return Center(child: CircularProgressIndicator());
         }
       }),
     );

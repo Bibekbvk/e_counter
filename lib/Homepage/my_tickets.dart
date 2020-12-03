@@ -63,7 +63,7 @@ class _TicketState extends State<Ticket> {
 
                     children: [
 
-                      Text("Choose Ticket", style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),),
+                      Text("Choose Ticket $index", style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),),
                       Icon(Icons.arrow_forward_ios_sharp, size: 15,color: Colors.black,),
 
 
