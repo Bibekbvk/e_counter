@@ -113,7 +113,7 @@ class _BookState extends State<Book> {
     }
     print(firebasecollectionname);
     return Scaffold(
-        resizeToAvoidBottomPadding: false,
+        resizeToAvoidBottomInset: true,
         appBar: AppBar(title: Text("$appBar")),
         body: Container(
           child: SingleChildScrollView(

@@ -32,9 +32,18 @@ class _e_counterState extends State<e_counter> {
   void init() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     prefs.setString('login', "yes");
+    services=[];
+  }
+  List<Widget> services;
+  void dispose() {
+    // TODO: implement dispose
+
+    services=[];
+
+    super.dispose();
   }
   Widget build(BuildContext context) {
-    List<Widget> services;
+
 
 
     init();

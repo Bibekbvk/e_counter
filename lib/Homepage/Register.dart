@@ -34,6 +34,7 @@ class _RegisterState extends State<Register> {
   }
   Widget build(BuildContext context) {
     return Scaffold(
+        resizeToAvoidBottomInset: true,
         appBar: AppBar(title: Center(child: Text("Register My Vehicle"))),
         body: Container(
           margin: EdgeInsets.all(12),
