@@ -441,14 +441,24 @@ class _e_counterState extends State<e_counter> {
           ),
         );
      }else{
-      return Center(child: CircularProgressIndicator());
+      return Center(child: Container(
+          color: Colors.white,
+          height: MediaQuery.of(context).size.height*1,
+          width: double.infinity,
+
+          child: CircularProgressIndicator()));
 
     }
 
 
         });}
         else{
-          return Center(child: CircularProgressIndicator());
+          return Center(child: Container(
+              color: Colors.white,
+              height: MediaQuery.of(context).size.height*1,
+              width: double.infinity,
+
+              child: CircularProgressIndicator()));
 
           }
         });}
